@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cfI-VS-fT0">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="HnY-e3-CZe">
+            <objects>
+                <viewController id="cfI-VS-fT0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lbq-DR-hne">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9ZF-OT-ShK">
+                                <rect key="frame" x="97.5" y="243.5" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="dpe-G3-RYM"/>
+                                    <constraint firstAttribute="width" constant="180" id="erj-Zh-o14"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCe-xM-Clj">
+                                <rect key="frame" x="140" y="443.5" width="95.5" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="Fno-Ix-gRq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Hbj-RY-rAP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zCe-xM-Clj" firstAttribute="top" secondItem="9ZF-OT-ShK" secondAttribute="bottom" constant="20" id="3b6-E7-v59"/>
+                            <constraint firstItem="9ZF-OT-ShK" firstAttribute="centerX" secondItem="Lbq-DR-hne" secondAttribute="centerX" id="5cB-9a-N1d"/>
+                            <constraint firstItem="zCe-xM-Clj" firstAttribute="centerX" secondItem="Lbq-DR-hne" secondAttribute="centerX" id="PB3-sV-844"/>
+                            <constraint firstItem="9ZF-OT-ShK" firstAttribute="centerY" secondItem="Lbq-DR-hne" secondAttribute="centerY" id="pe1-nb-CgX"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xRy-aa-PnC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="807" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="1100" height="1100"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
