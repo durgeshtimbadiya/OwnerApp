@@ -93,14 +93,14 @@ class ForgorAndChangePasswordVC: UIViewController, UITextFieldDelegate {
                 view.makeToast("please enter mobile number", duration: 0.8, position: .center)
                 return
             }  else {
-                ForgotpasswordFuncApi(type: "3", mobile: txtFieldPhoneNumber.text ?? "")
+                ForgotpasswordFuncApi(type: "2", mobile: txtFieldPhoneNumber.text ?? "")
             }
         } else {
             if txtFieldOTP.text == "" {
                 view.makeToast("please enter otp", duration: 0.8, position: .center)
                 return
             } else {
-                ForgotOTPMatchApi(type: "3", mobile: txtFieldPhoneNumber.text ?? "", otp: txtFieldOTP.text ?? "")
+                ForgotOTPMatchApi(type: "2", mobile: txtFieldPhoneNumber.text ?? "", otp: txtFieldOTP.text ?? "")
             }
         }
     }
@@ -211,7 +211,7 @@ class ForgorAndChangePasswordVC: UIViewController, UITextFieldDelegate {
             view.makeToast("password does not matched", duration: 0.8, position: .center)
             return
         } else {
-            newPasswordFuncApi(type: "3", mobile: txtFieldPhoneNumber.text ?? "", password: txtfieldPassword.text ?? "")
+            newPasswordFuncApi(type: "2", mobile: txtFieldPhoneNumber.text ?? "", password: txtfieldPassword.text ?? "")
         }
     }
 }

@@ -31,6 +31,7 @@ class SiteListModel{
     var otp : String!
     var owner : String!
     var ownerBlocked : String!
+    var userBlocked : String!
     var parking : String!
     var password : String!
     var pdfQr : String!
@@ -67,7 +68,7 @@ class SiteListModel{
         dob = dictionary["dob"] as? String
         email = dictionary["email"] as? String
         employeeBlocked = dictionary["employeeBlocked"] as? String
-        employeeId = dictionary["admin"] as? String
+        employeeId = dictionary["owner"] as? String
         id = dictionary["id"] as? String
         img = dictionary["img"] as? String
         isBlocked = dictionary["isBlocked"] as? String
@@ -81,6 +82,8 @@ class SiteListModel{
         otp = dictionary["otp"] as? String
         owner = dictionary["owner"] as? String
         ownerBlocked = dictionary["ownerBlocked"] as? String
+        userBlocked = dictionary["userBlocked"] as? String
+        
         parking = dictionary["parking"] as? String
         password = dictionary["password"] as? String
         pdfQr = dictionary["pdf_qr"] as? String

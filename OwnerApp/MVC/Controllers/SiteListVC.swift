@@ -67,7 +67,7 @@ class SiteListVC: UIViewController, PrLocation {
 //            GetSiteListApi(UserID: appDelegate.userLoginAccessDetails?.id ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "")
 
             if USERDEFAULTS.value(forKey: "device_Token") as? String != "" {
-                NotificationUpdatefuncApi(deviceID: USERDEFAULTS.value(forKey: "device_Token") as? String ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "", type: "3")
+                NotificationUpdatefuncApi(deviceID: USERDEFAULTS.value(forKey: "device_Token") as? String ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "", type: "2")
             }
         }
     }
@@ -82,7 +82,7 @@ class SiteListVC: UIViewController, PrLocation {
             GetSiteListApi(UserID: appDelegate.userLoginAccessDetails?.id ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "")
 
             if USERDEFAULTS.value(forKey: "device_Token") as? String != "" {
-                NotificationUpdatefuncApi(deviceID: USERDEFAULTS.value(forKey: "device_Token") as? String ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "", type: "3")
+                NotificationUpdatefuncApi(deviceID: USERDEFAULTS.value(forKey: "device_Token") as? String ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "", type: "2")
             }
         }
     }
@@ -92,7 +92,7 @@ class SiteListVC: UIViewController, PrLocation {
             GetSiteListApi(UserID: appDelegate.userLoginAccessDetails?.id ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "")
 
             if USERDEFAULTS.value(forKey: "device_Token") as? String != "" {
-                NotificationUpdatefuncApi(deviceID: USERDEFAULTS.value(forKey: "device_Token") as? String ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "", type: "3")
+                NotificationUpdatefuncApi(deviceID: USERDEFAULTS.value(forKey: "device_Token") as? String ?? "", mobile: appDelegate.userLoginAccessDetails?.mobile ?? "", type: "2")
             }
         }
     }
@@ -167,7 +167,7 @@ class SiteListVC: UIViewController, PrLocation {
 
     func GetSiteListApi(UserID: String, mobile: String) {
         if ProjectUtilities.checkInternateAvailable(viewController: self) {
-            let params = ["user_id": UserID, "mobile": mobile, "user_type": "3"] as [String: Any]
+            let params = ["user_id": UserID, "mobile": mobile, "user_type": "2"] as [String: Any]
 
             Webservice.Authentication.SiteList(parameter: params) { [self] result in
                 switch result {
@@ -265,7 +265,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
         cell.btnViewSite.backgroundColor = UIColor(displayP3Red: 23.0 / 255.0, green: 146.0 / 255.0, blue: 161.0 / 255.0, alpha: 1.0)
         cell.btnViewSite.isEnabled = true
         cell.btnViewSite.setTitle("View Site", for: .normal)
-        if obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1" {
+        if obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1" || obj.userBlocked == "1" {
             cell.btnViewSite.isEnabled = false
             cell.btnViewSite.setTitle("Blocked", for: .normal)
             cell.btnViewSite.backgroundColor = .gray
@@ -335,27 +335,27 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
         
         //MARK:- Vehicle Button Action
         cell.btnVehicle.tag = indexPath.row
-        cell.btnVehicle.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1")
+        cell.btnVehicle.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1" || obj.userBlocked == "1")
         cell.btnVehicle.addTarget(self, action: #selector(btnVehicleAction(sender:)), for: .touchUpInside)
        
         //MARK:- Visitor Button Action
         cell.btnVisitor.tag = indexPath.row
-        cell.btnVisitor.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1")
+        cell.btnVisitor.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1" || obj.userBlocked == "1")
         cell.btnVisitor.addTarget(self, action: #selector(btnVisitorAction(sender:)), for: .touchUpInside)
         
         //MARK:- Report Button Action
         cell.btnReport.tag = indexPath.row
-        cell.btnReport.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1")
+        cell.btnReport.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1" || obj.userBlocked == "1")
         cell.btnReport.addTarget(self, action: #selector(btnReportAction(sender:)), for: .touchUpInside)
         
         //MARK:- SOS Button Action
         cell.btnSOS.tag = indexPath.row
-        cell.btnSOS.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1")
+        cell.btnSOS.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1" || obj.userBlocked == "1")
         cell.btnSOS.addTarget(self, action: #selector(btnSOSAction(sender:)), for: .touchUpInside)
         
         //MARK:- SOS Button Action
         cell.btnLive.tag = indexPath.row
-        cell.btnLive.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1")
+        cell.btnLive.isEnabled = !(obj.siteBlocked == "1" || obj.ownerBlocked == "1" || obj.employeeBlocked == "1" || obj.userBlocked == "1")
         cell.btnLive.addTarget(self, action: #selector(btnLiveAction(sender:)), for: .touchUpInside)
 
         return cell

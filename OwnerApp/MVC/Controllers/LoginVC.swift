@@ -25,7 +25,8 @@ class LoginVC: UIViewController,UITextFieldDelegate {
 
     override func viewWillAppear(_: Bool) {
         super.viewWillAppear(true)
-
+        self.txtFieldPhone.text = ""
+        self.txtFieldPassword.text = ""
         if #available(iOS 13.0, *) {
             let app = UIApplication.shared
             let statusBarHeight: CGFloat = app.statusBarFrame.size.height
@@ -90,7 +91,7 @@ class LoginVC: UIViewController,UITextFieldDelegate {
             view.makeToast("please enter password", duration: 0.8, position: .center)
             return
         } else {
-            loginApi(mobile: txtFieldPhone.text ?? "", password: txtFieldPassword.text ?? "", loginType: "3")
+            loginApi(mobile: txtFieldPhone.text ?? "", password: txtFieldPassword.text ?? "", loginType: "2")
         }
     }
 

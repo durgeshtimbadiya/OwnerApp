@@ -130,7 +130,7 @@ class ReportViewAndUploadVC: UIViewController, UINavigationControllerDelegate, U
         btnSubmit.layer.borderWidth = 1
         btnSubmit.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
         
-        reportSeenFuncApi(user_type: "3", user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: site_ID, types: "1")
+        reportSeenFuncApi(user_type: "2", user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: site_ID, types: "1")
         staffNameFuncApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: site_ID)
         
         NotificationCenter.default.addObserver(self, selector: #selector(brandReceivedNotification(notification:)), name: Notification.Name("NotificationSelectedLabour"), object: nil)
@@ -650,7 +650,7 @@ class ReportViewAndUploadVC: UIViewController, UINavigationControllerDelegate, U
                 "Content-Type": "application/json",
             ]
 
-            let URL = try! URLRequest(url: "https://dev.sitepay.co.in/api/Employee/upload_report", method: .post, headers: headers)
+            let URL = try! URLRequest(url: "https://dev.sitepay.co.in/api/Owner/upload_report", method: .post, headers: headers)
 
             Alamofire.upload(multipartFormData: { multipartFormdata in
 

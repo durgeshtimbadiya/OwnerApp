@@ -16,15 +16,21 @@ class LiveStrengthVC: UIViewController {
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var TBLAtSiteList: UITableView!
     @IBOutlet weak var TBLINHouseList: UITableView!
-    
+    @IBOutlet weak var TBLLiveVehiclesList: UITableView!
+    @IBOutlet weak var TBLLiveVisitorsList: UITableView!
+
     @IBOutlet weak var heightAtGateConstraint: NSLayoutConstraint!
     @IBOutlet weak var heightAtSiteConstriant: NSLayoutConstraint!
     @IBOutlet weak var heightINHouseConstraint: NSLayoutConstraint!
-    
+    @IBOutlet weak var heightLiveVehiclesConstraint: NSLayoutConstraint!
+    @IBOutlet weak var heightLiveVisitorsConstraint: NSLayoutConstraint!
+
     var at_Gate_Array = [AtGateModel]()
     var at_Site_Array = [AtSiteModel]()
     var In_House_Array = [InHouseModel]()
-    
+    var live_Vehicles_Array = [LiveVehiclesModel]()
+    var live_Visitors_Array = [LiveVisitorsModel]()
+
     var select_Staff_Array = [String]()
     var select_Staff_Value = ""
     var staff_ID = "0"
@@ -39,7 +45,9 @@ class LiveStrengthVC: UIViewController {
     @IBOutlet weak var lblNoDataFoundAtGate: UILabel!
     @IBOutlet weak var lblNoDataFoundAtSite: UILabel!
     @IBOutlet weak var lblNoDataFoundInHouse: UILabel!
-    
+    @IBOutlet weak var lblNoDataFoundLiveVehicles: UILabel!
+    @IBOutlet weak var lblNoDataFoundLiveVisitors: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -180,12 +188,12 @@ class LiveStrengthVC: UIViewController {
                             self.at_Gate_Array.removeAll()
                             self.at_Site_Array.removeAll()
                             self.In_House_Array.removeAll()
+                            self.live_Vehicles_Array.removeAll()
+                            self.live_Visitors_Array.removeAll()
 
                             if let userDataObj = body["response"] as? NSDictionary {
                                 
                                 if let dictionary = userDataObj.value(forKey: "InGate") as? NSArray {
-                                    
-                                    
                                     for Dict in dictionary {
                                         let obj = AtGateModel(fromDictionary: Dict as! [String: AnyObject])
                                         self.at_Gate_Array.append(obj)
@@ -261,6 +269,61 @@ class LiveStrengthVC: UIViewController {
                                         self.view.layoutIfNeeded()
                                     }
                                 }
+                                if let vehiclesArray = userDataObj.value(forKey: "Vehicle") as? NSArray {
+                                    
+                                    for Dict in vehiclesArray {
+                                        let obj = LiveVehiclesModel(fromDictionary: Dict as! [String: AnyObject])
+                                        if obj.delete == "0" {
+                                            self.live_Vehicles_Array.append(obj)
+                                        }
+                                    }
+                                    
+                                    if self.live_Vehicles_Array.count > 0 {
+                                        self.lblNoDataFoundLiveVehicles.isHidden = true
+                                        self.lblNoDataFoundLiveVehicles.text = ""
+                                    } else {
+                                        self.lblNoDataFoundLiveVehicles.isHidden = false
+                                        self.lblNoDataFoundLiveVehicles.text = "NO DATA FOUND"
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+                                        self.view.layoutIfNeeded()
+                                        self.TBLLiveVehiclesList.dataSource = self
+                                        self.TBLLiveVehiclesList.delegate = self
+                                        self.TBLLiveVehiclesList.reloadData()
+                                        self.view.layoutIfNeeded()
+                                        self.heightLiveVehiclesConstraint.constant = self.TBLLiveVehiclesList.contentSize.height
+                                        self.view.layoutIfNeeded()
+                                    }
+                                }
+                                
+                                if let visitorsArray = userDataObj.value(forKey: "Visitor") as? NSArray {
+                                    
+                                    for Dict in visitorsArray {
+                                        let obj = LiveVisitorsModel(fromDictionary: Dict as! [String: AnyObject])
+                                        if obj.delete == "0" {
+                                            self.live_Visitors_Array.append(obj)
+                                        }
+                                    }
+                                    
+                                    if self.live_Visitors_Array.count > 0 {
+                                        self.lblNoDataFoundLiveVisitors.isHidden = true
+                                        self.lblNoDataFoundLiveVisitors.text = ""
+                                    } else {
+                                        self.lblNoDataFoundLiveVisitors.isHidden = false
+                                        self.lblNoDataFoundLiveVisitors.text = "NO DATA FOUND"
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+                                        self.view.layoutIfNeeded()
+                                        self.TBLLiveVisitorsList.dataSource = self
+                                        self.TBLLiveVisitorsList.delegate = self
+                                        self.TBLLiveVisitorsList.reloadData()
+                                        self.view.layoutIfNeeded()
+                                        self.heightLiveVisitorsConstraint.constant = self.TBLLiveVisitorsList.contentSize.height
+                                        self.view.layoutIfNeeded()
+                                    }
+                                }
                             }
                             
                         } else {
@@ -272,6 +335,61 @@ class LiveStrengthVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func tapOnRemoveVehicle(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Confirmation!", message: "Are you sure want to Delete this \(live_Vehicles_Array[sender.tag].id ?? "") Entry?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { action in
+            if ProjectUtilities.checkInternateAvailable(viewController: self) {
+                let params = ["user_id": appDelegate.userLoginAccessDetails?.id ?? "", "id": self.live_Vehicles_Array[sender.tag].id ?? ""] as [String: Any]
+
+                Webservice.Authentication.deleteLiveVehicles(parameter: params) { result in
+                    switch result {
+                    case let .success(response):
+                        if let body = response.body as? [String: Any] {
+                            if body["message"] as? String ?? "" == "Success" {
+                                self.view.makeToast("Entry Deleted!", duration: 1.0, position: .center)
+                                self.staffNameFuncApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: self.site_ID, staff_id: self.staff_ID)
+                            } else {
+                                App_AlertView.shared.SimpleMessage(Text: body["message"] as? String ?? "")
+                            }
+                        }
+                    case let .fail(errorMsg):
+                        self.view.makeToast(errorMsg, duration: 1.0, position: .center)
+                    }
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "NO", style: .destructive))
+        self.present(alert, animated: true)
+    }
+    
+    @objc func tapOnRemoveVisitor(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Confirmation!", message: "Are you sure want to Delete this \(live_Visitors_Array[sender.tag].id ?? "") Entry?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { action in
+            if ProjectUtilities.checkInternateAvailable(viewController: self) {
+                let params = ["user_id": appDelegate.userLoginAccessDetails?.id ?? "", "id": self.live_Visitors_Array[sender.tag].id ?? ""] as [String: Any]
+
+                Webservice.Authentication.deleteLiveVisitors(parameter: params) { result in
+                    switch result {
+                    case let .success(response):
+                        if let body = response.body as? [String: Any] {
+                            if body["message"] as? String ?? "" == "Success" {
+                                self.view.makeToast("Entry Deleted!", duration: 1.0, position: .center)
+                                self.staffNameFuncApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: self.site_ID, staff_id: self.staff_ID)
+
+                            } else {
+                                App_AlertView.shared.SimpleMessage(Text: body["message"] as? String ?? "")
+                            }
+                        }
+                    case let .fail(errorMsg):
+                        self.view.makeToast(errorMsg, duration: 1.0, position: .center)
+                    }
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "NO", style: .destructive))
+        self.present(alert, animated: true)
     }
 
 }
@@ -314,14 +432,20 @@ extension LiveStrengthVC: UITableViewDelegate, UITableViewDataSource {
         if tableView == TBLAtGateList {
             return at_Gate_Array.count
         }
-        else if tableView == TBLAtSiteList {
+        if tableView == TBLAtSiteList {
             return at_Site_Array.count
         }
-        else if tableView == TBLINHouseList {
+        if tableView == TBLINHouseList {
             return In_House_Array.count
-        } else {
-            return 0
         }
+        if tableView == TBLLiveVehiclesList {
+            return live_Vehicles_Array.count
+        }
+        if tableView == TBLLiveVisitorsList {
+            return live_Visitors_Array.count
+        }
+        return 0
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -424,6 +548,70 @@ extension LiveStrengthVC: UITableViewDelegate, UITableViewDataSource {
             
             
             return cell
+        } else if tableView == TBLLiveVehiclesList {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InHoueseTabelCell", for: indexPath) as! InHoueseTabelCell
+            let obj = live_Vehicles_Array[indexPath.row]
+            cell.selectionStyle = .none
+            count = indexPath.row + 1
+            cell.lblSrNo.text = "\(count)"
+            cell.lblSrNo.textColor = UIColor.systemGreen
+            
+            cell.viewStatus.backgroundColor = .white
+
+            if indexPath.row % 2 == 0 {
+                cell.viewSrNo.backgroundColor = UIColor.systemGray6
+                cell.viewUniqueID.backgroundColor = UIColor.systemGray6
+                cell.viewName.backgroundColor = UIColor.systemGray6
+                cell.viewVehicleNo.backgroundColor = UIColor.systemGray6
+    
+            } else {
+                cell.viewSrNo.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+                cell.viewUniqueID.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+                cell.viewName.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+                cell.viewVehicleNo.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+            }
+            
+            cell.lblUniqueID.text = obj.id ?? ""
+            cell.lblName.text = obj.vehicle_number ?? ""
+            cell.lblVehicleNo.text = "Entered"
+            cell.lblVehicleNo.textColor = UIColor.systemGreen
+            cell.lblStatus.text = obj.updated_date ?? ""
+            
+            cell.removeButton.tag = indexPath.row
+            cell.removeButton.addTarget(self, action: #selector(tapOnRemoveVehicle(_:)), for: .touchUpInside)
+            return cell
+        } else if tableView == TBLLiveVisitorsList {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "InHoueseTabelCell", for: indexPath) as! InHoueseTabelCell
+            let obj = live_Visitors_Array[indexPath.row]
+            cell.selectionStyle = .none
+            count = indexPath.row + 1
+            cell.lblSrNo.text = "\(count)"
+            cell.lblSrNo.textColor = UIColor.systemGreen
+            
+            cell.viewStatus.backgroundColor = .white
+
+            if indexPath.row % 2 == 0 {
+                cell.viewSrNo.backgroundColor = UIColor.systemGray6
+                cell.viewUniqueID.backgroundColor = UIColor.systemGray6
+                cell.viewName.backgroundColor = UIColor.systemGray6
+                cell.viewVehicleNo.backgroundColor = UIColor.systemGray6
+    
+            } else {
+                cell.viewSrNo.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+                cell.viewUniqueID.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+                cell.viewName.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+                cell.viewVehicleNo.backgroundColor = UIColor(red: 215 / 255.0, green: 240 / 255.0, blue: 241 / 255.0, alpha: 1.0)
+            }
+            
+            cell.lblUniqueID.text = obj.id ?? ""
+            cell.lblName.text = obj.visitor_name ?? ""
+            cell.lblVehicleNo.text = "Entered"
+            cell.lblVehicleNo.textColor = UIColor.systemGreen
+            cell.lblStatus.text = obj.updated_date ?? ""
+            
+            cell.removeButton.tag = indexPath.row
+            cell.removeButton.addTarget(self, action: #selector(tapOnRemoveVisitor(_:)), for: .touchUpInside)
+            return cell
         } else {
             return UITableViewCell()
         }
@@ -443,6 +631,14 @@ extension LiveStrengthVC: UITableViewDelegate, UITableViewDataSource {
         } else if tableView == TBLINHouseList {
             DispatchQueue.main.async {
                 self.heightINHouseConstraint.constant = self.TBLINHouseList.contentSize.height
+            }
+        } else if tableView == TBLLiveVehiclesList {
+            DispatchQueue.main.async {
+                self.heightLiveVehiclesConstraint.constant = self.TBLLiveVehiclesList.contentSize.height
+            }
+        } else if tableView == TBLLiveVisitorsList {
+            DispatchQueue.main.async {
+                self.heightLiveVisitorsConstraint.constant = self.TBLLiveVisitorsList.contentSize.height
             }
         }
     }

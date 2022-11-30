@@ -24,13 +24,21 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
 //    @IBOutlet var viewAddress: UIView!
 //    @IBOutlet var viewDepartment: UIView!
 //    @IBOutlet var viewDesignation: UIView!
-    @IBOutlet var viewVehicleView: UIView!
+    @IBOutlet var viewTypeOfSiteView: UIView!
+    @IBOutlet var viewCompanyNameView: UIView!
 
     // UITextField
     @IBOutlet var txtFieldName: UITextField!
-    @IBOutlet var txtFieldVehicleNo: UITextField!
+    @IBOutlet var txtFieldTypeOfSite: UITextField!
     @IBOutlet var txtFieldPhone: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
+    @IBOutlet var txtFieldCompanyName: UITextField!
+    @IBOutlet var panCardImageBtn: UIButton!
+    
+    @IBOutlet var lblCompanyName: UILabel!
+    @IBOutlet var lblTypeOfSite: UILabel!
+    @IBOutlet var lblPanCard: UILabel!
+
 //    @IBOutlet var txtFieldDOB: UITextField!
 //    @IBOutlet var txtFIeldBloodGroup: UITextField!
 //    @IBOutlet var txtFieldAddress: UITextField!
@@ -42,6 +50,7 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
 
     let imagepicker = UIImagePickerController()
     var captureImage: UIImage?
+    var profilePicBase64 = ""
 
     var selectAdhar: Bool = false
 
@@ -57,7 +66,7 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
     var profilePic_Removed = "0"
     var new_Department = "0"
     var new_Designation = "0"
-
+    private var panCardImageURL = ""
     var companyID = ""
 
     override func viewDidLoad() {
@@ -143,9 +152,13 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
 //        viewDesignation.layer.borderWidth = 1
 //        viewDesignation.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
         
-        viewVehicleView.layer.cornerRadius = 10
-        viewVehicleView.layer.borderWidth = 1
-        viewVehicleView.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
+        viewCompanyNameView.layer.cornerRadius = 10
+        viewCompanyNameView.layer.borderWidth = 1
+        viewCompanyNameView.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
+        
+        viewTypeOfSiteView.layer.cornerRadius = 10
+        viewTypeOfSiteView.layer.borderWidth = 1
+        viewTypeOfSiteView.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
 
         btnUpdateProflie.dropShadowWithCornerRadius()
         btnProfile.layer.cornerRadius = btnProfile.layer.bounds.height / 2
@@ -267,8 +280,13 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
             else {
                 self.profileStatus = "1"
                 self.captureImage = selectedImage
+                
                 self.btnProfile.setImage(self.captureImage, for: .normal)
                 self.btnProfile.contentMode = .scaleAspectFill
+                
+                guard let resizedImage = selectedImage.resized(withPercentage: 0.2) else { return }
+                guard let imageData = resizedImage.jpegData(compressionQuality: 0.75) else { return }
+                self.profilePicBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             }
         }
     }
@@ -278,7 +296,6 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
     }
 
     // MARK: - Profile Image Action----------------
-
     @IBAction func btnProfileImageAction(_: Any) {
         selectAdhar = false
         showActionSheet()
@@ -286,7 +303,16 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
 
     @IBAction func btnUpdateProfileAction(_: Any) {
         if appDelegate.userLoginAccessDetails?.id != nil {
-            UpdateProfileApi(userID: appDelegate.userLoginAccessDetails?.id ?? "", name: txtFieldName.text ?? "", email: txtFieldEmail.text ?? "", mobile: txtFieldPhone.text ?? "", profile_status: profileStatus, profile_pic_remove: profilePic_Removed, vehivleno: txtFieldVehicleNo.text ?? "")
+            UpdateProfileApi()
+        }
+    }
+    
+    @IBAction func tapOnPanImage(_ sender: UIButton) {
+        if !panCardImageURL.isEmpty, let vc = UIStoryboard(name: "Vehicle", bundle: nil).instantiateViewController(withIdentifier: "ImageViewController") as? ImageViewController {
+            vc.imageURL = panCardImageURL
+            Functions.pushToViewController(self, toVC: vc)
+        } else {
+            self.view.makeToast("No image found!", duration: 1.0, position: .center)
         }
     }
 
@@ -305,7 +331,16 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                                 if let img = user.value(forKey: "profile_pic") as? String {
                                     print(img)
                                     self.btnProfile.sd_setImage(with: URL(string: img), for: .normal, placeholderImage: UIImage(named: "nopreview"), options: .refreshCached, context: nil)
-
+                                    if !img.isEmpty {
+                                        DispatchQueue.main.async {
+                                            if let imageURL = URL(string: img) {
+                                                do {
+                                                    let imageData = try Data(contentsOf: imageURL)
+                                                    self.profilePicBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                                                } catch  { }
+                                            }
+                                        }
+                                    }
                                 } else {
                                     self.btnProfile.setImage(UIImage(named: "nopreview"), for: .normal)
                                 }
@@ -314,9 +349,20 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                                     self.txtFieldName.text = name
                                 }
                                 
-                                if let vehicle = user.value(forKey: "vehicle") as? String {
-                                    self.txtFieldVehicleNo.text = vehicle
+                                if let type = user.value(forKey: "type") as? String {
+                                    self.txtFieldTypeOfSite.text = type
                                 }
+                                
+                                if let company = user.value(forKey: "company") as? String {
+                                    self.txtFieldCompanyName.text = company
+                                }
+                                
+                                if let panC = user.value(forKey: "pan") as? String {
+                                    self.panCardImageURL = "\(Webservice.baseUrl1)\(panC)"
+                                    self.panCardImageBtn.sd_setImage(with: URL(string: self.panCardImageURL), for: .normal, placeholderImage: UIImage(named: "nopreview"), options: .refreshCached, context: nil)
+                                }
+                                //company, mute_notification, type, pan
+                                //https://dev.sitepay.co.in/data/pan/The_Real_Squere_VC_Ulwe_LOGO11.jpg
 
                                 if let phone = user.value(forKey: "mobile") as? String {
                                     self.txtFieldPhone.text = phone
@@ -399,72 +445,48 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
 
     // MARK: - Update Profile Details*********************************************
 
-    func UpdateProfileApi(userID: String, name: String, email: String, mobile: String, profile_status: String, profile_pic_remove: String, vehivleno: String) {
+    func UpdateProfileApi() {
         if ProjectUtilities.checkInternateAvailable(viewController: self) {
-            ProgressHUD.animationType = .circleStrokeSpin
-            ProgressHUD.colorBackground = .white
-            ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
-            ProgressHUD.show("Uploading...")
-
-            let params = ["id": userID,
-                          "name": name,
-                          "mobile": mobile,
-                          "email": email,
-//                          "dob": dobdate,
-//                          "blood_group": bloodGroup,
-//                          "address": address,
-//                          "designation": designation,
-//                          "new_designation": new_designation,
-//                          "department": department,
-//                          "new_department": new_department,
-                          "profile_status": profile_status,
-                          "vehicle": vehivleno,
-                          "profile_pic_remove": "0"] as [String: Any]
-            print(params)
-
-            let headers: HTTPHeaders = [
-                "token": "c7d3965d49d4a59b0da80e90646aee77548458b3377ba3c0fb43d5ff91d54ea28833080e3de6ebd4fde36e2fb7175cddaf5d8d018ac1467c3d15db21c11b6909",
-                "Content-Type": "application/json",
-            ]
-
-            let URL = try! URLRequest(url: "https://dev.sitepay.co.in/api/Admin/profile_update", method: .post, headers: headers)
-
-            Alamofire.upload(multipartFormData: { multipartFormdata in
-
-//                if let imageData = self.captureImage?.jpegData(compressionQuality: 0.4) {
-//                    if let resizedImage = self.captureImage!.resized(withPercentage: 0.1) {
-                if let capImage = self.captureImage, let resizedImage = capImage.resized(withPercentage: 0.2), let imageDataa = resizedImage.jpegData(compressionQuality: 0.75) {
-                    let data = imageDataa.base64EncodedData()
-                        multipartFormdata.append(data, withName: "profile_pic")
-                    }
-//                    let image = self.captureImage?.pngData()
-//                    let data = image!.base64EncodedData()
-                   // multipartFormdata.append(data, withName: "profile_pic")
-//                }
-
-                for (key, value) in params {
-                    multipartFormdata.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+            DispatchQueue.main.async {
+                var panCardImageBase64 = ""
+                if let imageURL = URL(string: self.panCardImageURL) {
+                    do {
+                        let imageData = try Data(contentsOf: imageURL)
+                        panCardImageBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                    } catch  { }
                 }
-
-            }, with: URL) { result in
-
-                switch result {
-                case let .success(upload, _, _):
-
-                    upload.uploadProgress(closure: { progress in
-                        print("Upload Progress: \(progress.fractionCompleted)")
-                    })
-                    upload.responseJSON { response in
-                        print(response)
-                        print("Response Get Successfully")
-                        ProgressHUD.dismiss()
-                        self.view.makeToast("Profile Updated Successfully", duration: 1.0, position: .center)
-                        self.perform(#selector(self.RedirectToProfile), with: nil, afterDelay: 1.1)
+                
+                let params = ["user_id": appDelegate.userLoginAccessDetails?.id ?? "",
+                              "name": self.txtFieldName.text ?? "",
+                              "mobile": self.txtFieldPhone.text ?? "",
+                              "email": self.txtFieldEmail.text ?? "",
+                              "company": self.txtFieldCompanyName.text ?? "",
+                              "pan": panCardImageBase64,
+                              "pan_status": panCardImageBase64.isEmpty ? "0" : "1",
+                              //                          "dob": dobdate,
+                              //                          "blood_group": bloodGroup,
+                              //                          "address": address,
+                              //                          "designation": designation,
+                              //                          "new_designation": new_designation,
+                              //                          "department": department,
+                              //                          "new_department": new_department,
+                              "profile_pic": self.profilePicBase64,
+                              "profile_status": self.profileStatus,
+                              //                          "vehicle": vehivleno,
+                              "profile_pic_remove": "0"] as [String: Any]
+                
+                Webservice.Authentication.RemoveProfilePhotoApi(parameter: params) { result in
+                    switch result {
+                    case let .success(response):
+                        if let body = response.body as? [String: Any] {
+                            if body["message"] as? String ?? "" == "Success" {
+                                self.view.makeToast("Profile Updated Successfully", duration: 1.0, position: .center)
+                                self.perform(#selector(self.RedirectToProfile), with: nil, afterDelay: 1.1)
+                            } else {}
+                        }
+                    case let .fail(errorMsg):
+                        print(errorMsg)
                     }
-
-                case let .failure(encodingError):
-                    print(encodingError)
-                    ProgressHUD.dismiss()
                 }
             }
         }

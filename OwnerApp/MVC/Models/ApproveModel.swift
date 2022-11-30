@@ -125,7 +125,7 @@ struct ApproveModel{
     var updatedDate : String!
     var vehicleNumber : String!
     var vendorMobile : String!
-
+    var timeSpent: String!
 
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
@@ -176,6 +176,40 @@ struct ApproveModel{
         updatedDate = dictionary["updated_date"] as? String
         vehicleNumber = dictionary["vehicle_number"] as? String
         vendorMobile = dictionary["vendor_mobile"] as? String
+        timeSpent = "Exit Pending"
+        if let timespnt = dictionary["time_spent"] as? Double, timespnt > 0 {
+            timeSpent = ApproveModel.formatTimeFor(seconds: timespnt)
+        }
     }
 
+    /*
+     *  Fotmat time using seconds
+     */
+    static func formatTimeFor(seconds: Double) -> String {
+        let result = getHoursMinutesSecondsFrom(seconds: seconds)
+        var hoursString = "\(result.hours)"
+        if hoursString.utf8.count == 1 {
+            hoursString = "0\(result.hours)"
+        }
+        
+        var minutesString = "\(result.minutes)"
+        if minutesString.utf8.count == 1 {
+            minutesString = "0\(result.minutes)"
+        }
+        
+        var secondsString = "\(result.seconds)"
+        if secondsString.utf8.count == 1 {
+            secondsString = "0\(result.seconds)"
+        }
+        return "\(hoursString):\(minutesString):\(secondsString)"
+    }
+    
+    // MARK: Convert seconds to current time for playing audio
+    static func getHoursMinutesSecondsFrom(seconds: Double) -> (hours: Int, minutes: Int, seconds: Int) {
+        let secs = Int(seconds)
+        let hours = secs / 3600
+        let minutes = (secs % 3600) / 60
+        let seconds = (secs % 3600) % 60
+        return (hours, minutes, seconds)
+    }
 }

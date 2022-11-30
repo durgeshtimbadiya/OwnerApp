@@ -20,7 +20,8 @@ class InHoueseTabelCell: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblVehicleNo: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
-    
+    @IBOutlet weak var removeButton: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

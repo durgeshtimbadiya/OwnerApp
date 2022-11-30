@@ -161,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PrLocation {
     }
 
     func openSettingApp(message: String) {
-        let alertController = UIAlertController(title: "Admin App", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Owner App", message: message, preferredStyle: .alert)
 
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {

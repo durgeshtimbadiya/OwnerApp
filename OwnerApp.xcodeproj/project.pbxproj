@@ -38,6 +38,7 @@
 		18A0432D291B7AC9003CB044 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */; };
 		18A0432F291BA563003CB044 /* EditVehiclesDetailLogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0432E291BA563003CB044 /* EditVehiclesDetailLogVC.swift */; };
 		18A04331291BABE4003CB044 /* UpdateVehicleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A04330291BABE4003CB044 /* UpdateVehicleImageCell.swift */; };
+		2541B235BAE10D7872175106 /* Pods_OwnerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB5CAB50F09358E10697377 /* Pods_OwnerApp.framework */; };
 		4904B9D22747E8BA00BA5DAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904B9D12747E8BA00BA5DAB /* AppDelegate.swift */; };
 		4904B9D92747E8BA00BA5DAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4904B9D72747E8BA00BA5DAB /* Main.storyboard */; };
 		4904B9DB2747E8BD00BA5DAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4904B9DA2747E8BD00BA5DAB /* Assets.xcassets */; };
@@ -120,7 +121,6 @@
 		49DE936227674D5900FDA8CC /* SOSFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE936127674D5900FDA8CC /* SOSFilterModel.swift */; };
 		49DE936427674D7800FDA8CC /* SOSLogTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE936327674D7800FDA8CC /* SOSLogTableCell.swift */; };
 		49DE93662767896C00FDA8CC /* GPSLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE93652767896C00FDA8CC /* GPSLocationVC.swift */; };
-		ADA3565593799BC56FA3A21A /* Pods_EmployeeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D7DF19438FD4DD59E2C33B /* Pods_EmployeeApp.framework */; };
 		DB127EF728658031003CA376 /* VisitorRejectedLogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB127EF628658031003CA376 /* VisitorRejectedLogVC.swift */; };
 		DB127EFB28658F58003CA376 /* VisitorApprovalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB127EF928658F57003CA376 /* VisitorApprovalModel.swift */; };
 		DB127EFC28658F58003CA376 /* VisitorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB127EFA28658F57003CA376 /* VisitorModel.swift */; };
@@ -208,7 +208,7 @@
 		18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18A0432E291BA563003CB044 /* EditVehiclesDetailLogVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVehiclesDetailLogVC.swift; sourceTree = "<group>"; };
 		18A04330291BABE4003CB044 /* UpdateVehicleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVehicleImageCell.swift; sourceTree = "<group>"; };
-		4904B9CE2747E8BA00BA5DAB /* AdminApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdminApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4904B9CE2747E8BA00BA5DAB /* OwnerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwnerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4904B9D12747E8BA00BA5DAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4904B9D82747E8BA00BA5DAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4904B9DA2747E8BD00BA5DAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -292,8 +292,10 @@
 		49DE936127674D5900FDA8CC /* SOSFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOSFilterModel.swift; sourceTree = "<group>"; };
 		49DE936327674D7800FDA8CC /* SOSLogTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOSLogTableCell.swift; sourceTree = "<group>"; };
 		49DE93652767896C00FDA8CC /* GPSLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationVC.swift; sourceTree = "<group>"; };
-		68D7DF19438FD4DD59E2C33B /* Pods_EmployeeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EmployeeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		720357A488FABF836C3C984D /* Pods-OwnerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwnerApp.debug.xcconfig"; path = "Target Support Files/Pods-OwnerApp/Pods-OwnerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		77151594F865DF33C9D0D417 /* Pods-EmployeeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmployeeApp.debug.xcconfig"; path = "Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		A45630634D5BEF1DAA4B6A75 /* Pods-OwnerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OwnerApp.release.xcconfig"; path = "Target Support Files/Pods-OwnerApp/Pods-OwnerApp.release.xcconfig"; sourceTree = "<group>"; };
+		BDB5CAB50F09358E10697377 /* Pods_OwnerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OwnerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB127EF628658031003CA376 /* VisitorRejectedLogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorRejectedLogVC.swift; sourceTree = "<group>"; };
 		DB127EF928658F57003CA376 /* VisitorApprovalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorApprovalModel.swift; sourceTree = "<group>"; };
 		DB127EFA28658F57003CA376 /* VisitorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorModel.swift; sourceTree = "<group>"; };
@@ -323,7 +325,7 @@
 		DB413C6928872D5E0004F49E /* StaffNameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffNameModel.swift; sourceTree = "<group>"; };
 		DB413C6B288734910004F49E /* SearchLabourPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLabourPopUpVC.swift; sourceTree = "<group>"; };
 		DB413C6D288735B50004F49E /* SelectLabourTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLabourTableCell.swift; sourceTree = "<group>"; };
-		DB413C6F288750920004F49E /* AdminApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AdminApp.entitlements; sourceTree = "<group>"; };
+		DB413C6F288750920004F49E /* OwnerApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OwnerApp.entitlements; sourceTree = "<group>"; };
 		DB474BEE28618EA20005327A /* VehiclesLogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesLogVC.swift; sourceTree = "<group>"; };
 		DB6546A128901A0F00E52C36 /* VisitorApprovalLogDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorApprovalLogDetailVC.swift; sourceTree = "<group>"; };
 		DB71F0242881456C00A276D4 /* VisitorRejectedLogDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorRejectedLogDetailVC.swift; sourceTree = "<group>"; };
@@ -354,7 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADA3565593799BC56FA3A21A /* Pods_EmployeeApp.framework in Frameworks */,
+				2541B235BAE10D7872175106 /* Pods_OwnerApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +476,7 @@
 		4904B9C52747E8BA00BA5DAB = {
 			isa = PBXGroup;
 			children = (
-				4904B9D02747E8BA00BA5DAB /* AdminApp */,
+				4904B9D02747E8BA00BA5DAB /* OwnerApp */,
 				4904B9CF2747E8BA00BA5DAB /* Products */,
 				9AE66C67DCBC61AC7E4CDA01 /* Pods */,
 				D8A5D6CD0A9E20FDDBD3201B /* Frameworks */,
@@ -484,16 +486,16 @@
 		4904B9CF2747E8BA00BA5DAB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4904B9CE2747E8BA00BA5DAB /* AdminApp.app */,
+				4904B9CE2747E8BA00BA5DAB /* OwnerApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4904B9D02747E8BA00BA5DAB /* AdminApp */ = {
+		4904B9D02747E8BA00BA5DAB /* OwnerApp */ = {
 			isa = PBXGroup;
 			children = (
 				18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */,
-				DB413C6F288750920004F49E /* AdminApp.entitlements */,
+				DB413C6F288750920004F49E /* OwnerApp.entitlements */,
 				49DE933427671F1200FDA8CC /* QR Code Reader */,
 				49DE933127671C1F00FDA8CC /* Location Update */,
 				4904BA272747EC4300BA5DAB /* Global Classes */,
@@ -508,7 +510,7 @@
 				4904B9E52747E93B00BA5DAB /* Assets */,
 				4904B9DF2747E8BD00BA5DAB /* Info.plist */,
 			);
-			path = AdminApp;
+			path = OwnerApp;
 			sourceTree = "<group>";
 		};
 		4904B9E52747E93B00BA5DAB /* Assets */ = {
@@ -743,6 +745,8 @@
 			children = (
 				77151594F865DF33C9D0D417 /* Pods-EmployeeApp.debug.xcconfig */,
 				0E3843823EFB8B63A9CBF54D /* Pods-EmployeeApp.release.xcconfig */,
+				720357A488FABF836C3C984D /* Pods-OwnerApp.debug.xcconfig */,
+				A45630634D5BEF1DAA4B6A75 /* Pods-OwnerApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -750,7 +754,7 @@
 		D8A5D6CD0A9E20FDDBD3201B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				68D7DF19438FD4DD59E2C33B /* Pods_EmployeeApp.framework */,
+				BDB5CAB50F09358E10697377 /* Pods_OwnerApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -909,9 +913,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4904B9CD2747E8BA00BA5DAB /* AdminApp */ = {
+		4904B9CD2747E8BA00BA5DAB /* OwnerApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4904B9E22747E8BD00BA5DAB /* Build configuration list for PBXNativeTarget "AdminApp" */;
+			buildConfigurationList = 4904B9E22747E8BD00BA5DAB /* Build configuration list for PBXNativeTarget "OwnerApp" */;
 			buildPhases = (
 				81B6C6B5535910ACF5D3F153 /* [CP] Check Pods Manifest.lock */,
 				4904B9CA2747E8BA00BA5DAB /* Sources */,
@@ -924,9 +928,9 @@
 			);
 			dependencies = (
 			);
-			name = AdminApp;
+			name = OwnerApp;
 			productName = EmployeeApp;
-			productReference = 4904B9CE2747E8BA00BA5DAB /* AdminApp.app */;
+			productReference = 4904B9CE2747E8BA00BA5DAB /* OwnerApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -943,7 +947,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4904B9C92747E8BA00BA5DAB /* Build configuration list for PBXProject "AdminApp" */;
+			buildConfigurationList = 4904B9C92747E8BA00BA5DAB /* Build configuration list for PBXProject "OwnerApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -956,7 +960,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4904B9CD2747E8BA00BA5DAB /* AdminApp */,
+				4904B9CD2747E8BA00BA5DAB /* OwnerApp */,
 			);
 		};
 /* End PBXProject section */
@@ -986,15 +990,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-OwnerApp/Pods-OwnerApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-OwnerApp/Pods-OwnerApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OwnerApp/Pods-OwnerApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		81B6C6B5535910ACF5D3F153 /* [CP] Check Pods Manifest.lock */ = {
@@ -1012,7 +1016,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EmployeeApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-OwnerApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1025,15 +1029,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-OwnerApp/Pods-OwnerApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-OwnerApp/Pods-OwnerApp-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OwnerApp/Pods-OwnerApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1343,23 +1347,23 @@
 		};
 		4904B9E32747E8BD00BA5DAB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77151594F865DF33C9D0D417 /* Pods-EmployeeApp.debug.xcconfig */;
+			baseConfigurationReference = 720357A488FABF836C3C984D /* Pods-OwnerApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AdminApp/AdminApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = OwnerApp/OwnerApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5U6EGVXS4J;
-				INFOPLIST_FILE = AdminApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Admin App";
+				INFOPLIST_FILE = OwnerApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Owner App";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.adminappios;
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ownerappios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1369,28 +1373,28 @@
 		};
 		4904B9E42747E8BD00BA5DAB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E3843823EFB8B63A9CBF54D /* Pods-EmployeeApp.release.xcconfig */;
+			baseConfigurationReference = A45630634D5BEF1DAA4B6A75 /* Pods-OwnerApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AdminApp/AdminApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = OwnerApp/OwnerApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5U6EGVXS4J;
-				INFOPLIST_FILE = AdminApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Admin App";
+				INFOPLIST_FILE = OwnerApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Owner App";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.adminappios;
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ownerappios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Admin_appstore;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Owner_Appstore;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1399,7 +1403,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4904B9C92747E8BA00BA5DAB /* Build configuration list for PBXProject "AdminApp" */ = {
+		4904B9C92747E8BA00BA5DAB /* Build configuration list for PBXProject "OwnerApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4904B9E02747E8BD00BA5DAB /* Debug */,
@@ -1408,7 +1412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4904B9E22747E8BD00BA5DAB /* Build configuration list for PBXNativeTarget "AdminApp" */ = {
+		4904B9E22747E8BD00BA5DAB /* Build configuration list for PBXNativeTarget "OwnerApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4904B9E32747E8BD00BA5DAB /* Debug */,

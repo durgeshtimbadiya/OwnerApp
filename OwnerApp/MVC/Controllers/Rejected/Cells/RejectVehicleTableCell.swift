@@ -23,6 +23,9 @@ class RejectVehicleTableCell: UITableViewCell {
     @IBOutlet var viewStatus: UIView!
     @IBOutlet var lblStatus: UILabel!
     
+    @IBOutlet var viewTimeSpent: UIView!
+    @IBOutlet var lblTiemSpent: UILabel!
+    
     @IBOutlet weak var viewEditView: UIView!
     @IBOutlet weak var editButton: UIButton!
 

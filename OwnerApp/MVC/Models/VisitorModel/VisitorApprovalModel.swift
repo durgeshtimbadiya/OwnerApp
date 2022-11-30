@@ -31,7 +31,7 @@ class VisitorApprovalModel{
 	var securityExitBy : String!
 	var siteId : String!
 	var status : String!
-	var timeSpent : Int!
+//	var timeSpent : Int!
 	var uniqueId : String!
 	var updatedDate : String!
 	var vehicleNumber : String!
@@ -42,7 +42,7 @@ class VisitorApprovalModel{
 	var visitors : [VisitorModel]!
 	var whomToMeet : String!
 	var whomToMeetType : String!
-
+    var timeSpent: String!
 
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
@@ -73,7 +73,7 @@ class VisitorApprovalModel{
 		securityExitBy = dictionary["security_exit_by"] as? String
 		siteId = dictionary["site_id"] as? String
 		status = dictionary["status"] as? String
-		timeSpent = dictionary["time_spent"] as? Int
+//		timeSpent = dictionary["time_spent"] as? Int
 		uniqueId = dictionary["unique_id"] as? String
 		updatedDate = dictionary["updated_date"] as? String
 		vehicleNumber = dictionary["vehicle_number"] as? String
@@ -90,6 +90,10 @@ class VisitorApprovalModel{
 		}
 		whomToMeet = dictionary["whom_to_meet"] as? String
 		whomToMeetType = dictionary["whom_to_meet_type"] as? String
+        timeSpent = "Exit Pending"
+        if let timespnt = dictionary["time_spent"] as? Double, timespnt > 0 {
+            timeSpent = ApproveModel.formatTimeFor(seconds: timespnt)
+        }
 	}
 
 }

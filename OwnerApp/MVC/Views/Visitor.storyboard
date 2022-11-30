@@ -13,7 +13,7 @@
         <!--Visitor Vehicle Status View DetailVC-->
         <scene sceneID="CAK-dH-gTS">
             <objects>
-                <viewController storyboardIdentifier="VisitorVehicleStatusViewDetailVC" id="mUs-L2-31Q" customClass="VisitorVehicleStatusViewDetailVC" customModule="EmployeeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisitorVehicleStatusViewDetailVC" id="mUs-L2-31Q" customClass="VisitorVehicleStatusViewDetailVC" customModule="OwnerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nz3-Df-OxW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="3000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
                                 <rect key="frame" x="10" y="60" width="355" height="2940"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="O2b-nh-TpX" customClass="VisitorsLogCompanyDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="O2b-nh-TpX" customClass="VisitorsLogCompanyDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="355" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O2b-nh-TpX" id="46n-zs-APU">
@@ -133,7 +133,7 @@
                                             <outlet property="vwNameOFCompany" destination="DsE-kK-qcG" id="8JO-Vz-PFE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="lD2-HB-ujL" customClass="VisitorsLogDocumentTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="lD2-HB-ujL" customClass="VisitorsLogDocumentTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="355" height="1195.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lD2-HB-ujL" id="gSM-D3-iOu">
@@ -422,7 +422,7 @@
                                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     </collectionViewFlowLayout>
                                                                     <cells>
-                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="dGn-by-nwz" customClass="VisitorsLogMaterialCollectionCell" customModule="EmployeeApp" customModuleProvider="target">
+                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="dGn-by-nwz" customClass="VisitorsLogMaterialCollectionCell" customModule="OwnerApp" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="129" height="135"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jGk-Hl-mrr">
@@ -541,7 +541,7 @@
                                             <outlet property="vwMaterial" destination="yVr-oV-Vno" id="WZB-kN-V0E"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="TGC-MC-B5s" customClass="VisitorsLogVehicleDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="TGC-MC-B5s" customClass="VisitorsLogVehicleDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1352.5" width="355" height="452"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TGC-MC-B5s" id="H9e-aB-Z9G">
@@ -785,7 +785,7 @@
                                             <outlet property="viewWhomToMeet" destination="l2Q-ie-tCO" id="jrK-X4-6UP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="pWc-TN-6K8" customClass="VisitorsLogEnteredTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="pWc-TN-6K8" customClass="VisitorsLogEnteredTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1804.5" width="355" height="912.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWc-TN-6K8" id="N52-lr-oPd">
@@ -1437,7 +1437,7 @@
         <!--Visitor Approval Log DetailVC-->
         <scene sceneID="06g-DA-sxe">
             <objects>
-                <viewController storyboardIdentifier="VisitorApprovalLogDetailVC" id="ISP-wG-POS" customClass="VisitorApprovalLogDetailVC" customModule="EmployeeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisitorApprovalLogDetailVC" id="ISP-wG-POS" customClass="VisitorApprovalLogDetailVC" customModule="OwnerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z1c-g1-9jG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="3000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1491,7 +1491,7 @@
                                 <rect key="frame" x="10" y="60" width="355" height="2940"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="3jA-nf-vhI" customClass="VisitorsLogCompanyDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="3jA-nf-vhI" customClass="VisitorsLogCompanyDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="355" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3jA-nf-vhI" id="wEL-Dn-bNS">
@@ -1557,7 +1557,7 @@
                                             <outlet property="vwNameOFCompany" destination="641-8w-Tw3" id="R4E-PX-GO9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="le3-MD-bgI" customClass="VisitorsLogDocumentTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="le3-MD-bgI" customClass="VisitorsLogDocumentTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="355" height="1189"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="le3-MD-bgI" id="zp8-od-RVs">
@@ -1837,7 +1837,7 @@
                                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     </collectionViewFlowLayout>
                                                                     <cells>
-                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="jmY-5t-csi" customClass="VisitorsLogMaterialCollectionCell" customModule="EmployeeApp" customModuleProvider="target">
+                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="jmY-5t-csi" customClass="VisitorsLogMaterialCollectionCell" customModule="OwnerApp" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.5" width="129" height="135"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wfy-Xv-JRb">
@@ -1957,7 +1957,7 @@
                                             <outlet property="vwMaterial" destination="cOB-b8-kfT" id="XxX-5T-CxH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="mWH-oO-npM" customClass="VisitorsLogVehicleDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="mWH-oO-npM" customClass="VisitorsLogVehicleDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1346" width="355" height="452"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mWH-oO-npM" id="2zh-r0-Snf">
@@ -2201,7 +2201,7 @@
                                             <outlet property="viewWhomToMeet" destination="BXu-3E-rcP" id="SNd-Qu-pWq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="KGZ-yC-awW" customClass="VisitorsLogEnteredTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="KGZ-yC-awW" customClass="VisitorsLogEnteredTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1798" width="355" height="912"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KGZ-yC-awW" id="zH1-vF-Pi1">
@@ -2852,7 +2852,7 @@
         <!--Visitor Rejected Log DetailVC-->
         <scene sceneID="whA-eZ-w60">
             <objects>
-                <viewController storyboardIdentifier="VisitorRejectedLogDetailVC" id="hkw-OT-umt" customClass="VisitorRejectedLogDetailVC" customModule="EmployeeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisitorRejectedLogDetailVC" id="hkw-OT-umt" customClass="VisitorRejectedLogDetailVC" customModule="OwnerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vnZ-gG-ETQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="3000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2906,7 +2906,7 @@
                                 <rect key="frame" x="10" y="60" width="355" height="2940"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="d5t-K4-eiu" customClass="VisitorsLogCompanyDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="d5t-K4-eiu" customClass="VisitorsLogCompanyDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="355" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d5t-K4-eiu" id="vX9-MY-2at">
@@ -2972,7 +2972,7 @@
                                             <outlet property="vwNameOFCompany" destination="vOF-hJ-Fec" id="nPt-lP-0RJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="oxS-qD-uUn" customClass="VisitorsLogDocumentTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="oxS-qD-uUn" customClass="VisitorsLogDocumentTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="355" height="1196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oxS-qD-uUn" id="l4s-st-UTF">
@@ -3263,7 +3263,7 @@
                                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     </collectionViewFlowLayout>
                                                                     <cells>
-                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="nQS-s0-Dha" customClass="VisitorsLogMaterialCollectionCell" customModule="EmployeeApp" customModuleProvider="target">
+                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="nQS-s0-Dha" customClass="VisitorsLogMaterialCollectionCell" customModule="OwnerApp" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="129" height="135"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gAr-FN-571">
@@ -3383,7 +3383,7 @@
                                             <outlet property="vwMaterial" destination="3dj-2p-oSK" id="lVX-8E-ldb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="Xpe-vX-ZiS" customClass="VisitorsLogVehicleDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="Xpe-vX-ZiS" customClass="VisitorsLogVehicleDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1353" width="355" height="452"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xpe-vX-ZiS" id="XJw-BF-M6C">
@@ -3627,7 +3627,7 @@
                                             <outlet property="viewWhomToMeet" destination="AQh-Pe-QQ4" id="yPA-BE-61q"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="B4C-tk-t6V" customClass="VisitorsLogEnteredTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="B4C-tk-t6V" customClass="VisitorsLogEnteredTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1805" width="355" height="887.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B4C-tk-t6V" id="gIb-WJ-Wxk">
@@ -4279,7 +4279,7 @@
         <!--Visitor Entered Log DetailVC-->
         <scene sceneID="Kr9-za-48D">
             <objects>
-                <viewController storyboardIdentifier="VisitorEnteredLogDetailVC" id="eyy-Gk-JEw" customClass="VisitorEnteredLogDetailVC" customModule="EmployeeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisitorEnteredLogDetailVC" id="eyy-Gk-JEw" customClass="VisitorEnteredLogDetailVC" customModule="OwnerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RRH-hS-sNc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="3000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4333,7 +4333,7 @@
                                 <rect key="frame" x="10" y="60" width="355" height="2940"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="Z2p-pt-DvL" customClass="VisitorsLogCompanyDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="Z2p-pt-DvL" customClass="VisitorsLogCompanyDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="355" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z2p-pt-DvL" id="EPP-v0-JvL">
@@ -4399,7 +4399,7 @@
                                             <outlet property="vwNameOFCompany" destination="cjG-Go-axt" id="tjA-hz-clX"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="tgU-g0-4NS" customClass="VisitorsLogDocumentTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="tgU-g0-4NS" customClass="VisitorsLogDocumentTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="355" height="1001"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tgU-g0-4NS" id="DiS-BQ-6cG">
@@ -4643,7 +4643,7 @@
                                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     </collectionViewFlowLayout>
                                                                     <cells>
-                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="Oyz-Qo-Nq8" customClass="VisitorsLogMaterialCollectionCell" customModule="EmployeeApp" customModuleProvider="target">
+                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="Oyz-Qo-Nq8" customClass="VisitorsLogMaterialCollectionCell" customModule="OwnerApp" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="129" height="135"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hz3-7d-QYa">
@@ -4760,7 +4760,7 @@
                                             <outlet property="vwMaterial" destination="eIk-2U-b88" id="dgX-0g-wXU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="lqy-5A-Bh0" customClass="VisitorsLogVehicleDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="lqy-5A-Bh0" customClass="VisitorsLogVehicleDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1158" width="355" height="452"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lqy-5A-Bh0" id="M7f-PK-ANV">
@@ -5004,7 +5004,7 @@
                                             <outlet property="viewWhomToMeet" destination="Jib-75-wOg" id="8RE-Un-tsb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="UJ4-ml-phW" customClass="VisitorsLogEnteredTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="UJ4-ml-phW" customClass="VisitorsLogEnteredTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1610" width="355" height="897"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UJ4-ml-phW" id="6Aq-IX-tzo">
@@ -5622,7 +5622,7 @@
                                             <outlet property="vwAskedApproval" destination="0ha-bc-xye" id="zPy-Qc-yRk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExitVehicleCell" rowHeight="550" id="tls-8I-MPK" customClass="ExitVehicleCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExitVehicleCell" rowHeight="550" id="tls-8I-MPK" customClass="ExitVehicleCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="2507" width="355" height="550"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tls-8I-MPK" id="hF6-JE-O59">
@@ -5771,7 +5771,7 @@
                                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                             </collectionViewFlowLayout>
                                                                             <cells>
-                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="outpassImageCell" id="8gN-6E-mSu" customClass="outpassImageCell" customModule="EmployeeApp" customModuleProvider="target">
+                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="outpassImageCell" id="8gN-6E-mSu" customClass="outpassImageCell" customModule="OwnerApp" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="129" height="135"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cIp-Yg-16d">
@@ -5865,7 +5865,7 @@
                                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                             </collectionViewFlowLayout>
                                                                             <cells>
-                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="materialImageCell" id="rol-X6-tfe" customClass="materialImageCell" customModule="EmployeeApp" customModuleProvider="target">
+                                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="materialImageCell" id="rol-X6-tfe" customClass="materialImageCell" customModule="OwnerApp" customModuleProvider="target">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="129" height="135"/>
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rFZ-Ui-43C">
@@ -6060,7 +6060,7 @@
         <!--Visitors Log DetailVC-->
         <scene sceneID="VCF-dP-2aI">
             <objects>
-                <viewController storyboardIdentifier="VisitorsLogDetailVC" id="NWD-Kc-d8W" customClass="VisitorsLogDetailVC" customModule="EmployeeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisitorsLogDetailVC" id="NWD-Kc-d8W" customClass="VisitorsLogDetailVC" customModule="OwnerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="heU-Nd-YpM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="3000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6114,7 +6114,7 @@
                                 <rect key="frame" x="10" y="60" width="355" height="2940"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="WKn-NH-XDW" customClass="VisitorsLogCompanyDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogCompanyDetailTableCell" rowHeight="107" id="WKn-NH-XDW" customClass="VisitorsLogCompanyDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="355" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WKn-NH-XDW" id="QNY-s7-YgZ">
@@ -6180,7 +6180,7 @@
                                             <outlet property="vwNameOFCompany" destination="Tse-hd-GC6" id="q6G-R3-HZU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="gR5-5U-fOI" customClass="VisitorsLogDocumentTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogDocumentTableCell" id="gR5-5U-fOI" customClass="VisitorsLogDocumentTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="157" width="355" height="1196"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gR5-5U-fOI" id="fcc-FF-RZv">
@@ -6463,7 +6463,7 @@
                                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     </collectionViewFlowLayout>
                                                                     <cells>
-                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="yP2-va-QDA" customClass="VisitorsLogMaterialCollectionCell" customModule="EmployeeApp" customModuleProvider="target">
+                                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VisitorsLogMaterialCollectionCell" id="yP2-va-QDA" customClass="VisitorsLogMaterialCollectionCell" customModule="OwnerApp" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="0.0" width="129" height="135"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="m8I-oi-Yhq">
@@ -6587,7 +6587,7 @@
                                             <outlet property="vwMaterial" destination="5yN-yF-awY" id="FyY-Jr-6pm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="TKu-g8-o9e" customClass="VisitorsLogVehicleDetailTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogVehicleDetailTableCell" rowHeight="452" id="TKu-g8-o9e" customClass="VisitorsLogVehicleDetailTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1353" width="355" height="452"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TKu-g8-o9e" id="QFC-oh-b6Y">
@@ -6831,7 +6831,7 @@
                                             <outlet property="viewWhomToMeet" destination="2VZ-fM-ecX" id="MGf-s9-xih"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="suH-5O-i2s" customClass="VisitorsLogEnteredTableCell" customModule="EmployeeApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorsLogEnteredTableCell" id="suH-5O-i2s" customClass="VisitorsLogEnteredTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="1805" width="355" height="887.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="suH-5O-i2s" id="Dd8-cp-HgW">
@@ -6853,7 +6853,7 @@
                                                                     <color key="textColor" red="0.26274509800000001" green="0.63921568630000003" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Entry Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuD-ov-3Rc">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visitor Entry Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuD-ov-3Rc">
                                                                     <rect key="frame" x="0.0" y="41" width="335" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="DIq-Bd-Y2R"/>
@@ -7181,7 +7181,7 @@
                                                                     <color key="textColor" red="0.26274509800000001" green="0.63921568630000003" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Exit Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-79-yfr">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visitor Exit Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-79-yfr">
                                                                     <rect key="frame" x="0.0" y="41" width="335" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="35" id="RT2-ui-MtX"/>

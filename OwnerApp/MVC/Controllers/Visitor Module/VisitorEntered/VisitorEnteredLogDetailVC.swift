@@ -389,10 +389,10 @@ extension VisitorEnteredLogDetailVC : UITableViewDelegate, UITableViewDataSource
 //                exitMatRemark = exitMaterialRemark
                 cell?.viewMaterialRemark.isHidden = false
                 cell?.txtFieldMaterialRemark.text = exitMaterialRemark
-                cell?.viewMainMaterialStatus.isHidden = false
+//                cell?.viewMainMaterialStatus.isHidden = false
             } else {
                 cell?.viewMaterialRemark.isHidden = true
-                cell?.viewMainMaterialStatus.isHidden = true
+//                cell?.viewMainMaterialStatus.isHidden = true
             }
             
           /*  if exitMatStatus == "0", exitMatRemark == "" {

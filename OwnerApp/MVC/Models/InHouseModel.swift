@@ -45,5 +45,48 @@ class InHouseModel{
 		vehicle = dictionary["vehicle"] as? String
 		vehicleNo = dictionary["vehicle_no"] as? String
 	}
+}
+
+class LiveVehiclesModel {
+
+    var id : String!
+    var vehicle_number : String!
+    var vendor_mobile : String!
+    var updated_date : String!
+    var delete : String!
+    
+    /**
+     * Instantiate the instance using the passed dictionary values to set the properties values
+     */
+    init(fromDictionary dictionary: [String:Any]){
+        id = dictionary["id"] as? String
+        vehicle_number = dictionary["vehicle_number"] as? String
+        vendor_mobile = dictionary["vendor_mobile"] as? String
+        updated_date = dictionary["updated_date"] as? String
+        delete = dictionary["delete"] as? String
+    }
 
 }
+
+
+class LiveVisitorsModel {
+    var id : String!
+    var visitor_name : String!
+    var register_mobile_no : String!
+    var updated_date : String!
+    var delete : String!
+
+    /**
+     * Instantiate the instance using the passed dictionary values to set the properties values
+     */
+    init(fromDictionary dictionary: [String:Any]){
+        id = dictionary["id"] as? String
+        visitor_name = dictionary["visitor_name"] as? String
+        register_mobile_no = dictionary["register_mobile_no"] as? String
+        updated_date = dictionary["updated_date"] as? String
+        delete = dictionary["delete"] as? String
+    }
+
+}
+
+

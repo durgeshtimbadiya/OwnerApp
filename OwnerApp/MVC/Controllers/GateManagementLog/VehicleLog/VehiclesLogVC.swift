@@ -716,15 +716,21 @@ extension VehiclesLogVC: UITableViewDelegate, UITableViewDataSource {
         if tableView == tblRejectedList {
             
             let obj = entry_Array[indexPath.row]
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RejectVehicleTableCell", for: indexPath) as! RejectVehicleTableCell // Red in Color Because of Status
-                cell.selectionStyle = .none
-                cell.innerViewDetail.layer.cornerRadius = 8
-                
-                cell.lblUniqueID.text = obj.id ?? ""
-                cell.lblUniqueID.textColor = UIColor.systemGreen
-                
-                cell.lblVehicleNo.text = obj.vehicleNumber ?? ""
-                cell.lblVehicleNo.textColor = UIColor.systemGreen
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RejectVehicleTableCell", for: indexPath) as! RejectVehicleTableCell // Red in Color Because of Status
+            cell.selectionStyle = .none
+            cell.innerViewDetail.layer.cornerRadius = 8
+            
+            cell.lblUniqueID.text = obj.id ?? ""
+            cell.lblUniqueID.textColor = UIColor.systemGreen
+            
+            cell.lblVehicleNo.text = obj.vehicleNumber ?? ""
+            cell.lblVehicleNo.textColor = UIColor.systemGreen
+            
+            cell.lblTiemSpent.text = obj.timeSpent ?? "Exit Pending"
+            cell.lblTiemSpent.textColor = .systemGreen
+            if obj.timeSpent == "Exit Pending" {
+                cell.lblTiemSpent.textColor = .systemRed
+            }
             
             if obj.entry == "1" && obj.exitStatus == "0" {
                 cell.lblStatus.text = "Vehicle Entered"
@@ -732,41 +738,45 @@ extension VehiclesLogVC: UITableViewDelegate, UITableViewDataSource {
             else if obj.entry == "1" && obj.exitStatus == "1" {
                 cell.lblStatus.text = "Vehicle Exited"
             }
-                
-                cell.lblStatus.textColor = UIColor.systemGreen
-                
-                cell.btnViewDetail.tag = indexPath.row
+            
+            cell.lblStatus.textColor = UIColor.systemGreen
+            
+            cell.btnViewDetail.tag = indexPath.row
             cell.btnViewDetail.addTarget(self, action: #selector(btnViewDetailAction(sender:)), for: .touchUpInside)
             cell.editButton.tag = indexPath.row
             cell.editButton.addTarget(self, action: #selector(btnEditAction(sender:)), for: .touchUpInside)
-                return cell
+            return cell
         } else {
             let obj = Filter_entry_Array[indexPath.row]
-                let cell = tableView.dequeueReusableCell(withIdentifier: "RejectVehicleTableCell", for: indexPath) as! RejectVehicleTableCell // Red in Color Because of Status
-                cell.selectionStyle = .none
-                cell.innerViewDetail.layer.cornerRadius = 8
-                
-                cell.lblUniqueID.text = obj.id ?? ""
-                cell.lblUniqueID.textColor = UIColor.systemGreen
-                
-                cell.lblVehicleNo.text = obj.vehicleNumber ?? ""
-                cell.lblVehicleNo.textColor = UIColor.systemGreen
-                
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RejectVehicleTableCell", for: indexPath) as! RejectVehicleTableCell // Red in Color Because of Status
+            cell.selectionStyle = .none
+            cell.innerViewDetail.layer.cornerRadius = 8
+            
+            cell.lblUniqueID.text = obj.id ?? ""
+            cell.lblUniqueID.textColor = UIColor.systemGreen
+            
+            cell.lblVehicleNo.text = obj.vehicleNumber ?? ""
+            cell.lblVehicleNo.textColor = UIColor.systemGreen
+            cell.lblTiemSpent.text = obj.timeSpent ?? "Exit Pending"
+            cell.lblTiemSpent.textColor = .systemGreen
+            if obj.timeSpent == "Exit Pending" {
+                cell.lblTiemSpent.textColor = .systemRed
+            }
             if obj.entry == "1" && obj.exitStatus == "0" {
                 cell.lblStatus.text = "Vehicle Entered"
             }
             else if obj.entry == "1" && obj.exitStatus == "1" {
                 cell.lblStatus.text = "Vehicle Exited"
             }
-                cell.lblStatus.textColor = UIColor.systemGreen
-                
-                
-                cell.btnViewDetail.tag = indexPath.row
-                cell.btnViewDetail.addTarget(self, action: #selector(btnFilterViewDetailAction(sender:)), for: .touchUpInside)
+            cell.lblStatus.textColor = UIColor.systemGreen
+            
+            
+            cell.btnViewDetail.tag = indexPath.row
+            cell.btnViewDetail.addTarget(self, action: #selector(btnFilterViewDetailAction(sender:)), for: .touchUpInside)
             cell.editButton.tag = indexPath.row
             cell.editButton.addTarget(self, action: #selector(btnEditFilterAction(sender:)), for: .touchUpInside)
-
-                return cell
+            
+            return cell
         }
     }
 

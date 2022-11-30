@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4904B9CD2747E8BA00BA5DAB"
-               BuildableName = "AdminApp.app"
-               BlueprintName = "AdminApp"
-               ReferencedContainer = "container:AdminApp.xcodeproj">
+               BuildableName = "OwnerApp.app"
+               BlueprintName = "OwnerApp"
+               ReferencedContainer = "container:OwnerApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4904B9CD2747E8BA00BA5DAB"
-            BuildableName = "AdminApp.app"
-            BlueprintName = "AdminApp"
-            ReferencedContainer = "container:AdminApp.xcodeproj">
+            BuildableName = "OwnerApp.app"
+            BlueprintName = "OwnerApp"
+            ReferencedContainer = "container:OwnerApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4904B9CD2747E8BA00BA5DAB"
-            BuildableName = "AdminApp.app"
-            BlueprintName = "AdminApp"
-            ReferencedContainer = "container:AdminApp.xcodeproj">
+            BuildableName = "OwnerApp.app"
+            BlueprintName = "OwnerApp"
+            ReferencedContainer = "container:OwnerApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -228,14 +228,12 @@ class SOSLogVC: UIViewController, PrLocation, UITextFieldDelegate {
                 } else if element == "This Month" {
                     self.TBLFilterSOSList.isHidden = true
                     self.isCustomDateActive = false
-//                    let firstdate = "\(Date().startOfMonth())"
-////                    let lastdate = "\(Date().endOfMonth())"
-//                    let lastdate = "\(Date())"
-                    let dates = Constant.getThisMonth()
-                    self.txtFieldDateFilter.text = "\(dates.0) To \(dates.1)"
-
-                    self.start_Date_Value = dates.0
-                    self.end_Date_Value = dates.1
+                    let firstdate = "\(Date().startOfMonth())"
+                    //  let lastdate = "\(Date().endOfMonth())"
+                    self.txtFieldDateFilter.text = "\(self.convertDateFormater(firstdate)) To \(self.convertDateFormater("\(Date.yesterday)"))"
+                    
+                    self.start_Date_Value = "\(self.convertDateFormater(firstdate))"
+                    self.end_Date_Value = "\(self.convertDateFormater("\(Date.yesterday)"))"
 
                     DispatchQueue.main.async {
                         self.view.layoutIfNeeded()
@@ -434,7 +432,6 @@ class SOSLogVC: UIViewController, PrLocation, UITextFieldDelegate {
             ProgressHUD.dismiss()
             alert(title: "", mesagess: "File not available!")
         }
-        
     }
     
     func alert(title: String, mesagess: String) {
@@ -456,12 +453,12 @@ class SOSLogVC: UIViewController, PrLocation, UITextFieldDelegate {
                 } else {
                     GetSOSListApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: site_iD)
 
-//                    GetFilterSOSListApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", startDate: start_Date_Value, endDate: end_Date_Value, type: "3")
+//                    GetFilterSOSListApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", startDate: start_Date_Value, endDate: end_Date_Value, type: "2")
                 }
             } else {
                 GetSOSListApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: site_iD)
 
-//                GetFilterSOSListApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", startDate: start_Date_Value, endDate: end_Date_Value, type: "3")
+//                GetFilterSOSListApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", startDate: start_Date_Value, endDate: end_Date_Value, type: "2")
             }
         }
     }

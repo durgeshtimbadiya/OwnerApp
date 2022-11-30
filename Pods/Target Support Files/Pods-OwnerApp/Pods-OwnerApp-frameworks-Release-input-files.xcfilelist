@@ -1,4 +1,4 @@
-${PODS_ROOT}/Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp-frameworks.sh
+${PODS_ROOT}/Target Support Files/Pods-OwnerApp/Pods-OwnerApp-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework

@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="width" constant="180" id="erj-Zh-o14"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Admin App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCe-xM-Clj">
-                                <rect key="frame" x="140" y="443.5" width="95.5" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCe-xM-Clj">
+                                <rect key="frame" x="139" y="443.5" width="97.5" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="Fno-Ix-gRq"/>
                                 </constraints>

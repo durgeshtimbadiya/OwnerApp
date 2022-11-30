@@ -30,7 +30,8 @@ enum Webservice {
         // salary cap base url is using for every api except Payement and Socket APIs
         return Webservice.server.baseUrlString //
     }
-
+    
+    static var baseUrl1: String = "https://dev.sitepay.co.in/data/"
     // MARK: - Login Flow
 
     enum Authentication {
@@ -39,55 +40,56 @@ enum Webservice {
         // ******************************Login Api ***********************************//
 
         private static let Login = Webservice.baseUrl + "User/login"
-        private static let LoginWithOTP = Webservice.baseUrl + "User/verify_otp_admin"
+        private static let LoginWithOTP = Webservice.baseUrl + "User/verify_otp"
         private static let ForgotPassword = Webservice.baseUrl + "User/forget_password"
         private static let ForgotMatchPassword = Webservice.baseUrl + "User/match_forget_otp"
         private static let newPassword = Webservice.baseUrl + "User/new_password"
-        private static let PasswordUpdate = Webservice.baseUrl + "Admin/password_update"
-        private static let Site = Webservice.baseUrl + "Admin/mysites"
+        private static let PasswordUpdate = Webservice.baseUrl + "Owner/password_update"
+        private static let Site = Webservice.baseUrl + "Owner/mysites"
         private static let NotificationUpdate = Webservice.baseUrl + "Notification/fcm_device_update"
         private static let SiteDelete = Webservice.baseUrl + "Employee/delete_site"
-        private static let GetProfileData = Webservice.baseUrl + "Admin/get_profile"
-        private static let RemoveProfilePhoto = Webservice.baseUrl + "Admin/profile_update"
-        private static let NotificationList = Webservice.baseUrl + "Admin/get_notification"
-        private static let Attendance = Webservice.baseUrl + "Admin/attendance"
-        private static let AttendanceList = Webservice.baseUrl + "Admin/attendance_list"
-        private static let AttendanceFilter = Webservice.baseUrl + "Admin/filter_monthly"
-        private static let SOS = Webservice.baseUrl + "Admin/addSos"
-        private static let SelfieList = Webservice.baseUrl + "Admin/selfie_list"
-        private static let SOSLogList = Webservice.baseUrl + "Admin/sosList"
-        private static let SOSFilter = Webservice.baseUrl + "Admin/filter_monthly"
+        private static let GetProfileData = Webservice.baseUrl + "Owner/get_profile"
+        private static let RemoveProfilePhoto = Webservice.baseUrl + "Owner/profile_update"
+        private static let NotificationList = Webservice.baseUrl + "Owner/get_notification"
+        private static let Attendance = Webservice.baseUrl + "Employee/attendance"
+        private static let AttendanceList = Webservice.baseUrl + "Employee/attendance_list"
+        private static let AttendanceFilter = Webservice.baseUrl + "Owner/filter_monthly"
+        private static let SOS = Webservice.baseUrl + "Owner/addSos"
+        private static let SelfieList = Webservice.baseUrl + "Employee/selfie_list"
+        private static let SOSLogList = Webservice.baseUrl + "Owner/sosList"
+        private static let SOSFilter = Webservice.baseUrl + "Sos/filter_monthly"
 
         //MARK:- Vehicle Approval Log
-        private static let vehicleLog = Webservice.baseUrl + "Admin/all_logs"
-        private static let approveLog = Webservice.baseUrl + "Admin/request_list"
-        private static let vehicleDetail = Webservice.baseUrl + "Admin/entry_detail"
-        private static let exitApproval = Webservice.baseUrl + "Admin/exit"
-        private static let exitVisitoApproval = Webservice.baseUrl + "Admin/visitor_exit"
-        private static let UploadImage = Webservice.baseUrl + "Admin/addDocumentVehicle"
-        private static let AcceptORReject = Webservice.baseUrl + "Admin/request_decision"
-        private static let SearchAprroveVehicle = Webservice.baseUrl + "Admin/entry_search"
-        private static let MenuApi = Webservice.baseUrl + "Admin/approaval_api"
-        private static let NotificationReset = Webservice.baseUrl + "Admin/approval_notification_seen"
+        private static let vehicleLog = Webservice.baseUrl + "Owner/all_logs"
+        private static let approveLog = Webservice.baseUrl + "Owner/request_list"
+        private static let vehicleDetail = Webservice.baseUrl + "Owner/entry_detail"
+        private static let exitApproval = Webservice.baseUrl + "Owner/exit"
+        private static let exitVisitoApproval = Webservice.baseUrl + "Owner/visitor_exit"
+        private static let UploadImage = Webservice.baseUrl + "Owner/addDocumentVehicle"
+        private static let AcceptORReject = Webservice.baseUrl + "Owner/request_decision"
+        private static let SearchAprroveVehicle = Webservice.baseUrl + "Owner/entry_search"
+        private static let MenuApi = Webservice.baseUrl + "Owner/approaval_api"
+        private static let NotificationReset = Webservice.baseUrl + "Owner/approval_notification_seen"
         private static let ReportManagementCount = Webservice.baseUrl + "Employee/report_count"
-        
+        private static let DeleteLiveVehicle = Webservice.baseUrl + "Owner/delete_live_vehicle"
+        private static let DeleteLiveVisitors = Webservice.baseUrl + "Owner/delete_live_visitor"
         
         //MARK:- Gate Mangement Vehicle/Visitor Approval Log
-        private static let visitorLog = Webservice.baseUrl + "Admin/all_logs_visitor"
-        private static let visitorAporovalLog = Webservice.baseUrl + "Admin/visitor_request_list"
-        private static let visitorSearchAprrove = Webservice.baseUrl + "Admin/visitor_entry_search"
-        private static let visitorDetailLog = Webservice.baseUrl + "Admin/entry_visitor_detail"
-        private static let updateVehicleEntry = Webservice.baseUrl + "Admin/update_vehicle_entry"
-        private static let updateVisitorEntry = Webservice.baseUrl + "Admin/update_visitor_entry"
-        private static let visitorAprroveAndReject = Webservice.baseUrl + "Admin/visitor_request_decision"
+        private static let visitorLog = Webservice.baseUrl + "Owner/all_logs_visitor"
+        private static let visitorAporovalLog = Webservice.baseUrl + "Owner/visitor_request_list"
+        private static let visitorSearchAprrove = Webservice.baseUrl + "Owner/visitor_entry_search"
+        private static let visitorDetailLog = Webservice.baseUrl + "Owner/entry_visitor_detail"
+        private static let updateVehicleEntry = Webservice.baseUrl + "Owner/update_vehicle_entry"
+        private static let updateVisitorEntry = Webservice.baseUrl + "Employee/update_visitor_entry"
+        private static let visitorAprroveAndReject = Webservice.baseUrl + "Owner/visitor_request_decision"
         
         
         //MARK:- Report Managment Log
         private static let reportSeen = Webservice.baseUrl + "Employee/report_seen"
-        private static let StaffList = Webservice.baseUrl + "Admin/staff"
-        private static let uploadReportList = Webservice.baseUrl + "Admin/upload_report_list"
-        private static let LiveStrengthList = Webservice.baseUrl + "Admin/live_strength"
-        private static let LogoutApp = Webservice.baseUrl + "Admin/logout"
+        private static let StaffList = Webservice.baseUrl + "Owner/staff"
+        private static let uploadReportList = Webservice.baseUrl + "Owner/upload_report_list"
+        private static let LiveStrengthList = Webservice.baseUrl + "Owner/live_strength"
+        private static let LogoutApp = Webservice.baseUrl + "Owner/logout"
 
 
         static func LoginApi(parameter: Parameter, completion: @escaping APIResultBlock) {
@@ -303,7 +305,16 @@ enum Webservice {
             let endpoint = EndPoint(path: visitorAprroveAndReject, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-                
+        
+        static func deleteLiveVehicles(parameter: Parameter, completion: @escaping APIResultBlock) {
+            let endpoint = EndPoint(path: DeleteLiveVehicle, method: .post, parameter: parameter, authToken: Token, completion: completion)
+            APIClient.shared.request(with: endpoint)
+        }
+        
+        static func deleteLiveVisitors(parameter: Parameter, completion: @escaping APIResultBlock) {
+            let endpoint = EndPoint(path: DeleteLiveVisitors, method: .post, parameter: parameter, authToken: Token, completion: completion)
+            APIClient.shared.request(with: endpoint)
+        }
     }
 
     enum Cancel {

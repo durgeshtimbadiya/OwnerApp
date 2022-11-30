@@ -44,7 +44,7 @@ class MenuVC: UIViewController, PrLocation {
         LocationManagerSingleton.shared.StartStopUpdatingLocation(start: true)
         LocationManagerSingleton.shared.delegate = self
         viewNotification.layer.cornerRadius = viewNotification.layer.bounds.height / 2
-        btnActivityLog.dropShadowWithCornerRadius()
+//        btnActivityLog.dropShadowWithCornerRadius()
         
         viewReportCount.layer.cornerRadius = 15
         viewReportCount.layer.borderWidth = 2
@@ -56,7 +56,7 @@ class MenuVC: UIViewController, PrLocation {
         DispatchQueue.main.async {
             self.view.layoutIfNeeded()
             self.viewReportMangement.isHidden = true
-            self.btnActivityLog.isHidden = true
+//            self.btnActivityLog.isHidden = true
             self.viewVehicleApproval.isHidden = true
             self.viewVistiorApproval.isHidden = true
             self.viewGatemanagment.isHidden = true
@@ -92,7 +92,7 @@ class MenuVC: UIViewController, PrLocation {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = AppColor.Color_TopHeader
         }
-        reportMangementFuncApi(userID: appDelegate.userLoginAccessDetails?.id ?? "", siteID: k_siteID, userType: "3")
+        reportMangementFuncApi(userID: appDelegate.userLoginAccessDetails?.id ?? "", siteID: k_siteID, userType: "2")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,7 +101,7 @@ class MenuVC: UIViewController, PrLocation {
     }
     
     @IBAction func tapOnReload(_ sender: UIButton) {
-        reportMangementFuncApi(userID: appDelegate.userLoginAccessDetails?.id ?? "", siteID: k_siteID, userType: "3")
+        reportMangementFuncApi(userID: appDelegate.userLoginAccessDetails?.id ?? "", siteID: k_siteID, userType: "2")
         MenuFuncApi(userID: appDelegate.userLoginAccessDetails?.id ?? "", siteID: k_siteID)
     }
 
@@ -130,7 +130,7 @@ class MenuVC: UIViewController, PrLocation {
 
             Webservice.Authentication.MenuApis(parameter: params) { result in
                 self.viewReportMangement.isHidden = false
-                self.btnActivityLog.isHidden = false
+//                self.btnActivityLog.isHidden = false
                 self.viewVehicleApproval.isHidden = true
                 self.viewVistiorApproval.isHidden = true
                 DispatchQueue.main.async {

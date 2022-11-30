@@ -81,7 +81,15 @@ class ChangePasswordVC: UIViewController, UITextFieldDelegate {
     }
 
     @objc func RedirectToLogin() {
-        navigationController?.popViewController(animated: true)
+        if let controllers = navigationController?.viewControllers {
+            for navVC in controllers {
+                if navVC is LoginVC {
+                    navigationController?.popToViewController(navVC, animated: true)
+                }
+            }
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 
     @IBAction func btnSubmitAction(_: Any) {

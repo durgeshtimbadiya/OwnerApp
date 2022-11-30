@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Constant Objects
 
-let AppName = "Admin App"
+let AppName = "Owner App"
 let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
 let devieType = "ios"
 let googleMapKey = "AIzaSyDDv5gaJtv1_M0rtrNNbW7wEoBEfaQpDWA"

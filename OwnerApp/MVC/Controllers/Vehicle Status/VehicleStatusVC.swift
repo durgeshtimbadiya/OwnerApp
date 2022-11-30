@@ -343,17 +343,17 @@ class VehicleStatusVC: UIViewController , UITextFieldDelegate {
         var days = [String]()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
-        
-        for i in 1 ... 7 {
+
+        for i in 1 ... 6 {
             let newdate = cal.date(byAdding: .day, value: -i, to: date)!
             let str = dateFormatter.string(from: newdate)
             days.append(str)
         }
         print(days)
         let value = days.last
-        txtFieldDateFilter.text = "\(value ?? "") To \(convertDateFormater("\(Date.yesterday)"))"
+        txtFieldDateFilter.text = "\(value ?? "") To \(Date.getCurrentDate())"
         start_Date_Value = "\(value ?? "")"
-        end_Date_Value = "\(convertDateFormater("\(Date.yesterday)"))"
+        end_Date_Value = "\(Date.getCurrentDate())"
     }
     
     func getLast30Dates() {
