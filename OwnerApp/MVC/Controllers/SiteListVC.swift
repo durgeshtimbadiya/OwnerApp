@@ -14,6 +14,7 @@ class SiteListVC: UIViewController, PrLocation {
     @IBOutlet var viewNoDataFound: UIView!
     var refreshControl = UIRefreshControl()
     private var apiTimer = Timer()
+    private var isSetSiteList = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -175,13 +176,13 @@ class SiteListVC: UIViewController, PrLocation {
                     if let body = response.body as? [String: Any] {
                         if body["message"] as? String ?? "" == "Success" {
                             self.siteList_Array.removeAllObjects()
+                            self.isSetSiteList = 0
 
                             if let dictionary = body["user_data"] as? [[String: Any]] {
                                 self.TBLSiteList.isHidden = false
                                 self.viewNoDataFound.isHidden = true
 
                                 self.refreshControl.endRefreshing()
-
                                 for Dict in dictionary {
                                     let obj = SiteListModel(fromDictionary: Dict as [String: AnyObject])
                                     self.siteList_Array.add(obj)
@@ -202,6 +203,17 @@ class SiteListVC: UIViewController, PrLocation {
                 case let .fail(errorMsg):
                     self.TBLSiteList.isHidden = true
                     self.viewNoDataFound.isHidden = false
+                    self.isSetSiteList = self.isSetSiteList + 1
+                    if self.siteList_Array.count > self.isSetSiteList {
+                        appDelegate.userLoginAccessDetails?.id = (self.siteList_Array[self.isSetSiteList] as? SiteListModel)?.employeeId
+                        self.updateAPIData()
+                    } else {
+                        self.isSetSiteList = 0
+                        if self.siteList_Array.count > self.isSetSiteList {
+                            appDelegate.userLoginAccessDetails?.id = (self.siteList_Array[self.isSetSiteList] as? SiteListModel)?.employeeId
+                            self.updateAPIData()
+                        }
+                    }
                 }
                 
             }

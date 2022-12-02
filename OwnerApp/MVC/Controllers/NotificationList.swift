@@ -432,17 +432,16 @@ class NotificationList: UIViewController, UITextFieldDelegate, PrLocation {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
 
-        for i in 1 ... 29 {
+        for i in 1 ... 30 {
             let newdate = cal.date(byAdding: .day, value: -i, to: date)!
             let str = dateFormatter.string(from: newdate)
             days.append(str)
         }
         print(days)
         let value = days.last
-        txtFieldDateFilter.text = "\(value ?? "") To \(Date.getCurrentDate())"
+        txtFieldDateFilter.text = "\(value ?? "") To \(self.convertDateFormater("\(Date.yesterday)"))"
         start_Date_Value = "\(value ?? "")"
-        end_Date_Value = "\(Date.getCurrentDate())"
-    }
+        end_Date_Value = "\(self.convertDateFormater("\(Date.yesterday)"))"    }
 
     @objc
     func startDoneAction() {

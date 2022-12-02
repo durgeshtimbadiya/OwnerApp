@@ -22,11 +22,14 @@ class NotificationTableCell: UITableViewCell {
         // Initialization code
         
         if imgStatusRightView != nil {
-            self.imgStatusRightView.round(corners: [.topLeft, .topRight], cornerRadius: 10)
+            imgStatusRightView.layer.masksToBounds = true
+            imgStatusRightView.layer.cornerRadius = 10
+            imgStatusRightView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//            self.imgStatusRightView.round(corners: [.topLeft, .topRight], cornerRadius: 10)
         }
-        if viewCorner != nil {
-            self.viewCorner.round(corners: .allCorners, cornerRadius: 10)
-        }
+//        if viewCorner != nil {
+//            self.viewCorner.round(corners: .allCorners, cornerRadius: 10)
+//        }
         selectionStyle = .none
     }
 

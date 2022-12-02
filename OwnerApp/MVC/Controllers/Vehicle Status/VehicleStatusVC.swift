@@ -448,15 +448,13 @@ class VehicleStatusVC: UIViewController , UITextFieldDelegate {
     }
     
     @IBAction func btnSearchBarAction(_: Any) {
-        
         if txtFieldSearch.text != "" {
             searchApproveVehicleListApi(UserID: appDelegate.userLoginAccessDetails?.id ?? "", search: txtFieldSearch.text ?? "")
         } else {
             if appDelegate.userLoginAccessDetails?.id != nil {
                 GetVehicleStatusListApi(UserID: appDelegate.userLoginAccessDetails?.id ?? "", type: "0", startDate: start_Date, endDate: end_Date, statusType: statuss)
             }
-        }
-        
+        }        
     }
     
     //MARK:- Filter Search Bar Action Functionality---------------------
@@ -557,10 +555,7 @@ class VehicleStatusVC: UIViewController , UITextFieldDelegate {
                                 
                                 if self.Filter_all_Entry_Array.count > 0 {
                                     for i in 0 ... self.Filter_all_Entry_Array.count - 1 {
-                                        if self.Filter_all_Entry_Array[i].exitStatus == "1", self.Filter_all_Entry_Array[i].exitAskApproval == "1" {
-                                            let dic = self.Filter_all_Entry_Array[i]
-                                            self.Filter_entry_Array.append(dic)
-                                        } else if self.Filter_all_Entry_Array[i].entry == "0", self.Filter_all_Entry_Array[i].status == "1", self.Filter_all_Entry_Array[i].askApproval == "1" {
+                                        if self.Filter_all_Entry_Array[i].exitStatus == "1" {
                                             let dic = self.Filter_all_Entry_Array[i]
                                             self.Filter_entry_Array.append(dic)
                                         }

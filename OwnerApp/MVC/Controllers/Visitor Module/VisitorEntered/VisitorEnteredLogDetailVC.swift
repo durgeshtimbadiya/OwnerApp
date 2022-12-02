@@ -374,15 +374,30 @@ extension VisitorEnteredLogDetailVC : UITableViewDelegate, UITableViewDataSource
 //            var exitMatStatus = ""
             if let exitMaterialStatus = self.vehicleDetail?.exit?.materialStatus {
 //                exitMatStatus = exitMaterialStatus
-                cell?.viewMainMaterialStatus.isHidden = false
+                cell?.viewMainMaterialStatus.isHidden = true
                 if exitMaterialStatus == "1" {
                     cell?.txtFieldMaterialStatus.text = "Exit With Material"
                 } else if exitMaterialStatus == "0" {
                     cell?.txtFieldMaterialStatus.text = "Exit Without Material"
                 }
+                if let matRejRemark = self.vehicleDetail?.exit.materialRejectRemark, !matRejRemark.isEmpty {
+                    cell?.viewMainMaterialStatus.isHidden = false
+                }
+//                if let materStatus = self.vehicleDetail?.exit.materialStatus, materStatus == "0", let matRejRemark = self.vehicleDetail?.exit.materialRejectRemark, matRejRemark.isEmpty {
+//                    cell?.viewMainMaterialStatus.isHidden = false
+//                }
+                if let materStatus = self.vehicleDetail?.exit.materialStatus, materStatus == "0", let matImageStatus = self.vehicleDetail?.exit.materialImgStatus, matImageStatus == "0", let exitApp = self.vehicleDetail?.exit.exitApprovedBy, !exitApp.isEmpty {
+                    cell?.viewMainMaterialStatus.isHidden = false
+                }
+                if let askAppExit = self.vehicleDetail?.exit.askApproval, askAppExit == "0", let exitStatus = self.vehicleDetail?.exit.exitStatus, exitStatus == "1" {
+                    cell?.viewMainMaterialStatus.isHidden = false
+                }
+               
             } else {
                 cell?.viewMainMaterialStatus.isHidden = true
             }
+            
+            
             
 //            var exitMatRemark = ""
             if let exitMaterialRemark = self.vehicleDetail?.exit?.materialRejectRemark, !exitMaterialRemark.isEmpty {
@@ -394,6 +409,8 @@ extension VisitorEnteredLogDetailVC : UITableViewDelegate, UITableViewDataSource
                 cell?.viewMaterialRemark.isHidden = true
 //                cell?.viewMainMaterialStatus.isHidden = true
             }
+            
+            
             
           /*  if exitMatStatus == "0", exitMatRemark == "" {
                 cell?.viewMainMaterialStatus.isHidden = false

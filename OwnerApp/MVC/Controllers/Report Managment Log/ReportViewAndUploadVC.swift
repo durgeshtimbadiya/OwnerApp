@@ -363,6 +363,9 @@ class ReportViewAndUploadVC: UIViewController, UINavigationControllerDelegate, U
             self.view.makeToast("please upload a file", duration: 1.0, position: .center)
             return
             
+        } else if txtView.text.isEmpty || txtView.text == "Max 150 Characters" {
+            self.view.makeToast("please enter remark", duration: 1.0, position: .center)
+            return
         } else {
             let url = NSURL(string: k_files_Type)
             let fileData = try! Data(contentsOf: url! as URL)
@@ -1306,18 +1309,33 @@ extension ReportViewAndUploadVC: UITableViewDelegate, UITableViewDataSource {
     
     @objc func btnImageDownloadAction(sender: UIButton) {
         DispatchQueue.main.async {
-            let obj = self.viewReport_Array[sender.tag]
-            ProgressHUD.animationType = .circleStrokeSpin
-            ProgressHUD.colorBackground = .white
-            ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
-            ProgressHUD.show("Downloading...")
-            self.savePhotoToAlbum(obj.file ?? "") { error in
-
-//                if error == nil {
-//                    print("err: ", error as Any)
-//                }
+            let photos = PHPhotoLibrary.authorizationStatus()
+            if photos == .denied || photos == .notDetermined || photos == .restricted {
+                self.view.makeToast("please allow all photos to download image", duration: 2.0, position: .center)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self.gotoAppPrivacySettings()
+                }
+            } else {
+                let obj = self.viewReport_Array[sender.tag]
+                ProgressHUD.animationType = .circleStrokeSpin
+                ProgressHUD.colorBackground = .white
+                ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
+                ProgressHUD.show("Downloading...")
+                self.savePhotoToAlbum(obj.file ?? "") { error in
+    
+                }
             }
         }
+    }
+    
+    func gotoAppPrivacySettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString),
+            UIApplication.shared.canOpenURL(url) else {
+                assertionFailure("Not able to open App privacy settings")
+                return
+        }
+
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     func AlertControllersPresent(messages:String) {

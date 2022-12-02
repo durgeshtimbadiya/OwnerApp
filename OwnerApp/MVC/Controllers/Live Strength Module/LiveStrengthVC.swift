@@ -144,8 +144,36 @@ class LiveStrengthVC: UIViewController {
         present(editRadiusAlert, animated: true)
     }
     
-    @objc private func tapOnPunchIn(_ sender: UIButton) {
+    @objc private func tapOnPunchInAtSite(_ sender: UIButton) {
         let obj = at_Site_Array[sender.tag]
+        if let location = obj.locationPunchIn, !location.isEmpty {
+            let alertController = UIAlertController(title: "Location:", message: location, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "MAPS", style: .default) { _ in
+                if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)), let url = URL(string: "comgooglemaps-x-callback://?q=\(location.replacingOccurrences(of: " ", with: "+"))") {
+                        UIApplication.shared.open(url, options: [:])
+                } else {
+                    //Open in browser
+                    if let urlDestination = URL(string: "http://maps.google.co.in/maps?q=(\(location.replacingOccurrences(of: " ", with: "+"))") {
+                        UIApplication.shared.open(urlDestination)
+                    }
+                }
+//                UIApplication.shared.openURL(URL(string: "http://maps.google.co.in/maps?q=(\(location)")!)
+            })
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                alertController.dismiss(animated: true)
+            }))
+            self.present(alertController, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "Location:", message: "No location found!", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                alertController.dismiss(animated: true)
+            }))
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    @objc private func tapOnPunchInAtGate(_ sender: UIButton) {
+        let obj = at_Gate_Array[sender.tag]
         if let location = obj.locationPunchIn, !location.isEmpty {
             let alertController = UIAlertController(title: "Location:", message: location, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "MAPS", style: .default) { _ in
@@ -477,7 +505,7 @@ extension LiveStrengthVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblContractName.text = obj.facilityName ?? ""
             cell.lblPunchedIn.text = obj.punchedin ?? ""
             cell.punchedInBtn.tag = indexPath.row
-            cell.punchedInBtn.addTarget(self, action: #selector(tapOnPunchIn(_:)), for: .touchUpInside)
+            cell.punchedInBtn.addTarget(self, action: #selector(tapOnPunchInAtGate(_:)), for: .touchUpInside)
             
             return cell
         } else if tableView == TBLAtSiteList {
@@ -512,7 +540,7 @@ extension LiveStrengthVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblDesignation.text = obj.designationName ?? ""
             cell.lblPunchedIn.text = obj.punchedin ?? ""
             cell.punchedInBtn.tag = indexPath.row
-            cell.punchedInBtn.addTarget(self, action: #selector(tapOnPunchIn(_:)), for: .touchUpInside)
+            cell.punchedInBtn.addTarget(self, action: #selector(tapOnPunchInAtSite(_:)), for: .touchUpInside)
             return cell
         }
         else if tableView == TBLINHouseList {
