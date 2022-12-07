@@ -1309,14 +1309,16 @@ extension ReportViewAndUploadVC: UITableViewDelegate, UITableViewDataSource {
     
     @objc func btnImageDownloadAction(sender: UIButton) {
         DispatchQueue.main.async {
+            let obj = self.viewReport_Array[sender.tag]
             let photos = PHPhotoLibrary.authorizationStatus()
-            if photos == .denied || photos == .notDetermined || photos == .restricted {
+            if photos == .denied {
                 self.view.makeToast("please allow all photos to download image", duration: 2.0, position: .center)
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    self.savePhotoToAlbum(obj.file ?? "") { error in
+                    }
                     self.gotoAppPrivacySettings()
                 }
             } else {
-                let obj = self.viewReport_Array[sender.tag]
                 ProgressHUD.animationType = .circleStrokeSpin
                 ProgressHUD.colorBackground = .white
                 ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
@@ -1403,6 +1405,5 @@ extension ReportViewAndUploadVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
 }
 

@@ -117,13 +117,11 @@ class SiteListVC: UIViewController, PrLocation {
         }
        
         let mute = UIAlertAction(title: "Mute Notification", style: .default) { _ in
-            USERDEFAULTS.set(true, forKey: "IsUnMuteNotification")
-            self.view.makeToast("Notification is mute", duration: 0.8, position: .center)
+            self.muteNotification()
         }
         
         let Unmute = UIAlertAction(title: "Un-Mute Notification", style: .default) { _ in
-            USERDEFAULTS.set(false, forKey: "IsUnMuteNotification")
-            self.view.makeToast("Notification is Un-mute", duration: 0.8, position: .center)
+            self.muteNotification(false)
         }
        
         let logOut = UIAlertAction(title: "Logout", style: .default) { _ in
@@ -138,6 +136,27 @@ class SiteListVC: UIViewController, PrLocation {
         alertcontroller.addAction(logOut)
         alertcontroller.addAction(cancel)
         present(alertcontroller, animated: true)
+    }
+    
+    func muteNotification(_ isMute: Bool = true) {
+        if ProjectUtilities.checkInternateAvailable(viewController: self) {
+            let params = ["status": isMute ? "1" : "0", "mobile": appDelegate.userLoginAccessDetails?.mobile ?? "", "type": "2"] as [String: Any]
+
+            Webservice.Authentication.MuteNotificationAPI(parameter: params) { [self] result in
+                switch result {
+                case let .success(response):
+                    if let body = response.body as? [String: Any] {
+                        if body["message"] as? String ?? "" == "Success" {
+                            USERDEFAULTS.set(isMute, forKey: "IsUnMuteNotification")
+                            self.view.makeToast(isMute ? "Notification is mute" : "Notification is Un-mute", duration: 0.8, position: .center)
+                        }
+                    }
+                case .fail(_):
+                    self.TBLSiteList.isHidden = true
+                    self.viewNoDataFound.isHidden = false
+                }
+            }
+        }
     }
 
     func LogOutAlert() {

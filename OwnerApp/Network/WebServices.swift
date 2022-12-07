@@ -47,6 +47,7 @@ enum Webservice {
         private static let PasswordUpdate = Webservice.baseUrl + "Owner/password_update"
         private static let Site = Webservice.baseUrl + "Owner/mysites"
         private static let NotificationUpdate = Webservice.baseUrl + "Notification/fcm_device_update"
+        private static let MuteNotification = Webservice.baseUrl + "User/mute_unmute"
         private static let SiteDelete = Webservice.baseUrl + "Employee/delete_site"
         private static let GetProfileData = Webservice.baseUrl + "Owner/get_profile"
         private static let RemoveProfilePhoto = Webservice.baseUrl + "Owner/profile_update"
@@ -91,6 +92,10 @@ enum Webservice {
         private static let LiveStrengthList = Webservice.baseUrl + "Owner/live_strength"
         private static let LogoutApp = Webservice.baseUrl + "Owner/logout"
 
+        static func MuteNotificationAPI(parameter: Parameter, completion: @escaping APIResultBlock) {
+            let endpoint = EndPoint(path: MuteNotification, method: .post, parameter: parameter, authToken: Token, completion: completion)
+            APIClient.shared.request(with: endpoint)
+        }
 
         static func LoginApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: Login, method: .post, parameter: parameter, authToken: Token, completion: completion)
