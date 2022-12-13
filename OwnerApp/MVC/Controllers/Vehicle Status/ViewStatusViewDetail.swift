@@ -13,6 +13,7 @@ class ViewStatusViewDetail: UIViewController {
     
     var hiddenSections = [Bool]()
     var vehicleDetail : VehicleData?
+    var imageArrMeterial = [Document]()
     var imageArrVehicleMeterial = [Document]()
     var imageArrInwardChallan = [Document]()
     var imageArrOutwardImage = [Document]()
@@ -87,22 +88,19 @@ class ViewStatusViewDetail: UIViewController {
                                 for obj in arrDocument {
                                     if obj.type == "0"{
                                         self.imageArrVehicleMeterial.append(obj)
-                                    }
-                                    if obj.type == "1"{
+                                    } else if obj.type == "1"{
                                         self.imageArrInwardChallan.append(obj)
-                                    }
-                                    if obj.type == "2"{
+                                    } else if obj.type == "2"{
                                         self.imageArrOutwardImage.append(obj)
-                                    }
-                                    if obj.type == "3"{
+                                    } else if obj.type == "3"{
                                         self.imageArrPoImage.append(obj)
                                     }
                                 }
-                                self.imageArrVehicleMeterial = [Document]()
+                                self.imageArrMeterial = [Document]()
                                 if let exits = self.vehicleDetail?.exitAttechment, exits.count > 0 {
                                     exits.forEach { object in
                                         if object.type == "5", let att = object.attechment, !att.isEmpty {
-                                            self.imageArrVehicleMeterial.append(Document(fromDictionary: ["type": "5", "url": att]))
+                                            self.imageArrMeterial.append(Document(fromDictionary: ["type": "5", "url": att]))
                                         }
                                     }
                                 }
@@ -185,7 +183,11 @@ extension ViewStatusViewDetail : UITableViewDelegate, UITableViewDataSource{
             cell?.lblVehicleNumber.text = self.vehicleDetail?.vehicleNumber ?? ""
             cell?.lblDriverNumber.text = self.vehicleDetail?.driverContact ?? ""
             cell?.lblQtyWithUnit.text = self.vehicleDetail?.quantity ?? ""
-            
+            cell?.vwMaterial.isHidden = true
+            if self.imageArrVehicleMeterial.count > 0 {
+                cell?.vwMaterial.isHidden = false
+                cell?.imageArrVehicleMeterial = self.imageArrVehicleMeterial
+            }
             return cell!
         }
         else if indexPath.section == 2 {
@@ -273,9 +275,9 @@ extension ViewStatusViewDetail : UITableViewDelegate, UITableViewDataSource{
             }
                         
             cell?.vwMaterialImageDetail.isHidden = true
-            if self.imageArrVehicleMeterial.count > 0 {
+            if self.imageArrMeterial.count > 0 {
                 cell?.vwMaterialImageDetail.isHidden = false
-                cell?.imageArrVehicleMeterial = self.imageArrVehicleMeterial
+                cell?.imageArrVehicleMeterial = self.imageArrMeterial
             }
         
             if self.imageArrPoImage.count > 0 {
@@ -449,7 +451,7 @@ extension ViewStatusViewDetail : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 || indexPath.section == 1 {
+        if indexPath.section == 0 {
             return 300
         }
 //        else if indexPath.section == 3 {

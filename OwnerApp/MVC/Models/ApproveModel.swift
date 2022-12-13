@@ -177,7 +177,7 @@ struct ApproveModel{
         vehicleNumber = dictionary["vehicle_number"] as? String
         vendorMobile = dictionary["vendor_mobile"] as? String
         timeSpent = "Exit Pending"
-        if let timespnt = dictionary["time_spent"] as? Double, timespnt > 0 {
+        if !exitStatus.isEmpty, exitStatus == "1", let timespnt = dictionary["time_spent"] as? Double, timespnt > 0 {
             timeSpent = ApproveModel.formatTimeFor(seconds: timespnt)
         }
     }

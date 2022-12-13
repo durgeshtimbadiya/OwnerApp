@@ -12,6 +12,8 @@ class SOSLogTableCell: UITableViewCell {
     @IBOutlet var imgView: UIImageView!
     @IBOutlet var lblSOSName: UILabel!
     @IBOutlet var lblDateandTIme: UILabel!
+    @IBOutlet var lblName: UILabel!
+    @IBOutlet var lblDepartment: UILabel!
     @IBOutlet weak var lblnoDataFound: UILabel!
     
     override func awakeFromNib() {

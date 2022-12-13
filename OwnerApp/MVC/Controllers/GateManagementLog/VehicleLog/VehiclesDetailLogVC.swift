@@ -455,11 +455,11 @@ extension VehiclesDetailLogVC : UITableViewDelegate, UITableViewDataSource{
                 cell?.viewPurposeOfOutPass.isHidden = true
             }
             
-            if let remarks = self.vehicleDetail?.exit[0].materialRejectRemark {
-                cell?.viewRemark.isHidden = false
+            if let remarks = self.vehicleDetail?.exit[0].materialRejectRemark, !remarks.isEmpty { //
+                cell?.vwRemakDetail.isHidden = false
                 cell?.txtFieldRemarks.text = remarks
             } else {
-                cell?.viewRemark.isHidden = true
+                cell?.vwRemakDetail.isHidden = true
             }
             
             if let url = self.vehicleDetail?.exit[0].outpass, !url.isEmpty {
@@ -488,23 +488,23 @@ extension VehiclesDetailLogVC : UITableViewDelegate, UITableViewDataSource{
             if let exitMaterialStatus1 = self.vehicleDetail?.exit[0].materialStatus {
                 exitMaterialStatus = exitMaterialStatus1
             }
-            cell?.vwRemakDetail.isHidden = true
+//            cell?.vwRemakDetail.isHidden = true
             cell?.vwPurposeOfOutpassDetail.isHidden = true
            
             if ask_approval_exit == "1" && exit_status == "0" {
                 if exitMaterialStatus == "0" {
                     cell?.vwExitmaterialDetail.isHidden = false
                 } else if exitMaterialStatus == "1" {
-                    cell?.vwRemakDetail.isHidden = true
+//                    cell?.vwRemakDetail.isHidden = true
                     cell?.vwExitmaterialDetail.isHidden = false
                     cell?.vwPurposeOfOutpassDetail.isHidden = false
                 }
             } else if ask_approval_exit == "1" && exit_status == "1" && entry == "1" {
                 if exitMaterialStatus == "0" {
-                    cell?.vwRemakDetail.isHidden = true
+//                    cell?.vwRemakDetail.isHidden = true
                     cell?.vwExitmaterialDetail.isHidden = false
                 } else if exitMaterialStatus == "1" {
-                    cell?.vwRemakDetail.isHidden = true
+//                    cell?.vwRemakDetail.isHidden = true
                     cell?.vwExitmaterialDetail.isHidden = false
                     cell?.vwPurposeOfOutpassDetail.isHidden = false
                 }

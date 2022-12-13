@@ -91,7 +91,7 @@ class VisitorApprovalModel{
 		whomToMeet = dictionary["whom_to_meet"] as? String
 		whomToMeetType = dictionary["whom_to_meet_type"] as? String
         timeSpent = "Exit Pending"
-        if let timespnt = dictionary["time_spent"] as? Double, timespnt > 0 {
+        if !exitStatus.isEmpty, exitStatus == "1", let timespnt = dictionary["time_spent"] as? Double, timespnt > 0 {
             timeSpent = ApproveModel.formatTimeFor(seconds: timespnt)
         }
 	}

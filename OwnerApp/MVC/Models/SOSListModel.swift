@@ -21,6 +21,7 @@ class SOSListModel {
     var siteId: String!
     var type: String!
     var updatedDate: String!
+    var designation: String!
     var sortingDate: String!
 
     /**
@@ -43,5 +44,6 @@ class SOSListModel {
         type = dictionary["type"] as? String
         updatedDate = dictionary["updated_date"] as? String
         sortingDate = dictionary["shorting_date"] as? String
+        designation = dictionary["designation"] as? String
     }
 }

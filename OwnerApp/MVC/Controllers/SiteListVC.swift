@@ -39,7 +39,6 @@ class SiteListVC: UIViewController, PrLocation {
                 .constraint(equalTo: view.topAnchor).isActive = true
             statusbarView.centerXAnchor
                 .constraint(equalTo: view.centerXAnchor).isActive = true
-
         } else {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = AppColor.Color_TopHeader
@@ -184,7 +183,6 @@ class SiteListVC: UIViewController, PrLocation {
     }
 
     // MARK: -  Get Site List Api Functionality-------------------------------
-
     func GetSiteListApi(UserID: String, mobile: String) {
         if ProjectUtilities.checkInternateAvailable(viewController: self) {
             let params = ["user_id": UserID, "mobile": mobile, "user_type": "2"] as [String: Any]
@@ -219,7 +217,7 @@ class SiteListVC: UIViewController, PrLocation {
                             self.viewNoDataFound.isHidden = false
                         }
                     }
-                case let .fail(errorMsg):
+                case .fail(_):
                     self.TBLSiteList.isHidden = true
                     self.viewNoDataFound.isHidden = false
                     self.isSetSiteList = self.isSetSiteList + 1
@@ -234,7 +232,6 @@ class SiteListVC: UIViewController, PrLocation {
                         }
                     }
                 }
-                
             }
         }
     }
@@ -324,6 +321,11 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
         cell.viewCornerReport.layer.cornerRadius = cell.viewCornerReport.layer.bounds.height / 2
         if obj.uploadReport != nil {
             cell.lblReportCount.text = "\(obj.uploadReport ?? 0)"
+            if obj.uploadReport ?? 0 > 0 {
+                cell.viewCornerReport.backgroundColor = UIColor.cyan
+            } else {
+                cell.viewCornerReport.backgroundColor = UIColor.white
+            }
         }
         
         if obj.vehicleApprovalCount != nil {

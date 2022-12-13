@@ -26,6 +26,8 @@ class SOSFilterModel {
     var type: String!
     var updatedDate: String!
     var sortingDate: String!
+    var designation: String!
+    var name: String!
 
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
@@ -45,5 +47,7 @@ class SOSFilterModel {
         type = dictionary["type"] as? String
         updatedDate = dictionary["updated_date"] as? String
         sortingDate = dictionary["shorting_date"] as? String
+        designation = dictionary["designation"] as? String
+        name = dictionary["name"] as? String
     }
 }

@@ -626,6 +626,8 @@ extension SOSLogVC: UITableViewDelegate, UITableViewDataSource {
             }
 
             cell.lblDateandTIme.text = obj.createdDate ?? ""
+            cell.lblName.text = "Name: \(obj.name ?? "")"
+            cell.lblDepartment.text = "Dept.: \(obj.designation ?? "")"
 
             return cell
         } else {
@@ -672,7 +674,8 @@ extension SOSLogVC: UITableViewDelegate, UITableViewDataSource {
                 cell.imgView.isHidden = true
             }
             cell.lblDateandTIme.text = obj.createdDate ?? ""
-
+            cell.lblName.text = "Name: \(obj.name ?? "")"
+            cell.lblDepartment.text = "Dept.: \(obj.designation ?? "")"
             return cell
         }
     }

@@ -1077,9 +1077,7 @@ extension ApprovalVehicleLogVC: UITableViewDelegate, UITableViewDataSource {
         alertcontroller.addAction(yes)
         alertcontroller.addAction(cancel)
         present(alertcontroller, animated: true)
-    }
-    
-    
+    }    
     
     @objc func btnFilterViewDetailAction(sender: UIButton) {
         DispatchQueue.main.async {

@@ -352,17 +352,14 @@ class ReportViewAndUploadVC: UIViewController, UINavigationControllerDelegate, U
         selectedSegStaffType = "2"
         uploadReportListFuncApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: site_ID, start_date: start_Date_Value, end_date: end_Date_Value, staff_type: selectedSegStaffType, staff_id: selecte_staff_Name_ID)
     }
-
     
     @IBAction func btnSubmitAction(_ sender: Any) {
         if staff_names == "" {
             self.view.makeToast("please select staff name", duration: 1.0, position: .center)
             return
-        }
-        else if k_files_Type == "" {
+        } else if k_files_Type == "" {
             self.view.makeToast("please upload a file", duration: 1.0, position: .center)
             return
-            
         } else if txtView.text.isEmpty || txtView.text == "Max 150 Characters" {
             self.view.makeToast("please enter remark", duration: 1.0, position: .center)
             return
