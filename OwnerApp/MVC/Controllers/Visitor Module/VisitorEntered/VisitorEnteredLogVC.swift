@@ -788,17 +788,17 @@ extension VisitorEnteredLogVC: UITableViewDelegate, UITableViewDataSource {
                 cell.btnExitApproved.isHidden = true
                 cell.btnApproveForExit.isHidden = false
                 cell.btnApproveForExit.tag = indexPath.row
-                cell.btnApproveForExit.addTarget(self, action: #selector(btnViewApprovalForExitAction(sender:)), for: .touchUpInside)
+                cell.btnApproveForExit.addTarget(self, action: #selector(btnViewFilterApprovalForExitAction(sender:)), for: .touchUpInside)
             } else {
                 cell.lblStatus.text = "Seeking For Granted Exit"
                 cell.btnExitApproved.isHidden = false
                 cell.btnApproveForExit.isHidden = true
                 cell.btnExitApproved.tag = indexPath.row
-                cell.btnExitApproved.addTarget(self, action: #selector(btnExitApprovedAction(sender:)), for: .touchUpInside)
+                cell.btnExitApproved.addTarget(self, action: #selector(btnExitFilterApprovedAction(sender:)), for: .touchUpInside)
                 }
             
             cell.btnViewDetail.tag = indexPath.row
-            cell.btnViewDetail.addTarget(self, action: #selector(btnViewDetailAction(sender:)), for: .touchUpInside)
+            cell.btnViewDetail.addTarget(self, action: #selector(btnViewFilterDetailAction(sender:)), for: .touchUpInside)
                 
                 return cell
         }
@@ -809,7 +809,6 @@ extension VisitorEnteredLogVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     @objc func btnViewDetailAction(sender: UIButton) {
-        if self.entry_Array.count > sender.tag {
             let obj = self.entry_Array[sender.tag]
             if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
                 vc.objApproval = obj
@@ -821,24 +820,9 @@ extension VisitorEnteredLogVC: UITableViewDelegate, UITableViewDataSource {
                 Functions.pushToViewController(self, toVC: vc)
 
             }
-        } else {
-            let obj = self.Filter_entry_Array[sender.tag]
-            if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
-                vc.objApproval = obj
-                vc.site_Name = self.site_Name
-                vc.site_id = site_id
-                vc.isApprovalForExit = false
-                vc.isMaterialStatusFrom = true
-//                self.navigationController?.pushViewController(vc, animated: true)
-                Functions.pushToViewController(self, toVC: vc)
-
-            }
-        }
-            
     }
     
     @objc func btnViewApprovalForExitAction(sender: UIButton) {
-        if self.entry_Array.count > sender.tag {
             let obj = self.entry_Array[sender.tag]
             if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
                 vc.objApproval = obj
@@ -847,30 +831,13 @@ extension VisitorEnteredLogVC: UITableViewDelegate, UITableViewDataSource {
                 vc.isApprovalForExit = true
                 vc.isMaterialStatusFrom = true
                 
-                //                self.navigationController?.pushViewController(vc, animated: true)
+//                self.navigationController?.pushViewController(vc, animated: true)
                 Functions.pushToViewController(self, toVC: vc)
-                
+
             }
-        }
-        else {
-            let obj = self.Filter_entry_Array[sender.tag]
-            if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
-                vc.objApproval = obj
-                vc.site_Name = self.site_Name
-                vc.site_id = site_id
-                vc.isApprovalForExit = true
-                vc.isMaterialStatusFrom = true
-                
-                //                self.navigationController?.pushViewController(vc, animated: true)
-                Functions.pushToViewController(self, toVC: vc)
-                
-            }
-        }
     }
     
     @objc func btnExitApprovedAction(sender: UIButton) {
-        if self.entry_Array.count > sender.tag {
-            
             let obj = self.entry_Array[sender.tag]
             if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
                 vc.objApproval = obj
@@ -878,11 +845,42 @@ extension VisitorEnteredLogVC: UITableViewDelegate, UITableViewDataSource {
                 vc.site_id = site_id
                 vc.isApprovalForExit = true
                 vc.isMaterialStatusFrom = false
-                //                self.navigationController?.pushViewController(vc, animated: true)
+//                self.navigationController?.pushViewController(vc, animated: true)
                 Functions.pushToViewController(self, toVC: vc)
-                
+
             }
-        } else {
+    }
+    
+    @objc func btnViewFilterDetailAction(sender: UIButton) {
+            let obj = self.Filter_entry_Array[sender.tag]
+            if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
+                vc.objApproval = obj
+                vc.site_Name = self.site_Name
+                vc.site_id = site_id
+                vc.isApprovalForExit = false
+                vc.isMaterialStatusFrom = true
+//                self.navigationController?.pushViewController(vc, animated: true)
+                Functions.pushToViewController(self, toVC: vc)
+
+            }
+    }
+    
+    @objc func btnViewFilterApprovalForExitAction(sender: UIButton) {
+            let obj = self.Filter_entry_Array[sender.tag]
+            if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
+                vc.objApproval = obj
+                vc.site_Name = self.site_Name
+                vc.site_id = site_id
+                vc.isApprovalForExit = true
+                vc.isMaterialStatusFrom = true
+                
+//                self.navigationController?.pushViewController(vc, animated: true)
+                Functions.pushToViewController(self, toVC: vc)
+
+            }
+    }
+    
+    @objc func btnExitFilterApprovedAction(sender: UIButton) {
             let obj = self.Filter_entry_Array[sender.tag]
             if let vc = UIStoryboard(name: "Visitor", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogDetailVC") as? VisitorEnteredLogDetailVC {
                 vc.objApproval = obj
@@ -890,11 +888,10 @@ extension VisitorEnteredLogVC: UITableViewDelegate, UITableViewDataSource {
                 vc.site_id = site_id
                 vc.isApprovalForExit = true
                 vc.isMaterialStatusFrom = false
-                //                self.navigationController?.pushViewController(vc, animated: true)
+//                self.navigationController?.pushViewController(vc, animated: true)
                 Functions.pushToViewController(self, toVC: vc)
-                
+
             }
-        }
     }
     
     

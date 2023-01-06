@@ -669,7 +669,7 @@ class VisitorsLogVC: UIViewController , UITextFieldDelegate {
                                     self.Filter_all_Entry_Array.append(obj)
                                 }
 
-                                if self.all_Entry_Array.count > 0 {
+                                if self.Filter_all_Entry_Array.count > 0 {
                                     for i in 0 ... self.Filter_all_Entry_Array.count - 1 {
                                         if self.Filter_all_Entry_Array[i].entry == "1" {
                                         let dic = self.Filter_all_Entry_Array[i]

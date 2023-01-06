@@ -690,7 +690,7 @@ extension EditVehiclesDetailLogVC : UITableViewDelegate, UITableViewDataSource{
 
             cell?.configure(self.arrCommercialVehicleImg, poimages: self.arrPOImage, materialImages: self.arrMaterialImage, selectors: [#selector(btnDeleteCommVehicleImgAction(sender:)), #selector(btnDeletePOImgAction(sender:)), #selector(btnDeleteMaterialImgAction(sender:))], target: self)
             
-            cell?.commerVehiButton.setTitle("COMMERCIAL VEHICLE IMAGE +", for: .normal)
+            cell?.commerVehiButton.setTitle("INWARD MATERIAL IMAGE +", for: .normal)
             if self.arrCommercialVehicleImg.count > 0 {
                 cell?.commerVehiButton.setTitle("ADD NEW +", for: .normal)
             }
@@ -700,7 +700,7 @@ extension EditVehiclesDetailLogVC : UITableViewDelegate, UITableViewDataSource{
                 cell?.poImageButton.setTitle("ADD NEW +", for: .normal)
             }
             
-            cell?.materialImgButton.setTitle("MATERIAL +", for: .normal)
+            cell?.materialImgButton.setTitle("OUTWARD MATERIAL IMAGE +", for: .normal)
             if self.arrMaterialImage.count > 0 {
                 cell?.materialImgButton.setTitle("ADD NEW +", for: .normal)
             }

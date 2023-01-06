@@ -5744,7 +5744,7 @@
                                 <rect key="frame" x="0.0" y="107" width="375" height="671"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SOSLogTableCell" rowHeight="126" id="EjE-0W-DfS" customClass="SOSLogTableCell" customModule="AdminApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SOSLogTableCell" rowHeight="126" id="EjE-0W-DfS" customClass="SOSLogTableCell" customModule="OwnerApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EjE-0W-DfS" id="JjH-jn-aKI">
@@ -6036,7 +6036,7 @@
                                         <rect key="frame" x="0.0" y="307" width="375" height="398"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SOSLogTableCell" rowHeight="126" id="mYt-gQ-AiK" customClass="SOSLogTableCell" customModule="AdminApp" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SOSLogTableCell" rowHeight="126" id="mYt-gQ-AiK" customClass="SOSLogTableCell" customModule="OwnerApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="375" height="126"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mYt-gQ-AiK" id="MF6-y5-lnh">

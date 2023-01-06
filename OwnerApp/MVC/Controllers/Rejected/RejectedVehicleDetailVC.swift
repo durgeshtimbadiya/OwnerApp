@@ -174,6 +174,13 @@ extension RejectedVehicleDetailVC : UITableViewDelegate, UITableViewDataSource{
             cell?.lblDriverNumber.text = self.vehicleDetail?.driverContact ?? ""
             cell?.lblQtyWithUnit.text = self.vehicleDetail?.quantity ?? ""
             
+            if self.imageArrVehicleMeterial.count > 0{
+                cell?.vwMaterial.isHidden = false
+                cell?.imageArrVehicleMeterial = self.imageArrVehicleMeterial
+            }else{
+                cell?.vwMaterial.isHidden = true
+            }
+            
             return cell!
         }
         else if indexPath.section == 2{
@@ -345,7 +352,7 @@ extension RejectedVehicleDetailVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 || indexPath.section == 1 {
+        if indexPath.section == 0 {
             return 300
         }
        else if indexPath.section == 3 {
