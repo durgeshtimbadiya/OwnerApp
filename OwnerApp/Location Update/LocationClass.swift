@@ -13,6 +13,8 @@
 
 import CoreLocation
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 protocol PrLocation {
     func GetLocation(currentLocation: CLLocationCoordinate2D)
@@ -34,8 +36,8 @@ class LocationManagerSingleton: NSObject, CLLocationManagerDelegate {
     override init() {
         super.init()
         locationManager.requestAlwaysAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+//        locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
     }
@@ -75,31 +77,52 @@ class LocationManagerSingleton: NSObject, CLLocationManagerDelegate {
             let cordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 
             delegate?.GetLocation(currentLocation: cordinate)
+            appDelegate.Lat = "\(location.coordinate.latitude.cleanValuee)"
+            appDelegate.Long = "\(location.coordinate.longitude.cleanValuee)"
+            self.getAddressFromLatLon(pdblLatitude: appDelegate.Lat, pdblLongitude: appDelegate.Long)
 
-            let geocoder = CLGeocoder()
-            geocoder.reverseGeocodeLocation(location) { placemarks, error in
-                if error != nil {
-                    print("error in reverseGeocode")
-                }
-                if placemarks != nil {
-                    let placemark = placemarks!
-                    if placemark.count > 0 {
-                        let placemark = placemarks![0]
-//                        print(placemark.locality!)
-//                        print(placemark.administrativeArea!)
-//                        print(placemark.country!)
+//            let geocoder = CLGeocoder()
+//            geocoder.reverseGeocodeLocation(location) { placemarks, error in
+//                if error != nil {
+//                    print("error in reverseGeocode")
+//                }
+//                if placemarks != nil {
+//                    let placemark = placemarks!
+//                    if placemark.count > 0 {
+//                        let placemark = placemarks![0]
+////                        print(placemark.locality!)
+////                        print(placemark.administrativeArea!)
+////                        print(placemark.country!)
+////
+////                        print("Location Address------->", placemark)
+////                        print("Location Lattitude and Longitude------->", "\(location.coordinate.latitude) ****** \(location.coordinate.longitude)")
 //
-//                        print("Location Address------->", placemark)
-//                        print("Location Lattitude and Longitude------->", "\(location.coordinate.latitude) ****** \(location.coordinate.longitude)")
-
-                        self.locationManager.stopUpdatingLocation()
-                        appDelegate.Lat = "\(location.coordinate.latitude)"
-                        appDelegate.Long = "\(location.coordinate.longitude)"
-                        appDelegate.Location = "\(placemark.subLocality ?? "") \(placemark.locality ?? "") \(placemark.administrativeArea ?? "") \(placemark.thoroughfare ?? "") \(placemark.name ?? "") \(placemark.country ?? "") \(placemark.postalCode ?? "")"
-                    }
-                }
-                
+//                        self.locationManager.stopUpdatingLocation()
+//
+//                        appDelegate.Location = "\(placemark.subLocality ?? "") \(placemark.locality ?? "") \(placemark.administrativeArea ?? "") \(placemark.thoroughfare ?? "") \(placemark.name ?? "") \(placemark.country ?? "") \(placemark.postalCode ?? "")"
+//                    }
+//                }
+//            }
+        }
+    }
+    
+    func getAddressFromLatLon(pdblLatitude: String, pdblLongitude: String) {
+        let geocoder = GMSGeocoder()
+        let lat: Double = Double("\(pdblLatitude)")!
+                //21.228124
+        let lon: Double = Double("\(pdblLongitude)")!
+                //72.833770
+        let loc: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude:lat, longitude:lon)
+        
+        geocoder.reverseGeocodeCoordinate(loc) { response, _ in
+            guard
+                let address = response?.firstResult(),
+                let lines = address.lines
+            else {
+                return
             }
+            self.locationManager.stopUpdatingLocation()
+            appDelegate.Location = lines.first ?? appDelegate.Location
         }
     }
 
@@ -137,5 +160,13 @@ class LocationManagerSingleton: NSObject, CLLocationManagerDelegate {
         } else {
             locationManager.stopUpdatingLocation()
         }
+    }
+}
+
+
+extension Double {
+    /* Return clean double decimal value */
+    var cleanValuee: String {
+        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.7f", self) : String(format: "%.7f", self)
     }
 }

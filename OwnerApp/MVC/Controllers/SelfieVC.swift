@@ -40,9 +40,10 @@ class SelfieVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
         btnProfile.clipsToBounds = true
         btnClickToUpload.dropShadowWithCornerRadius()
         
-        DispatchQueue.main.async {
-            self.getAddressFromLatLon(pdblLatitude: appDelegate.Lat, pdblLongitude: appDelegate.Long)
-        }
+//        DispatchQueue.main.async {
+//            self.getAddressFromLatLon(pdblLatitude: appDelegate.Lat, pdblLongitude: appDelegate.Long)
+//        }
+        self.lblLiveLocationAddres.text = appDelegate.Location
         if USERDEFAULTS.integer(forKey: "WaitForNextSelfie") > 0 {
             if self.apiTimer.isValid {
                 self.apiTimer.invalidate()
