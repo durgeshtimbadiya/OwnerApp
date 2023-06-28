@@ -216,6 +216,7 @@ class SelfieVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
             return
         } else {
             if appDelegate.userLoginAccessDetails?.id != nil {
+                self.btnClickToUpload.isEnabled = false
                 UploadSelfieApi(user_id: appDelegate.userLoginAccessDetails?.id ?? "", site_id: site_iD, longitude: appDelegate.Long, latitude: appDelegate.Lat, address: appDelegate.Location, facility_id: company_iD)
             }
         }
@@ -318,13 +319,18 @@ class SelfieVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
                                             Functions.pushToViewController(self, toVC: vc)
                                         }
                                     }
+                                    self.btnClickToUpload.isEnabled = true
                                 } else {
                                     self.view.makeToast(dict.value(forKey: "message") as? String, duration: 1.0, position: .center)
                                     print("Selfie Not Uploaded")
+                                    self.btnClickToUpload.isEnabled = true
                                 }
+                            } else {
+                                self.btnClickToUpload.isEnabled = true
                             }
                         } else {
                             print("Selfie Not Uploaded")
+                            self.btnClickToUpload.isEnabled = true
                         }
                     }
 
@@ -333,6 +339,8 @@ class SelfieVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
                 }
                 ProgressHUD.dismiss()
             }
+        } else {
+            self.btnClickToUpload.isEnabled = true
         }
     }
 }
