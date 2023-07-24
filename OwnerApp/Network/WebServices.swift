@@ -36,9 +36,9 @@ enum Webservice {
 
     enum Authentication {
         private static let Token = "c7d3965d49d4a59b0da80e90646aee77548458b3377ba3c0fb43d5ff91d54ea28833080e3de6ebd4fde36e2fb7175cddaf5d8d018ac1467c3d15db21c11b6909"
-
+        
         // ******************************Login Api ***********************************//
-
+        
         private static let Login = Webservice.baseUrl + "User/login"
         private static let LoginWithOTP = Webservice.baseUrl + "User/verify_otp"
         private static let ForgotPassword = Webservice.baseUrl + "User/forget_password"
@@ -59,7 +59,7 @@ enum Webservice {
         private static let SelfieList = Webservice.baseUrl + "Employee/selfie_list"
         private static let SOSLogList = Webservice.baseUrl + "Owner/sosList"
         private static let SOSFilter = Webservice.baseUrl + "Sos/filter_monthly"
-
+        
         //MARK:- Vehicle Approval Log
         private static let vehicleLog = Webservice.baseUrl + "Owner/all_logs"
         private static let approveLog = Webservice.baseUrl + "Owner/request_list"
@@ -91,12 +91,17 @@ enum Webservice {
         private static let uploadReportList = Webservice.baseUrl + "Owner/upload_report_list"
         private static let LiveStrengthList = Webservice.baseUrl + "Owner/live_strength"
         private static let LogoutApp = Webservice.baseUrl + "Owner/logout"
-
+        
+        // MARK:- My Packages
+        private static let getMyPackages = Webservice.baseUrl + "Owner/current_package"
+        private static let upcomingPackage = Webservice.baseUrl + "owner/upcoming_package"
+        private static let payNowPackage = Webservice.baseUrl + "owner/upgrade_package"
+        
         static func MuteNotificationAPI(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: MuteNotification, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func LoginApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: Login, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -106,7 +111,7 @@ enum Webservice {
             let endpoint = EndPoint(path: LoginWithOTP, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-       
+        
         static func ForgotPasswordApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: ForgotPassword, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -121,12 +126,12 @@ enum Webservice {
             let endpoint = EndPoint(path: newPassword, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func PasswordUpdateApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: PasswordUpdate, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func SiteList(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: Site, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -136,72 +141,72 @@ enum Webservice {
             let endpoint = EndPoint(path: LogoutApp, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func NotificationUpdateApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: NotificationUpdate, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func SiteDeleteApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: SiteDelete, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func GetProfileDataApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: GetProfileData, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func NotificationListApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: NotificationList, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func RemoveProfilePhotoApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: RemoveProfilePhoto, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func AttendanceApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: Attendance, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func AttendanceListApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: AttendanceList, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func AttendanceFilterApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: AttendanceFilter, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func SOSApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: SOS, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func SelfieListApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: SelfieList, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func SOSLogListApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: SOSLogList, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func SOSFilterApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: SOSFilter, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func vehicleLogApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: vehicleLog, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func approveLogApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: approveLog, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -211,8 +216,8 @@ enum Webservice {
             let endpoint = EndPoint(path: approveLog, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
-
+        
+        
         static func vehicleDetailApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: vehicleDetail, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -237,7 +242,7 @@ enum Webservice {
             let endpoint = EndPoint(path: UploadImage, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-
+        
         static func AcceptORRejectApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: AcceptORReject, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -257,7 +262,7 @@ enum Webservice {
             let endpoint = EndPoint(path: NotificationReset, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
-       
+        
         static func reportManagmentApi(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: ReportManagementCount, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -320,8 +325,24 @@ enum Webservice {
             let endpoint = EndPoint(path: DeleteLiveVisitors, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
         }
+        
+        //MARK:- My Packages
+        static func getMyPackages(parameter: Parameter, completion: @escaping APIResultBlock) {
+            let endpoint = EndPoint(path: getMyPackages, method: .post, parameter: parameter, authToken: Token, completion: completion)
+            APIClient.shared.request(with: endpoint)
+        }
+        
+        static func getUpcomingPackage(parameter: Parameter, completion: @escaping APIResultBlock) {
+            let endpoint = EndPoint(path: upcomingPackage, method: .post, parameter: parameter, authToken: Token, completion: completion)
+            APIClient.shared.request(with: endpoint)
+        }
+        
+        static func payNowForPackage(parameter: Parameter, completion: @escaping APIResultBlock) {
+            let endpoint = EndPoint(path: payNowPackage, method: .post, parameter: parameter, authToken: Token, completion: completion)
+            APIClient.shared.request(with: endpoint)
+        }
     }
-
+    
     enum Cancel {
         static func cancelPreviousAPICall(completion: @escaping () -> Void) {
             let sessionManager = Alamofire.SessionManager.default

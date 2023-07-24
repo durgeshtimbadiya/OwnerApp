@@ -278,7 +278,6 @@ class MenuVC: UIViewController, PrLocation {
                 case let .success(response):
                     if let body = response.body as? [String: Any] {
                         if body["code"] as? Int ?? 0 == 200 {
-                           
                             if let reportCount = body["upload_report"] as? Int {
                                 self.lblReportCount.text = "\(reportCount)"
                             }
@@ -301,6 +300,15 @@ class MenuVC: UIViewController, PrLocation {
 
     @IBAction func btnNotificationAction(_: Any) {
         notificationResetFuncApi(userID: appDelegate.userLoginAccessDetails?.id ?? "")
+    }
+    
+    @IBAction func tapOnMyPackage(_ sender: UIButton) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyPackageViewController") as? MyPackageViewController {
+            vc.site_ID = k_siteID
+            vc.siteName = site_name
+//            navigationController?.pushViewController(vc, animated: true)
+            Functions.pushToViewController(self, toVC: vc)
+        }
     }
 
     @IBAction func btnActivityLogsAction(_: Any) {
