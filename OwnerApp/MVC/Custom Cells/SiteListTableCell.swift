@@ -13,6 +13,7 @@ class SiteListTableCell: UITableViewCell {
     @IBOutlet var imgView: UIImageView!
     @IBOutlet var btnDelete: UIButton!
     @IBOutlet var lblSiteName: UILabel!
+    @IBOutlet var packageExpLbl: UILabel!
     @IBOutlet var lblLocation: UILabel!
     @IBOutlet var btnViewSite: UIButton!
 

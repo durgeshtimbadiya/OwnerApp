@@ -281,7 +281,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
         cell.imgView.layer.cornerRadius = 10
         cell.btnViewSite.layer.cornerRadius = 10
         cell.viewCorner.dropShadowWithCornerRadius()
-
+        cell.packageExpLbl.isHidden = obj.package != "0"
         if obj.photo != "" {
             cell.imgView.sd_setImage(with: URL(string: obj.photo ?? ""), placeholderImage: UIImage(named: "nopreview"), options: .refreshCached, completed: nil)
         }
@@ -395,7 +395,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return CGFloat(345.0)//UITableView.automaticDimension
     }
 
     @objc func btnDeleteAction(sender: UIButton) {
@@ -435,6 +435,8 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
             vc.k_siteID = obj.id
             vc.employeeID = obj.employeeId
             vc.site_name = obj.name
+            vc.sitePackage = obj.package
+            vc.siteUpPackage = obj.upcoming_package
             vc.uploadReport = "\(obj.uploadReport ?? 0)"
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)

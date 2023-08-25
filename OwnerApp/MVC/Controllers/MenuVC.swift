@@ -23,6 +23,8 @@ class MenuVC: UIViewController, PrLocation {
     @IBOutlet weak var viewReportCount: UIView!
 
     var k_siteID = ""
+    var sitePackage = ""
+    var siteUpPackage = ""
     var company_Id = ""
     var employeeID = ""
     var site_name = ""
@@ -116,6 +118,7 @@ class MenuVC: UIViewController, PrLocation {
     @IBAction func btnReportMangementAction(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportViewAndUploadVC") as? ReportViewAndUploadVC {
             vc.site_ID = k_siteID
+            vc.sitePackage = sitePackage
 //            self.navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)
         }
@@ -278,7 +281,6 @@ class MenuVC: UIViewController, PrLocation {
                 case let .success(response):
                     if let body = response.body as? [String: Any] {
                         if body["code"] as? Int ?? 0 == 200 {
-                           
                             if let reportCount = body["upload_report"] as? Int {
                                 self.lblReportCount.text = "\(reportCount)"
                             }
@@ -302,6 +304,17 @@ class MenuVC: UIViewController, PrLocation {
     @IBAction func btnNotificationAction(_: Any) {
         notificationResetFuncApi(userID: appDelegate.userLoginAccessDetails?.id ?? "")
     }
+    
+    @IBAction func tapOnMyPackage(_ sender: UIButton) {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyPackageViewController") as? MyPackageViewController {
+            vc.site_ID = k_siteID
+            vc.siteName = site_name
+            vc.sitePackage = sitePackage
+            vc.siteUpPackage = siteUpPackage
+//            navigationController?.pushViewController(vc, animated: true)
+            Functions.pushToViewController(self, toVC: vc)
+        }
+    }
 
     @IBAction func btnActivityLogsAction(_: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AllFacilityEmployeeVC") as? AllFacilityEmployeeVC {
@@ -315,6 +328,7 @@ class MenuVC: UIViewController, PrLocation {
     @IBAction func btnVehicleApprovalAction(_: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VehicleLogVC") as? VehicleLogVC {
             vc.site_Name = site_name
+            vc.sitePackage = self.sitePackage
             vc.site_id = k_siteID
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)
@@ -326,6 +340,7 @@ class MenuVC: UIViewController, PrLocation {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorLogVC") as? VisitorLogVC {
             vc.site_Name = site_name
             vc.site_id = k_siteID
+            vc.sitePackage = self.sitePackage
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)
         }
@@ -355,6 +370,7 @@ class MenuVC: UIViewController, PrLocation {
     @IBAction func btnVehicleApprovalLogAction(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VehiclesLogVC") as? VehiclesLogVC {
             vc.site_Name = site_name
+            vc.sitePackage = sitePackage
             vc.site_id = k_siteID
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)
@@ -365,6 +381,7 @@ class MenuVC: UIViewController, PrLocation {
     @IBAction func btnVisitorApprovalLogAction(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorsLogVC") as? VisitorsLogVC {
             vc.site_Name = site_name
+            vc.sitePackage = sitePackage
             vc.site_id = k_siteID
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)

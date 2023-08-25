@@ -8,7 +8,7 @@ target 'OwnerApp' do
   # Pods for EmployeeApp
   pod 'IQKeyboardManagerSwift'
 #  pod "RappleProgressHUD"
-  pod 'Alamofire', '~> 4.7'
+  pod 'Alamofire'
   pod 'SDWebImage', '~> 5.0'
   pod 'SCLAlertView'
   pod 'Firebase/Analytics'
@@ -19,11 +19,17 @@ target 'OwnerApp' do
 end
 
 post_install do |installer|
-    installer.generated_projects.each do |project|
-        project.targets.each do |target|
-            target.build_configurations.each do |config|
-                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
-             end
-        end
-   end
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      end
+    end
+  end
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ONLY_ACTIVE_ARCH'] = 'NO'
+      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+    end
+  end
 end

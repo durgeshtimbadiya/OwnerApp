@@ -51,7 +51,8 @@ class SiteListModel{
     var vehicleApprovalCount : VehicleApprovalCount!
     var visitorApproval : Int!
     var visitorApprovalCount : VehicleApprovalCount!
-
+    var package : String!
+    var upcoming_package : String!
 
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
@@ -107,6 +108,9 @@ class SiteListModel{
         if let visitorApprovalCountData = dictionary["visitor_approval_count"] as? [String:Any]{
             visitorApprovalCount = VehicleApprovalCount(fromDictionary: visitorApprovalCountData)
         }
+        
+        package = dictionary["package"] as? String //upcoming_package
+        upcoming_package = dictionary["upcoming_package"] as? String
     }
 
 }

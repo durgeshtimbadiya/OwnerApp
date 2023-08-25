@@ -37,6 +37,7 @@ class VisitorsLogVC: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var lblCounter: UILabel!
 
     var site_Name = ""
+    var sitePackage = ""
     var site_id = ""
     var refreshControl = UIRefreshControl()
     var all_Entry_Array = [VisitorApprovalModel]()

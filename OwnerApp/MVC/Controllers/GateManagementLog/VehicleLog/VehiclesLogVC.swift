@@ -30,6 +30,7 @@ class VehiclesLogVC: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var lblCounter: UILabel!
 
     var site_Name = ""
+    var sitePackage = ""
     var site_id = ""
     var refreshControl = UIRefreshControl()
     var all_Entry_Array = [ApproveModel]()
@@ -800,7 +801,7 @@ extension VehiclesLogVC: UITableViewDelegate, UITableViewDataSource {
     @objc func btnEditAction(sender: UIButton) {
         DispatchQueue.main.async {
             let obj = self.entry_Array[sender.tag]
-            if let vc = UIStoryboard(name: "Vehicle", bundle: nil).instantiateViewController(withIdentifier: "EditVehiclesDetailLogVC") as? EditVehiclesDetailLogVC {
+            if self.sitePackage != "0", let vc = UIStoryboard(name: "Vehicle", bundle: nil).instantiateViewController(withIdentifier: "EditVehiclesDetailLogVC") as? EditVehiclesDetailLogVC {
                 vc.objApproval = obj
                 vc.site_Name = self.site_Name
                 vc.site_id = self.site_id
@@ -813,7 +814,7 @@ extension VehiclesLogVC: UITableViewDelegate, UITableViewDataSource {
     @objc func btnEditFilterAction(sender: UIButton) {
         DispatchQueue.main.async {
             let obj = self.Filter_entry_Array[sender.tag]
-            if let vc = UIStoryboard(name: "Vehicle", bundle: nil).instantiateViewController(withIdentifier: "EditVehiclesDetailLogVC") as? EditVehiclesDetailLogVC {
+            if self.sitePackage != "0", let vc = UIStoryboard(name: "Vehicle", bundle: nil).instantiateViewController(withIdentifier: "EditVehiclesDetailLogVC") as? EditVehiclesDetailLogVC {
                 vc.objApproval = obj
                 vc.site_Name = self.site_Name
                 vc.site_id = self.site_id
@@ -826,7 +827,7 @@ extension VehiclesLogVC: UITableViewDelegate, UITableViewDataSource {
     @objc func btnFilterViewDetailAction(sender: UIButton) {
         DispatchQueue.main.async {
            // let obj = self.Filter_entry_Array[sender.tag]
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 let obj = self.Filter_entry_Array[sender.tag]
                 if let vc = UIStoryboard(name: "Vehicle", bundle: nil).instantiateViewController(withIdentifier: "VehiclesDetailLogVC") as? VehiclesDetailLogVC {
                     vc.objApproval = obj
@@ -835,7 +836,7 @@ extension VehiclesLogVC: UITableViewDelegate, UITableViewDataSource {
 //                    self.navigationController?.pushViewController(vc, animated: true)
                     Functions.pushToViewController(self, toVC: vc)
                 }
-            }
+//            }
         }
     }
 }

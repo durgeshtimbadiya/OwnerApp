@@ -17,7 +17,7 @@ import ProgressHUD
 class ReportViewAndUploadVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     var site_ID = ""
-    
+    var sitePackage = ""
     @IBOutlet weak var scrollingViewUploadReport: UIScrollView!
     
     @IBOutlet weak var btnUploadReport: UIButton!
@@ -96,6 +96,11 @@ class ReportViewAndUploadVC: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.btnUploadReport.isEnabled = sitePackage != "0"
+        if sitePackage == "0" {
+            self.btnUploadReport.backgroundColor = .systemGray5
+            self.btnUploadReport.setTitleColor(.lightGray, for: .disabled)
+        }
         USERDEFAULTS.set(true, forKey: "ReportViewed")
         globleStaffNameList = [StaffNameModel]()
         scrollingViewUploadReport.isHidden = true

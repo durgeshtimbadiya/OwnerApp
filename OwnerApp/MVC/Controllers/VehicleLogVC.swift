@@ -41,6 +41,7 @@ class VehicleLogVC: UIViewController {
     var search_Filter_vehicle_Log_Array = [String]()
     var searchFilter_Value = ""
     var site_Name = ""
+    var sitePackage = ""
     var site_id = ""
 
     enum PickerType: String {
@@ -189,7 +190,7 @@ class VehicleLogVC: UIViewController {
     }
 
     @IBAction func btnApprovalForEntryAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ApprovalVehicleLogVC") as? ApprovalVehicleLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ApprovalVehicleLogVC") as? ApprovalVehicleLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "0"
@@ -201,7 +202,7 @@ class VehicleLogVC: UIViewController {
     }
 
     @IBAction func btnRejectedAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RejectVehicleListVC") as? RejectVehicleListVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RejectVehicleListVC") as? RejectVehicleListVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "2"
@@ -213,7 +214,7 @@ class VehicleLogVC: UIViewController {
     }
 
     @IBAction func btnEnteredAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EntryVehicleListVC") as? EntryVehicleListVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EntryVehicleListVC") as? EntryVehicleListVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "3"
@@ -511,7 +512,7 @@ class VehicleLogVC: UIViewController {
     // MARK: - Filter Vehicle Log button Action ----------------------------------
 
     @IBAction func btnFilterApprovalAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ApprovalVehicleLogVC") as? ApprovalVehicleLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ApprovalVehicleLogVC") as? ApprovalVehicleLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = ""
@@ -523,7 +524,7 @@ class VehicleLogVC: UIViewController {
     }
 
     @IBAction func btnFilterRejectedAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RejectVehicleListVC") as? RejectVehicleListVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RejectVehicleListVC") as? RejectVehicleListVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "2"
@@ -535,7 +536,7 @@ class VehicleLogVC: UIViewController {
     }
 
     @IBAction func btnFilterEntered(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EntryVehicleListVC") as? EntryVehicleListVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EntryVehicleListVC") as? EntryVehicleListVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "3"

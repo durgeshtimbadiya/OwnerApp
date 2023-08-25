@@ -35,9 +35,13 @@
 		0BB9FCC128EDA5140014CA16 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB9FCC028EDA5140014CA16 /* ImageViewController.swift */; };
 		0BD203A628EAFD7B00D187DD /* old_ringtone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BD203A528EAFD7B00D187DD /* old_ringtone.mp3 */; };
 		0BD203A828EAFD8300D187DD /* sos_tone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BD203A728EAFD8300D187DD /* sos_tone.mp3 */; };
+		1849CEBB2A668E3F00467891 /* PayWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849CEBA2A668E3F00467891 /* PayWebViewViewController.swift */; };
 		18A0432D291B7AC9003CB044 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */; };
 		18A0432F291BA563003CB044 /* EditVehiclesDetailLogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0432E291BA563003CB044 /* EditVehiclesDetailLogVC.swift */; };
 		18A04331291BABE4003CB044 /* UpdateVehicleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A04330291BABE4003CB044 /* UpdateVehicleImageCell.swift */; };
+		18B367E02A6554EB00E54DD7 /* MyPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B367DF2A6554EB00E54DD7 /* MyPackageViewController.swift */; };
+		18B367E32A6556FB00E54DD7 /* MyPackageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B367E22A6556FB00E54DD7 /* MyPackageTableViewCell.swift */; };
+		18B367E62A655FF500E54DD7 /* MyPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B367E52A655FF500E54DD7 /* MyPackageModel.swift */; };
 		2541B235BAE10D7872175106 /* Pods_OwnerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB5CAB50F09358E10697377 /* Pods_OwnerApp.framework */; };
 		4904B9D22747E8BA00BA5DAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904B9D12747E8BA00BA5DAB /* AppDelegate.swift */; };
 		4904B9D92747E8BA00BA5DAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4904B9D72747E8BA00BA5DAB /* Main.storyboard */; };
@@ -205,9 +209,13 @@
 		0BD203A528EAFD7B00D187DD /* old_ringtone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = old_ringtone.mp3; sourceTree = "<group>"; };
 		0BD203A728EAFD8300D187DD /* sos_tone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sos_tone.mp3; sourceTree = "<group>"; };
 		0E3843823EFB8B63A9CBF54D /* Pods-EmployeeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmployeeApp.release.xcconfig"; path = "Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp.release.xcconfig"; sourceTree = "<group>"; };
+		1849CEBA2A668E3F00467891 /* PayWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWebViewViewController.swift; sourceTree = "<group>"; };
 		18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18A0432E291BA563003CB044 /* EditVehiclesDetailLogVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVehiclesDetailLogVC.swift; sourceTree = "<group>"; };
 		18A04330291BABE4003CB044 /* UpdateVehicleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVehicleImageCell.swift; sourceTree = "<group>"; };
+		18B367DF2A6554EB00E54DD7 /* MyPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackageViewController.swift; sourceTree = "<group>"; };
+		18B367E22A6556FB00E54DD7 /* MyPackageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackageTableViewCell.swift; sourceTree = "<group>"; };
+		18B367E52A655FF500E54DD7 /* MyPackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackageModel.swift; sourceTree = "<group>"; };
 		4904B9CE2747E8BA00BA5DAB /* OwnerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwnerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4904B9D12747E8BA00BA5DAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4904B9D82747E8BA00BA5DAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -473,6 +481,41 @@
 			path = "Image View";
 			sourceTree = "<group>";
 		};
+		1849CEB92A668E3000467891 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				1849CEBA2A668E3F00467891 /* PayWebViewViewController.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		18B367DE2A6554DC00E54DD7 /* MyPackage */ = {
+			isa = PBXGroup;
+			children = (
+				18B367DF2A6554EB00E54DD7 /* MyPackageViewController.swift */,
+				1849CEB92A668E3000467891 /* Payment */,
+				18B367E42A655FE000E54DD7 /* Model */,
+				18B367E12A6556E400E54DD7 /* Cell */,
+			);
+			path = MyPackage;
+			sourceTree = "<group>";
+		};
+		18B367E12A6556E400E54DD7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18B367E22A6556FB00E54DD7 /* MyPackageTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18B367E42A655FE000E54DD7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18B367E52A655FF500E54DD7 /* MyPackageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4904B9C52747E8BA00BA5DAB = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +580,7 @@
 		4904B9E72747E94E00BA5DAB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				18B367DE2A6554DC00E54DD7 /* MyPackage */,
 				0BB9FCBF28EDA4FA0014CA16 /* Image View */,
 				DBA98BFF28892081005CB260 /* Live Strength Module */,
 				DB78676628858C5C004FFB93 /* Report Managment Log */,
@@ -1061,6 +1105,7 @@
 				DB7C812E285885FC006B3FCE /* VehicleApprovalCount.swift in Sources */,
 				491DFCE8274CD17900875FAD /* UserProfileVC.swift in Sources */,
 				046A005D27ED662F007502F3 /* Document.swift in Sources */,
+				18B367E32A6556FB00E54DD7 /* MyPackageTableViewCell.swift in Sources */,
 				491DFCEA274CFB3000875FAD /* NotificationList.swift in Sources */,
 				4904B9FB2747EA9D00BA5DAB /* Download.swift in Sources */,
 				4904BA002747EADB00BA5DAB /* Localizable.swift in Sources */,
@@ -1110,6 +1155,7 @@
 				DBA98C0128893807005CB260 /* AtGateAndAtSiteTableCell.swift in Sources */,
 				DB3F01C02862F12E00B32368 /* VehicleLogVehicleDetailTableCell.swift in Sources */,
 				DB3F01C82862FFE400B32368 /* VehicleLogInwardAndOutWardCollectionCell.swift in Sources */,
+				18B367E02A6554EB00E54DD7 /* MyPackageViewController.swift in Sources */,
 				4904BA3C2748326B00BA5DAB /* LoginData.swift in Sources */,
 				4904BA032747EAF800BA5DAB /* Toast.swift in Sources */,
 				4904BA242747EC2500BA5DAB /* UiViewControllerExtension.swift in Sources */,
@@ -1159,6 +1205,7 @@
 				046350BC27EEB043000E60C5 /* ImageCollectionCell.swift in Sources */,
 				491DFCE6274CBFFB00875FAD /* MenuVC.swift in Sources */,
 				DB127EFB28658F58003CA376 /* VisitorApprovalModel.swift in Sources */,
+				18B367E62A655FF500E54DD7 /* MyPackageModel.swift in Sources */,
 				DB99342B2887E3630030FBA1 /* ViewReportTableCell.swift in Sources */,
 				DB127EFC28658F58003CA376 /* VisitorModel.swift in Sources */,
 				DB35C807287E9AB90086E627 /* VisitorsLogInwardAndOutWardCollectionCell.swift in Sources */,
@@ -1198,6 +1245,7 @@
 				DB3F01BE2862F10A00B32368 /* VehicleLogCompanyDetailTableCell.swift in Sources */,
 				491DFCEC274CFB9B00875FAD /* NotificationTableCell.swift in Sources */,
 				046FD6BF27F53F5F0019B9FA /* EntryVehicleListCell.swift in Sources */,
+				1849CEBB2A668E3F00467891 /* PayWebViewViewController.swift in Sources */,
 				DB35C7FE287E991A0086E627 /* VisitorsLogCompanyDetailTableCell.swift in Sources */,
 				4971218627E892CC0072DB6C /* ApprovalVehicleTableCell.swift in Sources */,
 				DBCE3D2228809F4D00215796 /* VisitorEnteredLogDetailVC.swift in Sources */,
@@ -1356,6 +1404,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5U6EGVXS4J;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = OwnerApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Owner App";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1363,6 +1412,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.5;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ownerappios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1391,6 +1441,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.5;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ownerappios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

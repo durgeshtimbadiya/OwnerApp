@@ -42,6 +42,7 @@ class VisitorLogVC: UIViewController {
     var searchFilter_Value = ""
     var site_Name = ""
     var site_id = ""
+    var sitePackage = ""
 
     enum PickerType: String {
         case searchFilterPicker
@@ -195,7 +196,7 @@ class VisitorLogVC: UIViewController {
 //        alertController.addAction(okAction)
 //        self.present(alertController, animated: true, completion: nil)
 //        return
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorApprovalLogVC") as? VisitorApprovalLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorApprovalLogVC") as? VisitorApprovalLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "0"
@@ -207,7 +208,7 @@ class VisitorLogVC: UIViewController {
     }
 
     @IBAction func btnRejectedAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorRejectedLogVC") as? VisitorRejectedLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorRejectedLogVC") as? VisitorRejectedLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "2"
@@ -220,7 +221,7 @@ class VisitorLogVC: UIViewController {
     }
 
     @IBAction func btnEnteredAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogVC") as? VisitorEnteredLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogVC") as? VisitorEnteredLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "3"
@@ -241,9 +242,7 @@ class VisitorLogVC: UIViewController {
             vc.site_id = site_id
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)
-
         }
-
     }
 
     @IBAction func btnCalenderAction(_: Any) {
@@ -520,7 +519,7 @@ class VisitorLogVC: UIViewController {
     // MARK: - Filter Vehicle Log button Action ----------------------------------
 
     @IBAction func btnFilterApprovalAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorApprovalLogVC") as? VisitorApprovalLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorApprovalLogVC") as? VisitorApprovalLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = ""
@@ -533,7 +532,7 @@ class VisitorLogVC: UIViewController {
     }
 
     @IBAction func btnFilterRejectedAction(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorRejectedLogVC") as? VisitorRejectedLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorRejectedLogVC") as? VisitorRejectedLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "2"
@@ -546,7 +545,7 @@ class VisitorLogVC: UIViewController {
     }
 
     @IBAction func btnFilterEntered(_: Any) {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogVC") as? VisitorEnteredLogVC {
+        if sitePackage != "0", let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisitorEnteredLogVC") as? VisitorEnteredLogVC {
             vc.start_Date = start_Date_Value
             vc.end_Date = end_Date_Value
             vc.statuss = "3"

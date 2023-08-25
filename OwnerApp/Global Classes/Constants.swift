@@ -26,6 +26,7 @@ let TapDocURL = "/PhotoFIT"
 var SearchData = [String: AnyObject]()
 var isFacebookLogin: Bool = false
 var BaseURL_Img = "https://dev.sitepay.co.in/data/"
+var pdfBaseURL = "https://dev.sitepay.co.in/user/package_pdf/"
 
 // Firestore database
 // let firBaseDb = Database.database().reference()
