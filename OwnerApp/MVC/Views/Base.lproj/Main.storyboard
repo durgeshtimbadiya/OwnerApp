@@ -3320,14 +3320,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currPackageCell" id="F91-Fd-DVC" customClass="MyPackageTableViewCell" customModule="OwnerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="290" height="69"/>
+                                        <rect key="frame" x="0.0" y="50" width="290" height="126.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F91-Fd-DVC" id="xK4-zc-8qX">
-                                            <rect key="frame" x="0.0" y="0.0" width="290" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="126.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rQe-qF-Tdp">
-                                                    <rect key="frame" x="0.0" y="5" width="290" height="59"/>
+                                                    <rect key="frame" x="0.0" y="5" width="290" height="116.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Package" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bN1-n8-T6h">
                                                             <rect key="frame" x="75" y="10" width="140" height="24"/>
@@ -3346,9 +3346,10 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fhk-xh-6Cc">
-                                                            <rect key="frame" x="145" y="49" width="0.0" height="0.0"/>
+                                                            <rect key="frame" x="30" y="49" width="230" height="57.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onV-e1-giE">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLATINUM PACKAGE EXPIRED" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onV-e1-giE">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="230" height="57.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                                     <color key="textColor" systemColor="systemRedColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -3383,7 +3384,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="packageBuyCell" id="2bx-Yk-Dpi" customClass="MyPackageTableViewCell" customModule="OwnerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="119" width="290" height="256"/>
+                                        <rect key="frame" x="0.0" y="176.5" width="290" height="256"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2bx-Yk-Dpi" id="Gr8-82-KSI">
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="256"/>
@@ -3456,7 +3457,7 @@ GOLD PACKAGE</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="radioCell" id="RIP-61-YQM" customClass="MyPackageTableViewCell" customModule="OwnerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="375" width="290" height="50"/>
+                                        <rect key="frame" x="0.0" y="432.5" width="290" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RIP-61-YQM" id="GYg-XX-iDk">
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="50"/>
@@ -3592,7 +3593,7 @@ GOLD PACKAGE</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="packageCell" id="q5v-Cv-3fz" customClass="MyPackageTableViewCell" customModule="OwnerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="425" width="290" height="336"/>
+                                        <rect key="frame" x="0.0" y="482.5" width="290" height="336"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q5v-Cv-3fz" id="ROP-Wa-m1y">
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="336"/>
