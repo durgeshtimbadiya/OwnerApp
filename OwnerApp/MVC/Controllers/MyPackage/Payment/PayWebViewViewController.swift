@@ -15,6 +15,9 @@ class PayWebViewViewController: UIViewController, UIDocumentInteractionControlle
     var order_id = -1
     var htmlString: String?
     var siteName = ""
+    var isGoldSelected = false
+    
+    private var isInvoiceShow = false
     
     @IBOutlet weak var webViewV: WKWebView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -28,10 +31,12 @@ class PayWebViewViewController: UIViewController, UIDocumentInteractionControlle
         self.subTitleLabel.text = siteName
         webViewV.navigationDelegate = self
         if let url = webURL {
-            ProgressHUD.animationType = .circleStrokeSpin
-            ProgressHUD.colorBackground = .white
-            ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
-            ProgressHUD.show("Checking...")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                ProgressHUD.animationType = .circleStrokeSpin
+                ProgressHUD.colorBackground = .white
+                ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
+                ProgressHUD.show("Checking...")
+            }
             webViewV.load(URLRequest(url: url))
         }
     }
@@ -41,6 +46,14 @@ class PayWebViewViewController: UIViewController, UIDocumentInteractionControlle
     }
     
     @IBAction func tapOnBackButton(_ sender: UIButton) {
+        if isInvoiceShow, let controller = self.navigationController?.children {
+            for cont in controller {
+                if cont is MenuVC {
+                    self.navigationController?.popToViewController(cont, animated: true)
+                    return
+                }
+            }
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -65,6 +78,8 @@ extension PayWebViewViewController: WKNavigationDelegate {
                     }
                 }))
                 alertView.addAction(UIAlertAction(title: "INVOICE", style: .default, handler: { action in
+                    UserDefaults.standard.setValue(self.isGoldSelected ? "2" : "1", forKey: "currentSitePackage")
+                    self.isInvoiceShow = true
                     self.savePdf()
                 }))
                 self.present(alertView, animated: true)
@@ -93,58 +108,66 @@ extension PayWebViewViewController: WKNavigationDelegate {
     }
     
     func savePdf() {
-        DispatchQueue.main.async {
-            ProgressHUD.animationType = .circleStrokeSpin
-            ProgressHUD.colorBackground = .white
-            ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
-            ProgressHUD.show("Downloading Invoice...")
-            let url = URL(string: "https://dev.sitepay.co.in/user/package_pdf/1689681516") //"\(pdfBaseURL)\(self.order_id)"
-            DispatchQueue.main.async {
-                if let pdfData = try? Data.init(contentsOf: url!) {
-                    let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
-                    let pdfNameFromUrl = "OwnerApp-\(self.order_id)-Invoice.pdf"
-                    let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
-            
-                    do {
-                        try pdfData.write(to: actualPath, options: .atomic)
-                        self.showSavedPdf(url: "\(pdfBaseURL)\(self.order_id)", fileName: pdfNameFromUrl)
-                        self.view.makeToast("PDF successfully saved!", duration: 1.0, position: .center)
-
-                        print("pdf successfully saved!")
-                    } catch {
-                        print("Pdf could not be saved")
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.colorBackground = .white
+        ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
+        ProgressHUD.show("Downloading Invoice...")
+        if let url = URL(string: "\(pdfBaseURL)\(self.order_id)") {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let pdfData = data {
+                    DispatchQueue.main.async {
+                        let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+                        let pdfNameFromUrl = "OwnerApp-\(self.order_id)-Invoice.pdf"
+                        let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+                
+                        do {
+                            try pdfData.write(to: actualPath, options: .atomic)
+                            self.showSavedPdf(url: "\(pdfBaseURL)\(self.order_id)", fileName: pdfNameFromUrl, webUrl: url)
+                            self.view.makeToast("PDF successfully saved!", duration: 1.0, position: .center)
+                            print("pdf successfully saved!")
+                        } catch {
+                            ProgressHUD.dismiss()
+                            print("Pdf could not be saved")
+                        }
                     }
+                } else {
+                    ProgressHUD.dismiss()
                 }
-            }
+            }.resume()
+        } else {
+            ProgressHUD.dismiss()
         }
     }
     
-    func showSavedPdf(url:String, fileName:String) {
-        if #available(iOS 10.0, *) {
-            if let controller = self.navigationController?.children {
-                for cont in controller {
-                    if cont is MenuVC {
-                        self.navigationController?.popToViewController(cont, animated: true)
-                        break
-                    }
-                }
-            }
-            do {
-                let docURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                let contents = try FileManager.default.contentsOfDirectory(at: docURL, includingPropertiesForKeys: [.fileResourceTypeKey], options: .skipsHiddenFiles)
-                for url in contents {
-                    if url.description.contains("\(fileName)") {
-                        // its your file! do what you want with it!
-                        let dc = UIDocumentInteractionController(url: URL(fileURLWithPath: url.description))
-                        dc.delegate = self
-                        dc.presentPreview(animated: true)
-                    }
-                }
-            } catch {
-                print("could not locate pdf file !!!!!!!")
-            }
+    func showSavedPdf(url:String, fileName:String, webUrl: URL) {
+//        if #available(iOS 10.0, *) {
+//            if let controller = self.navigationController?.children {
+//                for cont in controller {
+//                    if cont is MenuVC {
+//                        self.navigationController?.popToViewController(cont, animated: true)
+//                        break
+//                    }
+//                }
+//            }
+        isInvoiceShow = true
+            webViewV.load(URLRequest(url: webUrl))
+
+//            do {
+//                let docURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+//                let contents = try FileManager.default.contentsOfDirectory(at: docURL, includingPropertiesForKeys: [.fileResourceTypeKey], options: .skipsHiddenFiles)
+//                for url in contents {
+//                    if url.description.contains("\(fileName)") {
+//                        // its your file! do what you want with it!
+//                        let dc = UIDocumentInteractionController(url: URL(fileURLWithPath: url.description))
+//                        dc.delegate = self
+//                        dc.presentPreview(animated: true)
+//                    }
+//                }
+//            } catch {
+//                print("could not locate pdf file !!!!!!!")
+//            }
             ProgressHUD.dismiss()
-        }
+//        }
     }
 
 }

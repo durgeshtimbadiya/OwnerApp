@@ -297,23 +297,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
             cell.btnViewSite.isEnabled = false
             cell.btnViewSite.setTitle("Blocked", for: .normal)
             cell.btnViewSite.backgroundColor = .gray
-//            cell.viewBlockedStatus.isHidden = false
-//            cell.lblBlockedStatus.text = "Site Blocked"
-        }/* else if obj.ownerBlocked == "1" {
-//            cell.btnViewSite.isHidden = true
-//            cell.viewBlockedStatus.isHidden = false
-//            cell.lblBlockedStatus.text = "Owner Blocked"
-            cell.btnViewSite.isEnabled = false
-            cell.btnViewSite.setTitle("Blocked", for: .normal)
-            cell.btnViewSite.backgroundColor = .gray
-        } else if obj.employeeBlocked == "1" {
-//            cell.btnViewSite.isHidden = true
-//            cell.viewBlockedStatus.isHidden = false
-//            cell.lblBlockedStatus.text = "Employee Blocked"
-            cell.btnViewSite.isEnabled = false
-            cell.btnViewSite.setTitle("Blocked", for: .normal)
-            cell.btnViewSite.backgroundColor = .gray
-        }*/ else {
+        } else {
             cell.btnViewSite.isHidden = false
             cell.viewBlockedStatus.isHidden = true
         }
@@ -438,6 +422,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
             vc.sitePackage = obj.package
             vc.siteUpPackage = obj.upcoming_package
             vc.uploadReport = "\(obj.uploadReport ?? 0)"
+            UserDefaults.standard.set(obj.package, forKey: "currentSitePackage")
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)
         }

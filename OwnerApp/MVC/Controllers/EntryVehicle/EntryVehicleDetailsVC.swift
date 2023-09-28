@@ -980,8 +980,12 @@ extension EntryVehicleDetailsVC: UICollectionViewDataSource, UICollectionViewDel
 
     @objc func btnDeleteVehicleImgAction(sender: UIButton) {
         guard  let exitTableViewCell = tableView.cellForRow(at: IndexPath(row: 0, section: 4)) as? ExitVehicleCell else { return }
-        self.arrMeterialImage.remove(at: sender.tag)
-        self.materialImageArrStr.remove(at: sender.tag)
+        if self.arrMeterialImage.count > sender.tag {
+            self.arrMeterialImage.remove(at: sender.tag)
+        }
+        if self.materialImageArrStr.count > sender.tag {
+            self.materialImageArrStr.remove(at: sender.tag)
+        }
         if self.arrMeterialImage.count > 0 {
             DispatchQueue.main.async {
                 self.view.layoutIfNeeded()

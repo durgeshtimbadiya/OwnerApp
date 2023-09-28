@@ -329,7 +329,7 @@ enum Webservice {
         //MARK:- My Packages
         static func getMyPackages(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: getMyPackages, method: .post, parameter: parameter, authToken: Token, completion: completion)
-            APIClient.shared.request(with: endpoint)
+            APIClient.shared.request1(with: endpoint)
         }
         
         static func getUpcomingPackage(parameter: Parameter, completion: @escaping APIResultBlock) {

@@ -255,6 +255,62 @@ class APIClient: NSObject {
                 ProgressHUD.dismiss()
             }
     }
+    
+    func request1(with endpoint: EndPoint) {
+        if endpoint.showLoader {
+            ProgressHUD.animationType = .circleStrokeSpin
+            ProgressHUD.colorBackground = .white
+            ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
+            ProgressHUD.show("Checking...")
+        }
+
+        var headers = APIClient.httpsHeaders(with: endpoint.authorizedToken)
+        if endpoint.isRawData {
+            headers["Content-Type"] = "application/json"
+        }
+        var newParams = endpoint.parameter
+        var newEncoding = endpoint.encoding
+        session.request(endpoint.path, method: endpoint.method,
+                        parameters: newParams,
+                        encoding: newEncoding,
+                        headers: headers)
+            .responseJSON { response in
+                switch response.result {
+                case let .failure(error):
+                    endpoint.resultCompletion?(.fail(error.localizedDescription))
+                case let .success(value):
+                    if let json = value as? ResponseBody {
+                        let response = APIResponse(json)
+                        if endpoint.isValidateByStatusCode {
+                            if response.statusCode == 200 {
+                                endpoint.resultCompletion?(.success(response))
+                            } else {
+                                if let dictJson = json as? [String: AnyObject] {
+                                    let response = APIResponse(json)
+                                    if response.statusCode == 401 {
+                                        USERDEFAULTS.set(nil, forKey: UserDefaults.Keys.UserLoginAccessDetails)
+                                        endpoint.resultCompletion?(.fail(dictJson["message"] as? String ?? ""))
+                                    } else if response.statusCode == 404 {
+                                        endpoint.resultCompletion?(.success(response))
+                                    } else {
+                                        endpoint.resultCompletion?(.fail(dictJson["message"] as? String ?? ""))
+                                    }
+                                } else {
+                                    endpoint.resultCompletion?(.fail(response.message))
+                                }
+                            }
+                        } else {
+                            endpoint.resultCompletion?(.success(response))
+                        }
+                    } else {
+                        endpoint.resultCompletion?(.fail(ResponseParseErrorMessage))
+                    }
+                @unknown default:
+                    endpoint.resultCompletion?(.fail(ResponseParseErrorMessage))
+                }
+                ProgressHUD.dismiss()
+            }
+    }
 
     func downloadRequest(with _: EndPoint) {}
 

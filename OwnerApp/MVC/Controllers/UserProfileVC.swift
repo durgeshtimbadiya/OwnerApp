@@ -24,19 +24,22 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
 //    @IBOutlet var viewAddress: UIView!
 //    @IBOutlet var viewDepartment: UIView!
 //    @IBOutlet var viewDesignation: UIView!
-    @IBOutlet var viewTypeOfSiteView: UIView!
+    @IBOutlet var viewCustomerId: UIView!
     @IBOutlet var viewCompanyNameView: UIView!
+    @IBOutlet var viewBusinessType: UIView!
 
     // UITextField
     @IBOutlet var txtFieldName: UITextField!
-    @IBOutlet var txtFieldTypeOfSite: UITextField!
+    @IBOutlet var txtFieldCustomerId: UITextField!
+    @IBOutlet var txtFieldBusinType: UITextField!
     @IBOutlet var txtFieldPhone: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
     @IBOutlet var txtFieldCompanyName: UITextField!
     @IBOutlet var panCardImageBtn: UIButton!
     
     @IBOutlet var lblCompanyName: UILabel!
-    @IBOutlet var lblTypeOfSite: UILabel!
+    @IBOutlet var lblCustomerId: UILabel!
+    @IBOutlet var lblBusinessType: UILabel!
     @IBOutlet var lblPanCard: UILabel!
 
 //    @IBOutlet var txtFieldDOB: UITextField!
@@ -112,9 +115,13 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
         LocationManagerSingleton.shared.StartStopUpdatingLocation(start: true)
         LocationManagerSingleton.shared.delegate = self
        
-        txtFieldName.isUserInteractionEnabled = false
+        txtFieldName.isUserInteractionEnabled = true
         txtFieldPhone.isUserInteractionEnabled = false
-        txtFieldEmail.isUserInteractionEnabled = false
+        txtFieldEmail.isUserInteractionEnabled = true
+        txtFieldCustomerId.isUserInteractionEnabled = false
+        txtFieldCompanyName.isUserInteractionEnabled = false
+        txtFieldBusinType.isUserInteractionEnabled = false
+        
      //   txtFIeldBloodGroup.isUserInteractionEnabled = false
      //   txtFieldAddress.isUserInteractionEnabled = false
 //        txtFieldDepartment.isUserInteractionEnabled = false
@@ -156,9 +163,13 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
         viewCompanyNameView.layer.borderWidth = 1
         viewCompanyNameView.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
         
-        viewTypeOfSiteView.layer.cornerRadius = 10
-        viewTypeOfSiteView.layer.borderWidth = 1
-        viewTypeOfSiteView.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
+        viewCustomerId.layer.cornerRadius = 10
+        viewCustomerId.layer.borderWidth = 1
+        viewCustomerId.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
+        
+        viewBusinessType.layer.cornerRadius = 10
+        viewBusinessType.layer.borderWidth = 1
+        viewBusinessType.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
 
         btnUpdateProflie.dropShadowWithCornerRadius()
         btnProfile.layer.cornerRadius = btnProfile.layer.bounds.height / 2
@@ -302,9 +313,20 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
     }
 
     @IBAction func btnUpdateProfileAction(_: Any) {
+        if txtFieldEmail.text!.isEmpty || !self.isValidEmail(txtFieldEmail.text!) {
+            self.view.makeToast(ValidationMessages.emailAddress, duration: 1.0, position: .center)
+            return
+        }
         if appDelegate.userLoginAccessDetails?.id != nil {
             UpdateProfileApi()
         }
+    }
+    
+    func isValidEmail(_ strEmail: String) -> Bool {
+        let emailRegEx = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-" + "z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+
+        let emailTest = NSPredicate(format: "SELF MATCHES[c] %@", emailRegEx)
+        return emailTest.evaluate(with: strEmail)
     }
     
     @IBAction func tapOnPanImage(_ sender: UIButton) {
@@ -349,9 +371,73 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                                     self.txtFieldName.text = name
                                 }
                                 
-                                if let type = user.value(forKey: "type") as? String {
-                                    self.txtFieldTypeOfSite.text = type
+                                if let type = user.value(forKey: "owner_unique_id") as? String {
+                                    self.txtFieldCustomerId.text = type
                                 }
+                                
+                                if let type = user.value(forKey: "type") as? String {
+                                    switch type {
+                                    case "1":
+                                        self.txtFieldBusinType.text = "Sole Proprietorship"
+                                        break
+                                    case "2":
+                                        self.txtFieldBusinType.text = "Partnership"
+                                        break
+                                    case "3":
+                                        self.txtFieldBusinType.text = "LLP"
+                                        break
+                                    case "4":
+                                        self.txtFieldBusinType.text = "Private Limited"
+                                        break
+                                    case "5":
+                                        self.txtFieldBusinType.text = "Public Limited"
+                                        break
+                                    case "6":
+                                        self.txtFieldBusinType.text = "Others"
+                                        break
+                                    default:
+                                        break
+                                    }
+                                }
+                                
+                                /*
+                                 {
+                                     "added_date" = "2023-04-01 17:17:50";
+                                     address = "Mumbai, maharshtra, india";
+                                     company = "SHIVA PVT LTD";
+                                     country = India;
+                                     "crm_id" = 9;
+                                     designation = Manager;
+                                     "device_id" = "fHlzhjzM8USJmeOb3RS7P6:APA91bHtsD2OlSRLx81h004khKwMGbrjKC0gcCD1DsoGTmpWcVGwQAtnjIUF1KeWt72-5s50lC2s9W9nIinYhtwMgkcfWAxthgPVRB8b_Eoe3f7YNaKbaTGGkyWD8Ip2OcotAF_82E00";
+                                     "device_type" = 1;
+                                     district = 2;
+                                     document = "pan/sample_doc5.jpg";
+                                     email = "ankitam.androapps@gmail.com";
+                                     "gst_no" = GST222222222222;
+                                     id = 161;
+                                     isBlocked = 0;
+                                     isDeleted = 0;
+                                     "is_demo" = 0;
+                                     "loged_in" = 2;
+                                     "login_status" = 1;
+                                     mobile = 8104525751;
+                                     "mute_notification" = 0;
+                                     name = "Shiv Mohandas";
+                                     "no_active_sites" = 7;
+                                     "no_employees" = "101 to 250";
+                                     otp = 1234;
+                                     "owner_unique_id" = SHI161;
+                                     pan = "pan/pan_sample8.jpg";
+                                     "pan_no" = PAN1111111;
+                                     password = 1234;
+                                     "profile_pic" = "https://dev.sitepay.co.in/data/owner/1681298617.jpg";
+                                     "profile_status" = 0;
+                                     state = 2;
+                                     "sw_password" = 81dc9bdb52d04dc20036dbd8313ed055;
+                                     type = 4;
+                                     "updated_date" = "2023-08-29 12:17:54";
+                                     "website_url" = "https://dev.sitepay.co.in/User/User_registration";
+                                 }*/
                                 
                                 if let company = user.value(forKey: "company") as? String {
                                     self.txtFieldCompanyName.text = company
@@ -481,7 +567,7 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                         if let body = response.body as? [String: Any] {
                             if body["message"] as? String ?? "" == "Success" {
                                 self.view.makeToast("Profile Updated Successfully", duration: 1.0, position: .center)
-                                self.perform(#selector(self.RedirectToProfile), with: nil, afterDelay: 1.1)
+                               // self.perform(#selector(self.RedirectToProfile), with: nil, afterDelay: 1.1)
                             } else {}
                         }
                     case let .fail(errorMsg):

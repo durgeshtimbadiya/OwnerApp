@@ -7,16 +7,247 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "67B0D5F2-A3F7-4BE8-A5BF-4B3C7642EBC0"
+            uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OwnerApp/MVC/Controllers/UserProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
+            landmarkName = "ProfileDetailsfunc(userID:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - 400977e229e439c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Eppancy/Projects/iOS/Androapps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "3796">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - 400977e229e439c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Eppancy/Projects/iOS/Androapps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4184">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - 400977e229e439c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Eppancy/Projects/iOS/Androapps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4286">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - 400977e229e439c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Eppancy/Projects/iOS/Androapps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4781">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - 400977e229e439c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Eppancy/Projects/iOS/Androapps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "3828">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - 400977e229e439c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Eppancy/Projects/iOS/Androapps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4216">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - b4fff9cb351ebab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "3828">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - b4fff9cb351ebab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4216">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - b4fff9cb351ebab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4286">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - b4fff9cb351ebab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4781">
+               </Location>
+               <Location
+                  uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - b4fff9cb351ebab4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.UserProfileVC.ProfileDetailsfunc(userID: Swift.String) -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/UserProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "374"
+                  endingLineNumber = "374"
+                  offsetFromSymbolStart = "4252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D98155D8-B9B1-4DF0-BBBF-DC53B72AB5BD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OwnerApp/MVC/Controllers/MyPackage/MyPackageViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "getMyPackages()"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "getUpcomingPackage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D98155D8-B9B1-4DF0-BBBF-DC53B72AB5BD - 3b4991749c40fcbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OwnerApp.MyPackageViewController.getUpcomingPackage() -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/MyPackage/MyPackageViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "625">
+               </Location>
+               <Location
+                  uuid = "D98155D8-B9B1-4DF0-BBBF-DC53B72AB5BD - f96621034e27d59f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.MyPackageViewController.getUpcomingPackage() -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/MyPackage/MyPackageViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "169">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50F1AD20-5819-4384-9897-D9451CDACEAE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OwnerApp/MVC/Controllers/MyPackage/Model/MyPackageModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "init(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

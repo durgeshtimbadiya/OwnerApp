@@ -1312,21 +1312,100 @@ extension ReportViewAndUploadVC: UITableViewDelegate, UITableViewDataSource {
     @objc func btnImageDownloadAction(sender: UIButton) {
         DispatchQueue.main.async {
             let obj = self.viewReport_Array[sender.tag]
-            let photos = PHPhotoLibrary.authorizationStatus()
-            if photos == .denied {
-                self.view.makeToast("please allow all photos to download image", duration: 2.0, position: .center)
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                    self.savePhotoToAlbum(obj.file ?? "") { error in
+            if obj.fileType.lowercased() == "jpg" || obj.fileType.lowercased() == "png" {
+                let photos = PHPhotoLibrary.authorizationStatus()
+                if photos == .denied {
+                    self.view.makeToast("please allow all photos to download image", duration: 2.0, position: .center)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                        self.savePhotoToAlbum(obj.file ?? "") { error in
+                        }
+                        self.gotoAppPrivacySettings()
                     }
-                    self.gotoAppPrivacySettings()
+                } else {
+                    ProgressHUD.animationType = .circleStrokeSpin
+                    ProgressHUD.colorBackground = .white
+                    ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
+                    ProgressHUD.show("Downloading...")
+                    self.savePhotoToAlbum(obj.file ?? "") { error in
+        
+                    }
                 }
             } else {
-                ProgressHUD.animationType = .circleStrokeSpin
-                ProgressHUD.colorBackground = .white
-                ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
-                ProgressHUD.show("Downloading...")
-                self.savePhotoToAlbum(obj.file ?? "") { error in
+                self.savePdf(obj.file ?? "")
+            }
+        }
+    }
     
+    func savePdf(_ fileUrl: String) {
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.colorBackground = .white
+        ProgressHUD.colorAnimation = AppColor.Color_SkyBlueTitle
+        ProgressHUD.show("Downloading...")
+        if let url = URL(string: fileUrl) {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let pdfData = data {
+                    DispatchQueue.main.async {
+                        let resourceDocPath = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last! as URL
+                        let pdfNameFromUrl = url.lastPathComponent
+                        let actualPath = resourceDocPath.appendingPathComponent(pdfNameFromUrl)
+                
+                        do {
+                            try pdfData.write(to: actualPath, options: .atomic)
+                            self.view.makeToast("File successfully saved!", duration: 1.0, position: .center)
+                            ProgressHUD.dismiss()
+                            print("pdf successfully saved!")
+                        } catch {
+                            ProgressHUD.dismiss()
+                            print("Pdf could not be saved")
+                        }
+                    }
+                } else {
+                    ProgressHUD.dismiss()
+                }
+            }.resume()
+        } else {
+            ProgressHUD.dismiss()
+        }
+    }
+    
+    func savePhotoToAlbum(_ vidUrlString: String, _: ((Error?) -> Void)?) {
+        requestAuthorization {
+            DispatchQueue.global(qos: .background).async {
+                if let url = URL(string: vidUrlString),
+                   let urlData = NSData(contentsOf: url)
+                {
+                    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+                    let filePath = "\(documentsPath)/\(url.lastPathComponent)"
+                    DispatchQueue.main.async {
+                        urlData.write(toFile: filePath, atomically: true)
+                        PHPhotoLibrary.shared().performChanges({
+                            PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: URL(fileURLWithPath: filePath))
+                        }) { completed, error in
+                            if completed {
+                                // self.downloadAPI()
+                                DispatchQueue.main.async { // Correct
+                                    ProgressHUD.dismiss()
+                                    self.dismiss(animated: true) {
+                                        let ac = UIAlertController(title: "Saved!", message: "Your Image has been saved to your Gallery.", preferredStyle: .alert)
+                                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                                        self.present(ac, animated: true)
+//                                        print("Image is saved!")
+                                    }
+                                }
+
+                            } else {
+                                DispatchQueue.main.async { // Wrong
+                                    ProgressHUD.dismiss()
+                                    self.dismiss(animated: true) {
+                                        let ac = UIAlertController(title: "Image not Saved", message: error?.localizedDescription, preferredStyle: .alert)
+                                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                                        self.present(ac, animated: true)
+                                        print("Image not saved!")
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -1361,50 +1440,6 @@ extension ReportViewAndUploadVC: UITableViewDelegate, UITableViewDataSource {
             }
         } else if PHPhotoLibrary.authorizationStatus() == .authorized {
             completion()
-        }
-    }
-    
-    
-    func savePhotoToAlbum(_ vidUrlString: String, _: ((Error?) -> Void)?) {
-        requestAuthorization {
-            DispatchQueue.global(qos: .background).async {
-                if let url = URL(string: vidUrlString),
-                   let urlData = NSData(contentsOf: url)
-                {
-                    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-                    let filePath = "\(documentsPath)/tempFile.jpeg"
-                    DispatchQueue.main.async {
-                        urlData.write(toFile: filePath, atomically: true)
-                        PHPhotoLibrary.shared().performChanges({
-                            PHAssetChangeRequest.creationRequestForAssetFromImage(atFileURL: URL(fileURLWithPath: filePath))
-                        }) { completed, error in
-                            if completed {
-                                // self.downloadAPI()
-                                DispatchQueue.main.async { // Correct
-                                    ProgressHUD.dismiss()
-                                    self.dismiss(animated: true) {
-                                        let ac = UIAlertController(title: "Saved!", message: "Your Image has been saved to your Gallery.", preferredStyle: .alert)
-                                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                                        self.present(ac, animated: true)
-//                                        print("Image is saved!")
-                                    }
-                                }
-
-                            } else {
-                                DispatchQueue.main.async { // Wrong
-                                    ProgressHUD.dismiss()
-                                    self.dismiss(animated: true) {
-                                        let ac = UIAlertController(title: "Image not Saved", message: error?.localizedDescription, preferredStyle: .alert)
-                                        ac.addAction(UIAlertAction(title: "OK", style: .default))
-                                        self.present(ac, animated: true)
-                                        print("Image not saved!")
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

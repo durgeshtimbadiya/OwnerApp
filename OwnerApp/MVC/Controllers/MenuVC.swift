@@ -73,6 +73,9 @@ class MenuVC: UIViewController, PrLocation {
     override func viewWillAppear(_: Bool) {
         super.viewWillAppear(true)
 
+        if let sitePkg = UserDefaults.standard.string(forKey: "currentSitePackage") {
+            self.sitePackage = sitePkg
+        }
         if #available(iOS 13.0, *) {
             let app = UIApplication.shared
             let statusBarHeight: CGFloat = app.statusBarFrame.size.height
@@ -295,7 +298,6 @@ class MenuVC: UIViewController, PrLocation {
             }
         }
     }
-
 
     @IBAction func btnBackAction(_: Any) {
         navigationController?.popViewController(animated: true)
