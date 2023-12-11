@@ -41,9 +41,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allowing Access to the Camera Becuase to Capture User Image and Update Profile Picture.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Do you allow this app to know your current location?</string>
+	<string>$(PRODUCT_NAME) Allow location to share your location when check in and out location detection.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Do you allow this app to know your current location?</string>
+	<string>$(PRODUCT_NAME) Allow location to share your location when check in and out location detection.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Allowing Access to the Photo Library Because of Profile Image Selection and Uploading image Using Photo Library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -76,5 +76,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

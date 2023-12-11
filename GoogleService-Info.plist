@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>45774428476-i3e57s8jfhic25jf17td5akkpkrhqtpu.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.45774428476-i3e57s8jfhic25jf17td5akkpkrhqtpu</string>
 	<key>API_KEY</key>
 	<string>AIzaSyANAS6_07mkZnZ2igiCz88l7244Y6kfnSk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.adminappios</string>
+	<string>com.sitepay.ownerappios</string>
 	<key>PROJECT_ID</key>
 	<string>wendor-authorized</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:45774428476:ios:3197a92c201a05c25ce639</string>
+	<string>1:45774428476:ios:4e0ef0c54c0405255ce639</string>
 </dict>
 </plist>

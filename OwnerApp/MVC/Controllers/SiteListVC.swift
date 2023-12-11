@@ -15,6 +15,9 @@ class SiteListVC: UIViewController, PrLocation {
     var refreshControl = UIRefreshControl()
     private var apiTimer = Timer()
     private var isSetSiteList = 0
+    
+    private var termsOfUseHtml = ""
+    private var privacyPolicyHtml = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,9 @@ class SiteListVC: UIViewController, PrLocation {
         } else {
             let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
             statusBar?.backgroundColor = AppColor.Color_TopHeader
+        }
+        DispatchQueue.global(qos: .background).async {
+            self.settingAPI()
         }
     }
 
@@ -75,6 +81,46 @@ class SiteListVC: UIViewController, PrLocation {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         apiTimer.invalidate()
+    }
+    
+    // MARK: - Setting Api Functionality -------------------------------------------
+    func settingAPI() { // Login Type 7 means Labor/Facility
+        if ProjectUtilities.checkInternateAvailable(viewController: self) {
+            Webservice.Authentication.SettingApi { result in
+                switch result {
+                case let .success(response):
+                    if let body = response.body as? [String: Any] {
+                        if let data = body["data"] as? [String: Any] {
+                            self.termsOfUseHtml = data["terms"] as? String ?? ""
+                            self.privacyPolicyHtml = data["policy"] as? String ?? ""
+                            if let owner_app_version = data["owner_app_ios"] as? String, owner_app_version != Webservice.GetAppVersion(), owner_app_version != "1.0.0" {
+                                //Show alert for force update
+                                let actionCntl = UIAlertController(title: "", message: "Please update the app new version is available", preferredStyle: .alert)
+                                actionCntl.addAction(UIAlertAction(title: "Update", style: .default, handler: { action in
+                                    if let url = URL(string: "https://apps.apple.com/us/app/owner-sitepay/id6471817196"),
+                                        UIApplication.shared.canOpenURL(url) {
+                                        if #available(iOS 10.0, *) {
+                                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                        } else {
+                                            UIApplication.shared.openURL(url)
+                                        }
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        exit(0)
+                                    }
+//                                    self.dismiss(animated: true)
+                                }))
+                                self.present(actionCntl, animated: true)
+                            }
+                        } else {
+                            App_AlertView.shared.SimpleMessage(Text: body["message"] as? String ?? "")
+                        }
+                    }
+                case let .fail(errorMsg):
+                    self.view.makeToast(errorMsg, duration: 1.0, position: .center)
+                }
+            }
+        }
     }
 
     @objc func refresh(_: AnyObject) {
@@ -122,6 +168,30 @@ class SiteListVC: UIViewController, PrLocation {
         let Unmute = UIAlertAction(title: "Un-Mute Notification", style: .default) { _ in
             self.muteNotification(false)
         }
+        
+        let terms = UIAlertAction(title: "Terms & Condition", style: .default) { [self] _ in
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PayWebViewViewController") as? PayWebViewViewController {
+                if termsOfUseHtml.isEmpty {
+                    view.makeToast("Terms of use content not available. Please contact administrator!", duration: 0.8, position: .center)
+                    return
+                }
+                vc.siteName = "Terms of User"
+                vc.htmlString = termsOfUseHtml
+                Functions.pushToViewController(self, toVC: vc)
+            }
+        }
+        
+        let privacy = UIAlertAction(title: "Privacy Policy", style: .default) { [self] _ in
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PayWebViewViewController") as? PayWebViewViewController {
+                if privacyPolicyHtml.isEmpty {
+                    view.makeToast("Privacy policy content not available. Please contact administrator!", duration: 0.8, position: .center)
+                    return
+                }
+                vc.siteName = "Privacy Policy"
+                vc.htmlString = privacyPolicyHtml
+                Functions.pushToViewController(self, toVC: vc)
+            }
+        }
        
         let logOut = UIAlertAction(title: "Logout", style: .default) { _ in
             self.LogOutAlert()
@@ -132,6 +202,8 @@ class SiteListVC: UIViewController, PrLocation {
         alertcontroller.addAction(myProfile)
         alertcontroller.addAction(mute)
         alertcontroller.addAction(Unmute)
+        alertcontroller.addAction(terms)
+        alertcontroller.addAction(privacy)
         alertcontroller.addAction(logOut)
         alertcontroller.addAction(cancel)
         present(alertcontroller, animated: true)
@@ -297,23 +369,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
             cell.btnViewSite.isEnabled = false
             cell.btnViewSite.setTitle("Blocked", for: .normal)
             cell.btnViewSite.backgroundColor = .gray
-//            cell.viewBlockedStatus.isHidden = false
-//            cell.lblBlockedStatus.text = "Site Blocked"
-        }/* else if obj.ownerBlocked == "1" {
-//            cell.btnViewSite.isHidden = true
-//            cell.viewBlockedStatus.isHidden = false
-//            cell.lblBlockedStatus.text = "Owner Blocked"
-            cell.btnViewSite.isEnabled = false
-            cell.btnViewSite.setTitle("Blocked", for: .normal)
-            cell.btnViewSite.backgroundColor = .gray
-        } else if obj.employeeBlocked == "1" {
-//            cell.btnViewSite.isHidden = true
-//            cell.viewBlockedStatus.isHidden = false
-//            cell.lblBlockedStatus.text = "Employee Blocked"
-            cell.btnViewSite.isEnabled = false
-            cell.btnViewSite.setTitle("Blocked", for: .normal)
-            cell.btnViewSite.backgroundColor = .gray
-        }*/ else {
+        } else {
             cell.btnViewSite.isHidden = false
             cell.viewBlockedStatus.isHidden = true
         }
@@ -438,6 +494,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
             vc.sitePackage = obj.package
             vc.siteUpPackage = obj.upcoming_package
             vc.uploadReport = "\(obj.uploadReport ?? 0)"
+            UserDefaults.standard.set(obj.package, forKey: "currentSitePackage")
 //            navigationController?.pushViewController(vc, animated: true)
             Functions.pushToViewController(self, toVC: vc)
         }
@@ -458,6 +515,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
                 vc2.employeeID = obj.employeeId
                 vc2.site_name = obj.name ?? ""
                 vc2.uploadReport = "\(obj.uploadReport ?? 0)"
+                UserDefaults.standard.set(obj.package, forKey: "currentSitePackage")
                 viewControllers?.append(vc2)
             }
             self.navigationController?.viewControllers = viewControllers ?? [UIViewController]()
@@ -481,6 +539,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
                 vc2.employeeID = obj.employeeId
                 vc2.site_name = obj.name ?? ""
                 vc2.uploadReport = "\(obj.uploadReport ?? 0)"
+                UserDefaults.standard.set(obj.package, forKey: "currentSitePackage")
                 viewControllers?.append(vc2)
             }
             self.navigationController?.viewControllers = viewControllers ?? [UIViewController]()
@@ -503,6 +562,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
                 vc2.employeeID = obj.employeeId
                 vc2.site_name = obj.name ?? ""
                 vc2.uploadReport = "\(obj.uploadReport ?? 0)"
+                UserDefaults.standard.set(obj.package, forKey: "currentSitePackage")
                 viewControllers?.append(vc2)
             }
             self.navigationController?.viewControllers = viewControllers ?? [UIViewController]()
@@ -525,6 +585,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
                 vc2.employeeID = obj.employeeId
                 vc2.site_name = obj.name ?? ""
                 vc2.uploadReport = "\(obj.uploadReport ?? 0)"
+                UserDefaults.standard.set(obj.package, forKey: "currentSitePackage")
                 viewControllers?.append(vc2)
             }
             self.navigationController?.viewControllers = viewControllers ?? [UIViewController]()
@@ -548,6 +609,7 @@ extension SiteListVC: UITableViewDelegate, UITableViewDataSource {
                 vc2.employeeID = obj.employeeId
                 vc2.site_name = obj.name ?? ""
                 vc2.uploadReport = "\(obj.uploadReport ?? 0)"
+                UserDefaults.standard.set(obj.package, forKey: "currentSitePackage")
                 viewControllers?.append(vc2)
             }
             self.navigationController?.viewControllers = viewControllers ?? [UIViewController]()

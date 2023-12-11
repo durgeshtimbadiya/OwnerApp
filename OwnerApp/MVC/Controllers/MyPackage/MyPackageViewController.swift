@@ -42,7 +42,7 @@ class MyPackageViewController: UIViewController {
     
     @IBAction func tapOnPayButton(_ sender: UIButton) {
         if !isPayNow {
-            self.sitePackage = ""
+            self.sitePackage = "111"
             self.paidButton.setTitle("Pay Now", for: .normal)
             isPayNow = true
             self.tableView.reloadData()
@@ -54,14 +54,21 @@ class MyPackageViewController: UIViewController {
     private func getMyPackages() {
         if ProjectUtilities.checkInternateAvailable(viewController: self) {
             let params = ["user_id": appDelegate.userLoginAccessDetails?.id ?? "", "site_id": site_ID] as [String: Any]
-
             Webservice.Authentication.getMyPackages(parameter: params) { result in
                 switch result {
                 case let .success(response):
                     if let body = response.body as? [String: Any] {
-                        if body["code"] as? Int ?? 0 == 200 {
+                        var myPackageModel = MyPackageModel(body)
+                        if let lastPackage = body["last_package"] as? [String: Any], (self.sitePackage == "0" || self.sitePackage == "111") {
+                            self.view.makeToast(body["message"] as? String ?? "", duration: 1.0, position: .center)
+                            myPackageModel.current_package = CurrentPackageModel(lastPackage)
+                            myPackageModel.current_package.platinum_package = myPackageModel.platinum_package
+                            myPackageModel.current_package.gold_package = myPackageModel.gold_package
+                            self.packageLabel = body["message"] as? String ?? "" //1=platinum , 2=gold
+                            self.myPackages.append(myPackageModel)
+                            self.tableView.reloadData()
+                        } else if body["code"] as? Int ?? 0 == 200 {
                             self.myPackages.removeAll()
-                            let myPackageModel = MyPackageModel(body)
                             self.myPackages.append(myPackageModel)
                             self.paidButton.isEnabled = true
                             self.paidButton.setTitle("Pay and Upgrade Package", for: .normal)
@@ -79,8 +86,8 @@ class MyPackageViewController: UIViewController {
                 case let .fail(errorMsg):
                     self.packageLabel = errorMsg
                     self.view.makeToast(errorMsg, duration: 1.0, position: .center)
-                    if self.sitePackage == "0" {
-                        let myPackageModel = MyPackageModel(["upcoming_package": 2])
+                    if self.sitePackage == "0" || self.sitePackage == "111" {
+                        let myPackageModel = MyPackageModel(["upcoming_package": self.packageLabel.uppercased().contains("GOLD PLAN EXPIRED") ? 1 : 2])
                         self.myPackages.append(myPackageModel)
                     }
                     self.tableView.reloadData()
@@ -126,19 +133,10 @@ class MyPackageViewController: UIViewController {
                             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PayWebViewViewController") as? PayWebViewViewController {
                                 vc.webURL = URL(string: url)
                                 vc.order_id = order_id
+                                vc.isGoldSelected = self.isGoldSelected
                                 vc.siteName = self.siteName
-                    //            navigationController?.pushViewController(vc, animated: true)
                                 Functions.pushToViewController(self, toVC: vc)
                             }
-                            /*
-                             if (url.contains("https://dev.sitepay.co.in/user/success")){//pass
-
-                               show_success_fail_dialog("Congratulations, your package has been\nupgraded successfully !");
-                            }else if (url.contains("https://dev.sitepay.co.in/user/failed")){            //fail
-
-                               show_failed_dialog("Payment Failed");
-                             }
-                             */
                         } else {
                             App_AlertView.shared.SimpleMessage(Text: body["message"] as? String ?? "")
                         }
@@ -190,7 +188,7 @@ extension MyPackageViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.button2.addTarget(self, action: #selector(tapOnButton2(_:)), for: .touchUpInside)
                     cell.radioImage1.isHighlighted = self.isGoldSelected
                     cell.radioImage2.isHighlighted = !self.isGoldSelected
-                } else {
+                } else if myPackages.count > 0 {
                     cell.configureUpgrade(myPackages[0].current_package, row: indexPath.row)
                 }
             } else {

@@ -266,7 +266,7 @@ class SelfieVC: UIViewController, UINavigationControllerDelegate, UIImagePickerC
                 "Content-Type": "application/json",
             ]
 
-            let URL = try! URLRequest(url: "https://dev.sitepay.co.in/api/Employee/selfie", method: .post, headers: headers)
+            let URL = try! URLRequest(url: "https://sitepay.co.in/api/Employee/selfie", method: .post, headers: headers)
 
             Alamofire.upload(multipartFormData: { multipartFormdata in
 

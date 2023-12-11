@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,12 +36,12 @@
 		0BD203A628EAFD7B00D187DD /* old_ringtone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BD203A528EAFD7B00D187DD /* old_ringtone.mp3 */; };
 		0BD203A828EAFD8300D187DD /* sos_tone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0BD203A728EAFD8300D187DD /* sos_tone.mp3 */; };
 		1849CEBB2A668E3F00467891 /* PayWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849CEBA2A668E3F00467891 /* PayWebViewViewController.swift */; };
-		18A0432D291B7AC9003CB044 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */; };
 		18A0432F291BA563003CB044 /* EditVehiclesDetailLogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0432E291BA563003CB044 /* EditVehiclesDetailLogVC.swift */; };
 		18A04331291BABE4003CB044 /* UpdateVehicleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A04330291BABE4003CB044 /* UpdateVehicleImageCell.swift */; };
 		18B367E02A6554EB00E54DD7 /* MyPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B367DF2A6554EB00E54DD7 /* MyPackageViewController.swift */; };
 		18B367E32A6556FB00E54DD7 /* MyPackageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B367E22A6556FB00E54DD7 /* MyPackageTableViewCell.swift */; };
 		18B367E62A655FF500E54DD7 /* MyPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B367E52A655FF500E54DD7 /* MyPackageModel.swift */; };
+		18F3E9532AFE1B79005CF4A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F3E9522AFE1B78005CF4A9 /* GoogleService-Info.plist */; };
 		2541B235BAE10D7872175106 /* Pods_OwnerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB5CAB50F09358E10697377 /* Pods_OwnerApp.framework */; };
 		4904B9D22747E8BA00BA5DAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904B9D12747E8BA00BA5DAB /* AppDelegate.swift */; };
 		4904B9D92747E8BA00BA5DAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4904B9D72747E8BA00BA5DAB /* Main.storyboard */; };
@@ -210,12 +210,12 @@
 		0BD203A728EAFD8300D187DD /* sos_tone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sos_tone.mp3; sourceTree = "<group>"; };
 		0E3843823EFB8B63A9CBF54D /* Pods-EmployeeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EmployeeApp.release.xcconfig"; path = "Target Support Files/Pods-EmployeeApp/Pods-EmployeeApp.release.xcconfig"; sourceTree = "<group>"; };
 		1849CEBA2A668E3F00467891 /* PayWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayWebViewViewController.swift; sourceTree = "<group>"; };
-		18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18A0432E291BA563003CB044 /* EditVehiclesDetailLogVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditVehiclesDetailLogVC.swift; sourceTree = "<group>"; };
 		18A04330291BABE4003CB044 /* UpdateVehicleImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVehicleImageCell.swift; sourceTree = "<group>"; };
 		18B367DF2A6554EB00E54DD7 /* MyPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackageViewController.swift; sourceTree = "<group>"; };
 		18B367E22A6556FB00E54DD7 /* MyPackageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackageTableViewCell.swift; sourceTree = "<group>"; };
 		18B367E52A655FF500E54DD7 /* MyPackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPackageModel.swift; sourceTree = "<group>"; };
+		18F3E9522AFE1B78005CF4A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4904B9CE2747E8BA00BA5DAB /* OwnerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OwnerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4904B9D12747E8BA00BA5DAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4904B9D82747E8BA00BA5DAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -519,6 +519,7 @@
 		4904B9C52747E8BA00BA5DAB = {
 			isa = PBXGroup;
 			children = (
+				18F3E9522AFE1B78005CF4A9 /* GoogleService-Info.plist */,
 				4904B9D02747E8BA00BA5DAB /* OwnerApp */,
 				4904B9CF2747E8BA00BA5DAB /* Products */,
 				9AE66C67DCBC61AC7E4CDA01 /* Pods */,
@@ -537,7 +538,6 @@
 		4904B9D02747E8BA00BA5DAB /* OwnerApp */ = {
 			isa = PBXGroup;
 			children = (
-				18A0432C291B7AC9003CB044 /* GoogleService-Info.plist */,
 				DB413C6F288750920004F49E /* OwnerApp.entitlements */,
 				49DE933427671F1200FDA8CC /* QR Code Reader */,
 				49DE933127671C1F00FDA8CC /* Location Update */,
@@ -1015,7 +1015,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B6DC5A128E58645007D05C5 /* Vehicle.storyboard in Resources */,
-				18A0432D291B7AC9003CB044 /* GoogleService-Info.plist in Resources */,
+				18F3E9532AFE1B79005CF4A9 /* GoogleService-Info.plist in Resources */,
 				0BD203A628EAFD7B00D187DD /* old_ringtone.mp3 in Resources */,
 				4904B9DE2747E8BD00BA5DAB /* LaunchScreen.storyboard in Resources */,
 				4904B9DB2747E8BD00BA5DAB /* Assets.xcassets in Resources */,
@@ -1401,9 +1401,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = OwnerApp/OwnerApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5U6EGVXS4J;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6X627GXGML;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = OwnerApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Owner App";
@@ -1411,11 +1413,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.7;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ownerappios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sitepay.ownerappios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Ownerapp_development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1433,19 +1436,19 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5U6EGVXS4J;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 6X627GXGML;
 				INFOPLIST_FILE = OwnerApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Owner App";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.7;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ownerappios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sitepay.ownerappios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Owner_Appstore;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Owner_appstore;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

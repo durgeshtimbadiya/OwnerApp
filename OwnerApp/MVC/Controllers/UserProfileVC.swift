@@ -24,19 +24,22 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
 //    @IBOutlet var viewAddress: UIView!
 //    @IBOutlet var viewDepartment: UIView!
 //    @IBOutlet var viewDesignation: UIView!
-    @IBOutlet var viewTypeOfSiteView: UIView!
+    @IBOutlet var viewCustomerId: UIView!
     @IBOutlet var viewCompanyNameView: UIView!
+    @IBOutlet var viewBusinessType: UIView!
 
     // UITextField
     @IBOutlet var txtFieldName: UITextField!
-    @IBOutlet var txtFieldTypeOfSite: UITextField!
+    @IBOutlet var txtFieldCustomerId: UITextField!
+    @IBOutlet var txtFieldBusinType: UITextField!
     @IBOutlet var txtFieldPhone: UITextField!
     @IBOutlet var txtFieldEmail: UITextField!
     @IBOutlet var txtFieldCompanyName: UITextField!
     @IBOutlet var panCardImageBtn: UIButton!
     
     @IBOutlet var lblCompanyName: UILabel!
-    @IBOutlet var lblTypeOfSite: UILabel!
+    @IBOutlet var lblCustomerId: UILabel!
+    @IBOutlet var lblBusinessType: UILabel!
     @IBOutlet var lblPanCard: UILabel!
 
 //    @IBOutlet var txtFieldDOB: UITextField!
@@ -112,9 +115,13 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
         LocationManagerSingleton.shared.StartStopUpdatingLocation(start: true)
         LocationManagerSingleton.shared.delegate = self
        
-        txtFieldName.isUserInteractionEnabled = false
+        txtFieldName.isUserInteractionEnabled = true
         txtFieldPhone.isUserInteractionEnabled = false
-        txtFieldEmail.isUserInteractionEnabled = false
+        txtFieldEmail.isUserInteractionEnabled = true
+        txtFieldCustomerId.isUserInteractionEnabled = false
+        txtFieldCompanyName.isUserInteractionEnabled = false
+        txtFieldBusinType.isUserInteractionEnabled = false
+        
      //   txtFIeldBloodGroup.isUserInteractionEnabled = false
      //   txtFieldAddress.isUserInteractionEnabled = false
 //        txtFieldDepartment.isUserInteractionEnabled = false
@@ -156,9 +163,13 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
         viewCompanyNameView.layer.borderWidth = 1
         viewCompanyNameView.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
         
-        viewTypeOfSiteView.layer.cornerRadius = 10
-        viewTypeOfSiteView.layer.borderWidth = 1
-        viewTypeOfSiteView.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
+        viewCustomerId.layer.cornerRadius = 10
+        viewCustomerId.layer.borderWidth = 1
+        viewCustomerId.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
+        
+        viewBusinessType.layer.cornerRadius = 10
+        viewBusinessType.layer.borderWidth = 1
+        viewBusinessType.layer.borderColor = UIColor(red: 23 / 255.0, green: 146 / 255.0, blue: 161 / 255.0, alpha: 1.0).cgColor
 
         btnUpdateProflie.dropShadowWithCornerRadius()
         btnProfile.layer.cornerRadius = btnProfile.layer.bounds.height / 2
@@ -302,9 +313,20 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
     }
 
     @IBAction func btnUpdateProfileAction(_: Any) {
+        if txtFieldEmail.text!.isEmpty || !self.isValidEmail(txtFieldEmail.text!) {
+            self.view.makeToast(ValidationMessages.emailAddress, duration: 1.0, position: .center)
+            return
+        }
         if appDelegate.userLoginAccessDetails?.id != nil {
             UpdateProfileApi()
         }
+    }
+    
+    func isValidEmail(_ strEmail: String) -> Bool {
+        let emailRegEx = "(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-" + "z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+
+        let emailTest = NSPredicate(format: "SELF MATCHES[c] %@", emailRegEx)
+        return emailTest.evaluate(with: strEmail)
     }
     
     @IBAction func tapOnPanImage(_ sender: UIButton) {
@@ -349,8 +371,33 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                                     self.txtFieldName.text = name
                                 }
                                 
+                                if let type = user.value(forKey: "owner_unique_id") as? String {
+                                    self.txtFieldCustomerId.text = type
+                                }
+                                
                                 if let type = user.value(forKey: "type") as? String {
-                                    self.txtFieldTypeOfSite.text = type
+                                    switch type {
+                                    case "1":
+                                        self.txtFieldBusinType.text = "Sole Proprietorship"
+                                        break
+                                    case "2":
+                                        self.txtFieldBusinType.text = "Partnership"
+                                        break
+                                    case "3":
+                                        self.txtFieldBusinType.text = "LLP"
+                                        break
+                                    case "4":
+                                        self.txtFieldBusinType.text = "Private Limited"
+                                        break
+                                    case "5":
+                                        self.txtFieldBusinType.text = "Public Limited"
+                                        break
+                                    case "6":
+                                        self.txtFieldBusinType.text = "Others"
+                                        break
+                                    default:
+                                        break
+                                    }
                                 }
                                 
                                 if let company = user.value(forKey: "company") as? String {
@@ -362,7 +409,6 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                                     self.panCardImageBtn.sd_setImage(with: URL(string: self.panCardImageURL), for: .normal, placeholderImage: UIImage(named: "nopreview"), options: .refreshCached, context: nil)
                                 }
                                 //company, mute_notification, type, pan
-                                //https://dev.sitepay.co.in/data/pan/The_Real_Squere_VC_Ulwe_LOGO11.jpg
 
                                 if let phone = user.value(forKey: "mobile") as? String {
                                     self.txtFieldPhone.text = phone
@@ -481,7 +527,7 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                         if let body = response.body as? [String: Any] {
                             if body["message"] as? String ?? "" == "Success" {
                                 self.view.makeToast("Profile Updated Successfully", duration: 1.0, position: .center)
-                                self.perform(#selector(self.RedirectToProfile), with: nil, afterDelay: 1.1)
+                               // self.perform(#selector(self.RedirectToProfile), with: nil, afterDelay: 1.1)
                             } else {}
                         }
                     case let .fail(errorMsg):

@@ -70,7 +70,7 @@ class MyPackageTableViewCell: UITableViewCell {
         self.remainingDaysValDLabel.text = "\(cellData.date_diff)"
         self.expiryDateLabel.text = cellData.end_date
         self.purchaseDateLabel.text = cellData.start_date
-        self.packRegionLabel.text = "East India"
+        self.packRegionLabel.text = "India"
         self.autoRenewalLabel.text = "No"
         self.statusLabel.text = "Active"
         if row == 1 {

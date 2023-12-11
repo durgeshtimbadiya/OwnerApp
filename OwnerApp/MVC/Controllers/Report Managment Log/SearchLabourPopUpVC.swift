@@ -124,61 +124,123 @@ extension SearchLabourPopUpVC: UITableViewDelegate, UITableViewDataSource {
 
     // MARK: Select and remove members
 
+//    @objc func btnSelectMember(_ sender: UIButton) {
+//        let buttonPosition: CGPoint = sender.convert(.zero, to: TBLSelectLabourList)
+//        if let indexPath = TBLSelectLabourList.indexPathForRow(at: buttonPosition) {
+//            if indexPath.section == 0 {
+//                let isAllChecked = staff_List_Array.count == globleStaffNameList.count
+//                globleStaffNameList = [StaffNameModel]()
+//                for i in 0 ..< staff_List_Array.count {
+//                    let detail = staff_List_Array[i]
+//                    detail.isCheck = !isAllChecked
+//                    staff_List_Array[i] = detail
+//                    if !isAllChecked {
+//                        globleStaffNameList.append(detail)
+//                    }
+//                }
+//                TBLSelectLabourList.reloadData()
+//            } else {
+//                let detail = staff_List_Array[indexPath.row]
+//                let cell = TBLSelectLabourList.cellForRow(at: indexPath)
+//                let btnCheck: UIButton = cell?.viewWithTag(103) as! UIButton
+//
+//                if staff_List_Array.count == globleStaffNameList.count {
+//                    let sectionIndex = IndexPath(row: 0, section: 0)
+//                    let cell = TBLSelectLabourList.cellForRow(at: sectionIndex)
+//                    let btnSelectAll: UIButton = cell?.viewWithTag(103) as! UIButton
+//                    btnSelectAll.setImage(uncheckedImage, for: .normal)
+//                   
+//                    globleStaffNameList.removeAll { labout in
+//                        labout.staff_id == detail.staff_id
+//                    }
+//                }
+//                let isCheck = detail.isCheck
+//
+//                if isCheck == false {
+//                    btnCheck.setImage(checkedImage, for: .normal)
+//                    let obj = detail
+//                    obj.isCheck = true
+//                    globleStaffNameList.append(obj)
+//
+//                } else {
+//                    btnCheck.setImage(uncheckedImage, for: .normal)
+//                    let obj = detail
+//                    obj.isCheck = false
+//                    let index = staff_List_Array.firstIndex(where: { $0.staff_id == obj.staff_id }) ?? 0
+//                    print(index)
+//                    globleStaffNameList.removeAll { labout in
+//                        labout.staff_id == detail.staff_id
+//                    }
+//                }
+//
+//                if staff_List_Array.count == globleStaffNameList.count {
+//                    let sectionIndex = IndexPath(row: 0, section: 0)
+//                    let cell = TBLSelectLabourList.cellForRow(at: sectionIndex)
+//                    let btnSelectAll: UIButton = cell?.viewWithTag(103) as! UIButton
+//                    btnSelectAll.setImage(checkedImage, for: .normal)
+//                }
+//            }
+//        }
+        
+    // MARK: Select and remove members
+    
     @objc func btnSelectMember(_ sender: UIButton) {
         let buttonPosition: CGPoint = sender.convert(.zero, to: TBLSelectLabourList)
-        let indexPath = TBLSelectLabourList.indexPathForRow(at: buttonPosition)
-        if indexPath?.section == 0 {
-            let isAllChecked = staff_List_Array.count == globleStaffNameList.count
-            globleStaffNameList = [StaffNameModel]()
-            for i in 0 ..< staff_List_Array.count {
-                let detail = staff_List_Array[i]
-                detail.isCheck = !isAllChecked
-                staff_List_Array[i] = detail
-                if !isAllChecked {
-                    globleStaffNameList.append(detail)
+        if let indexPath = TBLSelectLabourList.indexPathForRow(at: buttonPosition)  {
+            if indexPath.section == 0 {
+                let isAllChecked = staff_List_Array.count == globleStaffNameList.count
+                globleStaffNameList = [StaffNameModel]()
+                for i in 0 ..< staff_List_Array.count {
+                    let detail = staff_List_Array[i]
+                    detail.isCheck = !isAllChecked
+                    staff_List_Array[i] = detail
+                    if !isAllChecked {
+                        globleStaffNameList.append(detail)
+                    }
                 }
-            }
-            TBLSelectLabourList.reloadData()
-        } else {
-            let detail = staff_List_Array[indexPath!.row]
-            let cell = TBLSelectLabourList.cellForRow(at: indexPath!)
-            let btnCheck: UIButton = cell?.viewWithTag(103) as! UIButton
-
-            if staff_List_Array.count == globleStaffNameList.count {
-                let sectionIndex = IndexPath(row: 0, section: 0)
-                let cell = TBLSelectLabourList.cellForRow(at: sectionIndex)
-                let btnSelectAll: UIButton = cell?.viewWithTag(103) as! UIButton
-                btnSelectAll.setImage(uncheckedImage, for: .normal)
-               
-                globleStaffNameList.removeAll { labout in
-                    labout.staff_id == detail.staff_id
-                }
-            } 
-            let isCheck = detail.isCheck
-
-            if isCheck == false {
-                btnCheck.setImage(checkedImage, for: .normal)
-                let obj = detail
-                obj.isCheck = true
-                globleStaffNameList.append(obj)
-
+                TBLSelectLabourList.reloadData()
             } else {
-                btnCheck.setImage(uncheckedImage, for: .normal)
-                let obj = detail
-                obj.isCheck = false
-                let index = staff_List_Array.firstIndex(where: { $0.staff_id == obj.staff_id }) ?? 0
-                print(index)
-                globleStaffNameList.removeAll { labout in
-                    labout.staff_id == detail.staff_id
+                let detail = staff_List_Array[indexPath.row]
+                if let cell = TBLSelectLabourList.cellForRow(at: indexPath) as? SelectLabourTableCell {
+                    
+                    if staff_List_Array.count == globleStaffNameList.count {
+                        let sectionIndex = IndexPath(row: 0, section: 0)
+                        let cell = TBLSelectLabourList.cellForRow(at: sectionIndex)
+                        let btnSelectAll: UIButton = cell?.viewWithTag(103) as! UIButton
+                        btnSelectAll.setImage(uncheckedImage, for: .normal)
+                        
+                        globleStaffNameList.removeAll { labout in
+                            labout.staff_id == detail.staff_id
+                        }
+                    }
+                    let isCheck = detail.isCheck
+                    
+                    if isCheck == false {
+                        cell.btnCheck.setImage(checkedImage, for: .normal)
+                        let obj = detail
+                        obj.isCheck = true
+                        globleStaffNameList.append(obj)
+                        
+                    } else {
+                        cell.btnCheck.setImage(uncheckedImage, for: .normal)
+                        let obj = detail
+                        obj.isCheck = false
+                        let index = staff_List_Array.firstIndex(where: { $0.staff_id == obj.staff_id }) ?? 0
+                        print(index)
+                        globleStaffNameList.removeAll { labout in
+                            labout.staff_id == detail.staff_id
+                        }
+                    }
+                    
+                    if staff_List_Array.count == globleStaffNameList.count {
+                        let sectionIndex = IndexPath(row: 0, section: 0)
+                        if let cell1 = TBLSelectLabourList.cellForRow(at: sectionIndex) as? SelectLabourTableCell {
+                            cell1.btnCheck.setImage(checkedImage, for: .normal)
+                        }
+                    }
                 }
-            }
-
-            if staff_List_Array.count == globleStaffNameList.count {
-                let sectionIndex = IndexPath(row: 0, section: 0)
-                let cell = TBLSelectLabourList.cellForRow(at: sectionIndex)
-                let btnSelectAll: UIButton = cell?.viewWithTag(103) as! UIButton
-                btnSelectAll.setImage(checkedImage, for: .normal)
             }
         }
+        
     }
 }

@@ -207,6 +207,7 @@ extension UIDevice {
         case TV
         case carPlay
         case unspecified
+        case vision
 
         var isPhone: Bool {
             return [.iPhone35, .iPhone40, .iPhone47, .iPhone55, .iPhoneMax].contains(self)
@@ -250,6 +251,8 @@ extension UIDevice {
 
         case .carPlay:
             return .carPlay
+        case .vision:
+            return .vision
         }
     }
 }

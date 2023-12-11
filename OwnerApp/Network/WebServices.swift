@@ -14,7 +14,7 @@ enum Webservice {
         var baseUrlString: String {
             switch self {
             case .live:
-                return "https://dev.sitepay.co.in/api/"//"https://dev.androappstech.com/wendor/api/" //
+                return "https://sitepay.co.in/api/"//"https://dev.androappstech.com/wendor/api/" //
             case .EC:
                 return ""
             }
@@ -31,15 +31,20 @@ enum Webservice {
         return Webservice.server.baseUrlString //
     }
     
-    static var baseUrl1: String = "https://dev.sitepay.co.in/data/"
+    static var baseUrl1: String = "https://sitepay.co.in/data/"
     // MARK: - Login Flow
 
+    static func GetAppVersion() -> String {
+        return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String ?? ""
+    }
+    
     enum Authentication {
         private static let Token = "c7d3965d49d4a59b0da80e90646aee77548458b3377ba3c0fb43d5ff91d54ea28833080e3de6ebd4fde36e2fb7175cddaf5d8d018ac1467c3d15db21c11b6909"
         
         // ******************************Login Api ***********************************//
         
         private static let Login = Webservice.baseUrl + "User/login"
+        private static let Setting = Webservice.baseUrl + "User/setting"
         private static let LoginWithOTP = Webservice.baseUrl + "User/verify_otp"
         private static let ForgotPassword = Webservice.baseUrl + "User/forget_password"
         private static let ForgotMatchPassword = Webservice.baseUrl + "User/match_forget_otp"
@@ -107,6 +112,11 @@ enum Webservice {
             APIClient.shared.request(with: endpoint)
         }
         
+        static func SettingApi(completion: @escaping APIResultBlock) {
+            let endpoint = EndPoint(path: Setting, method: .post, authToken: Token, completion: completion)
+            APIClient.shared.request(with: endpoint)
+        }
+                
         static func LoginViaOTP(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: LoginWithOTP, method: .post, parameter: parameter, authToken: Token, completion: completion)
             APIClient.shared.request(with: endpoint)
@@ -329,7 +339,7 @@ enum Webservice {
         //MARK:- My Packages
         static func getMyPackages(parameter: Parameter, completion: @escaping APIResultBlock) {
             let endpoint = EndPoint(path: getMyPackages, method: .post, parameter: parameter, authToken: Token, completion: completion)
-            APIClient.shared.request(with: endpoint)
+            APIClient.shared.request1(with: endpoint)
         }
         
         static func getUpcomingPackage(parameter: Parameter, completion: @escaping APIResultBlock) {

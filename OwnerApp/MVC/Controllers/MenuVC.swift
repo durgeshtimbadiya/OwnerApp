@@ -73,6 +73,9 @@ class MenuVC: UIViewController, PrLocation {
     override func viewWillAppear(_: Bool) {
         super.viewWillAppear(true)
 
+        if let sitePkg = UserDefaults.standard.string(forKey: "currentSitePackage") {
+            self.sitePackage = sitePkg
+        }
         if #available(iOS 13.0, *) {
             let app = UIApplication.shared
             let statusBarHeight: CGFloat = app.statusBarFrame.size.height
@@ -167,7 +170,7 @@ class MenuVC: UIViewController, PrLocation {
                     if let body = response.body as? [String: Any] {
                         self.imgBG.image = UIImage(named: "nopreview")
                         if let siteImage = body["site_photo"] as? String {
-                            let image = "https://dev.sitepay.co.in/data/\(siteImage)"
+                            let image = "https://sitepay.co.in/data/\(siteImage)"
                             self.imgBG.sd_setImage(with: URL(string: image), placeholderImage: UIImage(named: "nopreview"), options: .refreshCached, completed: nil)
                             self.imgBG.round(corners: [.bottomLeft,.bottomRight], cornerRadius: 20)
                         }
@@ -295,7 +298,6 @@ class MenuVC: UIViewController, PrLocation {
             }
         }
     }
-
 
     @IBAction func btnBackAction(_: Any) {
         navigationController?.popViewController(animated: true)
