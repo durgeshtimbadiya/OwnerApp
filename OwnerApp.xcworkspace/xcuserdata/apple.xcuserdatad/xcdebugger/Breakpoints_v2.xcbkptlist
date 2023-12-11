@@ -184,6 +184,7 @@
                   endingLineNumber = "374"
                   offsetFromSymbolStart = "4252">
                </Location>
+<<<<<<< HEAD
                <Location
                   uuid = "19E5CE1D-DE84-4E61-90A4-B45FF31F2FDF - b4fff9cb351ebab4"
                   shouldBeEnabled = "Yes"
@@ -199,6 +200,8 @@
                   endingLineNumber = "374"
                   offsetFromSymbolStart = "3772">
                </Location>
+=======
+>>>>>>> 7d46d57beee47d0906ffa9eac223f5cfe0527d3a
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -215,6 +218,57 @@
             startingLineNumber = "101"
             endingLineNumber = "101"
             landmarkName = "getUpcomingPackage()"
+<<<<<<< HEAD
+=======
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D98155D8-B9B1-4DF0-BBBF-DC53B72AB5BD - 3b4991749c40fcbf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OwnerApp.MyPackageViewController.getUpcomingPackage() -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/MyPackage/MyPackageViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "625">
+               </Location>
+               <Location
+                  uuid = "D98155D8-B9B1-4DF0-BBBF-DC53B72AB5BD - f96621034e27d59f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (OwnerApp.APIClientResult) -&gt; () in OwnerApp.MyPackageViewController.getUpcomingPackage() -&gt; ()"
+                  moduleName = "OwnerApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Projects/iOS/AndroApps/OwnerAppp/OwnerApp/MVC/Controllers/MyPackage/MyPackageViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "169">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50F1AD20-5819-4384-9897-D9451CDACEAE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OwnerApp/MVC/Controllers/MyPackage/Model/MyPackageModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "init(_:)"
+>>>>>>> 7d46d57beee47d0906ffa9eac223f5cfe0527d3a
             landmarkType = "7">
             <Locations>
                <Location

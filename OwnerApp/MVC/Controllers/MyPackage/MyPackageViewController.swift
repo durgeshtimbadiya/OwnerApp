@@ -137,6 +137,16 @@ class MyPackageViewController: UIViewController {
                                 vc.siteName = self.siteName
                                 Functions.pushToViewController(self, toVC: vc)
                             }
+<<<<<<< HEAD
+=======
+                            /*
+                             if (url.contains("https://dev.sitepay.co.in/user/success")){   //pass
+                               show_success_fail_dialog("Congratulations, your package has been\nupgraded successfully !");
+                            }else if (url.contains("https://dev.sitepay.co.in/user/failed")){   //fail
+                               show_failed_dialog("Payment Failed");
+                             }
+                             */
+>>>>>>> 7d46d57beee47d0906ffa9eac223f5cfe0527d3a
                         } else {
                             App_AlertView.shared.SimpleMessage(Text: body["message"] as? String ?? "")
                         }

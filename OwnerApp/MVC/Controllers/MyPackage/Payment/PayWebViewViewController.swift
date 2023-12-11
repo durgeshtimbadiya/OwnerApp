@@ -30,6 +30,7 @@ class PayWebViewViewController: UIViewController, UIDocumentInteractionControlle
         self.titleLabel.text = AppName
         self.subTitleLabel.text = siteName
         webViewV.navigationDelegate = self
+<<<<<<< HEAD
         
         if let htmlContent = htmlString {
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -40,6 +41,9 @@ class PayWebViewViewController: UIViewController, UIDocumentInteractionControlle
 //            }
             webViewV.loadHTMLString(htmlContent, baseURL: nil)
         } else if let url = webURL {
+=======
+        if let url = webURL {
+>>>>>>> 7d46d57beee47d0906ffa9eac223f5cfe0527d3a
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 ProgressHUD.animationType = .circleStrokeSpin
                 ProgressHUD.colorBackground = .white
