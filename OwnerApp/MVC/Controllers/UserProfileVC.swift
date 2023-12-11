@@ -373,34 +373,6 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                                 
                                 if let type = user.value(forKey: "owner_unique_id") as? String {
                                     self.txtFieldCustomerId.text = type
-<<<<<<< HEAD
-                                }
-                                
-                                if let type = user.value(forKey: "type") as? String {
-                                    switch type {
-                                    case "1":
-                                        self.txtFieldBusinType.text = "Sole Proprietorship"
-                                        break
-                                    case "2":
-                                        self.txtFieldBusinType.text = "Partnership"
-                                        break
-                                    case "3":
-                                        self.txtFieldBusinType.text = "LLP"
-                                        break
-                                    case "4":
-                                        self.txtFieldBusinType.text = "Private Limited"
-                                        break
-                                    case "5":
-                                        self.txtFieldBusinType.text = "Public Limited"
-                                        break
-                                    case "6":
-                                        self.txtFieldBusinType.text = "Others"
-                                        break
-                                    default:
-                                        break
-                                    }
-=======
->>>>>>> 7d46d57beee47d0906ffa9eac223f5cfe0527d3a
                                 }
                                 
                                 if let type = user.value(forKey: "type") as? String {
@@ -427,46 +399,7 @@ class UserProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePi
                                         break
                                     }
                                 }
-                                
-                                /*
-                                 {
-                                     "added_date" = "2023-04-01 17:17:50";
-                                     address = "Mumbai, maharshtra, india";
-                                     company = "SHIVA PVT LTD";
-                                     country = India;
-                                     "crm_id" = 9;
-                                     designation = Manager;
-                                     "device_id" = "fHlzhjzM8USJmeOb3RS7P6:APA91bHtsD2OlSRLx81h004khKwMGbrjKC0gcCD1DsoGTmpWcVGwQAtnjIUF1KeWt72-5s50lC2s9W9nIinYhtwMgkcfWAxthgPVRB8b_Eoe3f7YNaKbaTGGkyWD8Ip2OcotAF_82E00";
-                                     "device_type" = 1;
-                                     district = 2;
-                                     document = "pan/sample_doc5.jpg";
-                                     email = "ankitam.androapps@gmail.com";
-                                     "gst_no" = GST222222222222;
-                                     id = 161;
-                                     isBlocked = 0;
-                                     isDeleted = 0;
-                                     "is_demo" = 0;
-                                     "loged_in" = 2;
-                                     "login_status" = 1;
-                                     mobile = 8104525751;
-                                     "mute_notification" = 0;
-                                     name = "Shiv Mohandas";
-                                     "no_active_sites" = 7;
-                                     "no_employees" = "101 to 250";
-                                     otp = 1234;
-                                     "owner_unique_id" = SHI161;
-                                     pan = "pan/pan_sample8.jpg";
-                                     "pan_no" = PAN1111111;
-                                     password = 1234;
-                                     "profile_pic" = "https://dev.sitepay.co.in/data/owner/1681298617.jpg";
-                                     "profile_status" = 0;
-                                     state = 2;
-                                     "sw_password" = 81dc9bdb52d04dc20036dbd8313ed055;
-                                     type = 4;
-                                     "updated_date" = "2023-08-29 12:17:54";
-                                     "website_url" = "https://dev.sitepay.co.in/User/User_registration";
-                                 }*/
-                                
+                    
                                 if let company = user.value(forKey: "company") as? String {
                                     self.txtFieldCompanyName.text = company
                                 }
